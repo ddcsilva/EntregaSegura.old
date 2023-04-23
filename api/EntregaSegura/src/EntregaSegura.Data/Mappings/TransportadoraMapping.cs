@@ -29,17 +29,23 @@ public class TransportadoraMapping : IEntityTypeConfiguration<Transportadora>
             .HasComment("Nome da transportadora")
             .HasMaxLength(100);
 
+        builder.Property(e => e.CNPJ)
+            .HasColumnName("TRA_CNPJ")
+            .IsRequired()
+            .HasComment("CNPJ da transportadora")
+            .HasMaxLength(14);
+
         builder.Property(e => e.Telefone)
             .HasColumnName("TRA_TELEFONE")
             .IsRequired()
             .HasComment("Telefone da transportadora")
             .HasMaxLength(11);
 
-        builder.Property(e => e.CNPJ)
-            .HasColumnName("TRA_CNPJ")
+        builder.Property(e => e.Email)
+            .HasColumnName("TRA_EMAIL")
             .IsRequired()
-            .HasComment("CNPJ da transportadora")
-            .HasMaxLength(14);
+            .HasComment("E-mail da transportadora")
+            .HasMaxLength(100);
 
         // Relacionamento 1:N (Uma transportadora possui várias entregas) e N:1 (Uma entrega pertence a uma transportadora)
         builder.HasMany(t => t.Entregas)
