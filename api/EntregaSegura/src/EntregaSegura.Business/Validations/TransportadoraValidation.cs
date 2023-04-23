@@ -1,5 +1,5 @@
 using EntregaSegura.Business.Models;
-using EntregaSegura.Business.Utils;
+using EntregaSegura.Business.Utils.Validations;
 using FluentValidation;
 
 namespace EntregaSegura.Business.Validations;

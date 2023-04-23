@@ -1,4 +1,4 @@
-namespace EntregaSegura.Business.Utils;
+namespace EntregaSegura.Business.Utils.Validations;
 
 public class TelefoneValidation
 {

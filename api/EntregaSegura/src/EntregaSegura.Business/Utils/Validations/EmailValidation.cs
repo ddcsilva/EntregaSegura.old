@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace EntregaSegura.Business.Utils;
+namespace EntregaSegura.Business.Utils.Validations;
 
 public class EmailValidation
 {
