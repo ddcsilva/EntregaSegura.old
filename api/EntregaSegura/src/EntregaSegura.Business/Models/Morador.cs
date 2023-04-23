@@ -3,7 +3,7 @@ namespace EntregaSegura.Business.Models;
 /// <summary>
 /// Classe que representa um Morador
 /// </summary>
-public class Morador : Usuario
+public sealed class Morador : Usuario
 {
     /// <summary>
     /// Construtor padrão.

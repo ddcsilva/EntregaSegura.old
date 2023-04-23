@@ -5,12 +5,12 @@ namespace EntregaSegura.Business.Models;
 /// <summary>
 /// Classe que representa um usuário.
 /// </summary>
-public class Usuario : BaseEntity
+public abstract class Usuario : BaseEntity
 {
     /// <summary>
     /// Construtor padrão.
     /// </summary>
-    public Usuario()
+    protected Usuario()
     {
         Nome = string.Empty;
         CPF = string.Empty;

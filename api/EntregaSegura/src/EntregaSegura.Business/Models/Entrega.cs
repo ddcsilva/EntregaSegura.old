@@ -5,7 +5,7 @@ namespace EntregaSegura.Business.Models;
 /// <summary>
 /// Classe que representa uma entrega.
 /// </summary>
-public class Entrega : BaseEntity
+public sealed class Entrega : BaseEntity
 {
     /// <summary>
     /// Construtor padrão.

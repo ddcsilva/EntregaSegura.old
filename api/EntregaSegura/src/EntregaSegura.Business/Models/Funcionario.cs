@@ -5,7 +5,7 @@ namespace EntregaSegura.Business.Models;
 /// <summary>
 /// Classe que representa um funcionário.
 /// </summary>
-public class Funcionario : Usuario
+public sealed class Funcionario : Usuario
 {
     /// <summary>
     /// Construtor padrão.

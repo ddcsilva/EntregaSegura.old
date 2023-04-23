@@ -3,7 +3,7 @@ namespace EntregaSegura.Business.Models;
 /// <summary>
 /// Classe que representa um endereço.
 /// </summary>
-public class Endereco : BaseEntity
+public sealed class Endereco : BaseEntity
 {
     /// <summary>
     /// Construtor padrão.
@@ -13,7 +13,7 @@ public class Endereco : BaseEntity
         Logradouro = string.Empty;
         Numero = string.Empty;
         Complemento = string.Empty;
-        Cep = string.Empty;
+        CEP = string.Empty;
         Bairro = string.Empty;
         Cidade = string.Empty;
         Estado = string.Empty;
@@ -22,7 +22,7 @@ public class Endereco : BaseEntity
     public string Logradouro { get; set; }
     public string Numero { get; set; }
     public string Complemento { get; set; }
-    public string Cep { get; set; }
+    public string CEP { get; set; }
     public string Bairro { get; set; }
     public string Cidade { get; set; }
     public string Estado { get; set; }

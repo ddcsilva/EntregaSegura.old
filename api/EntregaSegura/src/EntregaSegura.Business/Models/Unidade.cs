@@ -3,7 +3,7 @@ namespace EntregaSegura.Business.Models;
 /// <summary>
 /// Classe que representa uma unidade.
 /// </summary>
-public class Unidade : BaseEntity
+public sealed class Unidade : BaseEntity
 {
     /// <summary>
     /// Construtor padrão.
