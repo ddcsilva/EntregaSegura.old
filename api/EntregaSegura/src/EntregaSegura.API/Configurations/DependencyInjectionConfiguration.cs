@@ -5,7 +5,7 @@ using EntregaSegura.Data.Contexts;
 namespace EntregaSegura.API.Configurations;
 
 /// <summary>
-/// Classe de configuração de injeção de dependência
+/// Classe que representa a configuração de injeção de dependência
 /// </summary>
 public static class DependencyInjectionConfiguration
 {
@@ -13,7 +13,7 @@ public static class DependencyInjectionConfiguration
     /// Método de extensão para adicionar as dependências
     /// </summary>
     /// <param name="services">Coleção de serviços</param>
-    /// <returns>Coleção de serviços</returns>
+    /// <returns>Retonar a coleção de serviços</returns>
     public static IServiceCollection ResolveDependencies(this IServiceCollection services)
     {
         services.AddScoped<EntregaSeguraContext>();

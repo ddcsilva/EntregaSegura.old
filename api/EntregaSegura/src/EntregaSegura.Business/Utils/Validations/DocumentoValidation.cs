@@ -1,12 +1,12 @@
 namespace EntregaSegura.Business.Utils.Validations;
 
 /// <summary>
-/// Classe de validação de documentos
+/// Classe que representa a validação adicional de documentos
 /// </summary>
 public static class DocumentoValidation
 {
     /// <summary>
-    /// Valida um CPF
+    /// Método que verifica se um CPF é válido
     /// </summary>
     /// <param name="cpf">CPF a ser validado</param>
     /// <returns>Retorna se o CPF é válido</returns>
@@ -21,7 +21,7 @@ public static class DocumentoValidation
     }
 
     /// <summary>
-    /// Valida um CNPJ
+    /// Método que verifica se um CNPJ é válido
     /// </summary>
     /// <param name="cnpj">CNPJ a ser validado</param>
     /// <returns>Retorna se o CNPJ é válido</returns>
@@ -36,7 +36,7 @@ public static class DocumentoValidation
     }
 
     /// <summary>
-    /// Remove a formatação de um documento
+    /// Método que remove a formatação de um documento
     /// </summary>
     /// <param name="documento">Documento a ser formatado</param>
     /// <returns>Retorna o documento sem formatação</returns>
@@ -46,18 +46,18 @@ public static class DocumentoValidation
     }
 
     /// <summary>
-    /// Calcula os dígitos verificadores de um CPF ou CNPJ
+    /// Método que verifica o tamanho válido de um documento
     /// </summary>
     /// <param name="documento">CPF ou CNPJ a ser calculado</param>
     /// <param name="tamanho">Tamanho do documento</param>
-    /// <returns>Retorna o tamanho do documento</returns>
+    /// <returns>Retorna se o documento possui o tamanho válido</returns>
     private static bool PossuiTamanhoValido(string documento, int tamanho)
     {
         return documento.Length == tamanho;
     }
 
     /// <summary>
-    /// Verifica se um CPF possui dígitos repetidos
+    /// Método que verifica se um CPF possui dígitos repetidos
     /// </summary>
     /// <param name="documento">CPF a ser verificado</param>
     /// <returns>Retorna se o CPF possui dígitos repetidos</returns>
@@ -71,7 +71,7 @@ public static class DocumentoValidation
     }
 
     /// <summary>
-    /// Verifica se os dígitos verificadores de um CPF estão corretos
+    /// Método que verifica se os dígitos verificadores de um CPF estão corretos
     /// </summary>
     /// <param name="cpf">CPF a ser verificado</param>
     /// <returns>Retorna se os dígitos do CPF estão corretos</returns>
@@ -83,7 +83,7 @@ public static class DocumentoValidation
     }
 
     /// <summary>
-    /// Verifica se os dígitos verificadores de um CNPJ estão corretos
+    /// Método que verifica se os dígitos verificadores de um CNPJ estão corretos
     /// </summary>
     /// <param name="cnpj">CNPJ a ser verificado</param>
     /// <returns>Retorna se os dígitos do CNPJ estão corretos</returns>
@@ -95,7 +95,7 @@ public static class DocumentoValidation
     }
 
     /// <summary>
-    /// Calcula os dígitos verificadores de um CPF
+    /// Método que calcula os dígitos verificadores de um CPF
     /// </summary>
     /// <param name="cpf">CPF a ser calculado</param>
     /// <returns>Retorna os dígitos do CPF calculados</returns>
@@ -110,7 +110,7 @@ public static class DocumentoValidation
     }
 
     /// <summary>
-    /// Calcula os dígitos verificadores de um CNPJ
+    /// Método que calcula os dígitos verificadores de um CNPJ
     /// </summary>
     /// <param name="cnpj">CNPJ a ser calculado</param>
     /// <returns>Retorna os dígitos do CNPJ calculados</returns>
@@ -125,7 +125,7 @@ public static class DocumentoValidation
     }
 
     /// <summary>
-    /// Calcula um dígito verificador
+    /// Método que calcula um dígito verificador
     /// </summary>
     /// <param name="documento">Documento a ser calculado</param>
     /// <param name="multiplicadores">Multiplicadores a serem utilizados</param>

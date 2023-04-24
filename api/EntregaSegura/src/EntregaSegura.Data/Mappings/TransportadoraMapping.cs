@@ -10,11 +10,11 @@ namespace EntregaSegura.Data.Mappings;
 public class TransportadoraMapping : IEntityTypeConfiguration<Transportadora>
 {
     /// <summary>
-    /// Configura as propriedades da entidade <see cref="Transportadora"/> para a tabela TB_TRANSPORTADORA no banco de dados
+    /// Método que configura as propriedades da entidade <see cref="Transportadora"/> para a tabela TB_TRANSPORTADORAS no banco de dados
     /// </summary>
     public void Configure(EntityTypeBuilder<Transportadora> builder)
     {
-        builder.ToTable("TB_TRANSPORTADORA");
+        builder.ToTable("TB_TRANSPORTADORAS");
 
         builder.HasKey(e => e.Id)
             .HasName("PK_TRA_ID");

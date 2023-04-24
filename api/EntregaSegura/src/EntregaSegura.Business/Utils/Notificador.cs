@@ -3,15 +3,15 @@ using EntregaSegura.Business.Interfaces;
 namespace EntregaSegura.Business.Utils;
 
 /// <summary>
-/// Classe de notificação
+/// Classe responsável por notificar erros.
 /// </summary>
 public class Notificador : INotificador
 {
-    // Lista de notificações
+    // Lista de notificações de erros.
     private List<Notificacao> _notificacoes;
 
     /// <summary>
-    /// Construtor padrão, inicializa a lista de notificações.
+    /// Construtor padrão que inicializa a lista de notificações de erros.
     /// </summary>
     public Notificador()
     {
@@ -19,7 +19,7 @@ public class Notificador : INotificador
     }
 
     /// <summary>
-    /// Retorna se há notificações.
+    /// Método que retorna se há notificações.
     /// </summary>
     /// <returns>Retorna se há notificações.</returns>
     public bool TemNotificacao()
@@ -28,7 +28,7 @@ public class Notificador : INotificador
     }
 
     /// <summary>
-    /// Retorna uma lista de notificações.
+    /// Método que obtém as notificações.
     /// </summary>
     /// <returns>Retorna uma lista de notificações.</returns>
     public List<Notificacao> ObterNotificacoes()
@@ -37,7 +37,7 @@ public class Notificador : INotificador
     }
 
     /// <summary>
-    /// Adiciona uma notificação.
+    /// Método que adiciona uma notificação.
     /// </summary>
     /// <param name="notificacao">Notificação a ser adicionada.</param>
     public void Handle(Notificacao notificacao)

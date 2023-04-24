@@ -4,7 +4,7 @@ using EntregaSegura.Business.Models;
 namespace EntregaSegura.Business.Interfaces.Repositories;
 
 /// <summary>
-/// Interface genérica de repositório.
+/// Interface que representa o repositório genérico
 /// </summary>
 public interface IRepository<TEntity> : IDisposable where TEntity : BaseEntity
 {

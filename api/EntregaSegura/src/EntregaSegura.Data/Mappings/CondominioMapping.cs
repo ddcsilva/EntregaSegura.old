@@ -10,7 +10,7 @@ namespace EntregaSegura.Data.Mappings;
 public class CondominioMapping : IEntityTypeConfiguration<Condominio>
 {
     /// <summary>
-    /// Configura as propriedades da entidade <see cref="Condominio"/> para a tabela TB_CONDOMINIOS no banco de dados
+    /// Método que configura as propriedades da entidade <see cref="Condominio"/> para a tabela TB_CONDOMINIOS no banco de dados
     /// </summary>
     public void Configure(EntityTypeBuilder<Condominio> builder)
     {

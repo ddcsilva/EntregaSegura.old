@@ -8,7 +8,7 @@ namespace EntregaSegura.Business.Models;
 public sealed class Funcionario : Usuario
 {
     /// <summary>
-    /// Construtor padrão.
+    /// Construtor padrão 
     /// </summary>
     public Funcionario()
     {

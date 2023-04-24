@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 namespace EntregaSegura.API.Controllers;
 
 /// <summary>
-/// Classe base para os controllers
+/// Classe abstrata que representa a base de todos os controllers
 /// </summary>
 [ApiController]
 public abstract class MainController : ControllerBase
@@ -14,7 +14,7 @@ public abstract class MainController : ControllerBase
     private readonly INotificador _notificador;
 
     /// <summary>
-    /// Construtor padrão, recebe o notificador
+    /// Construtor padrão que recebe uma instância de notificador
     /// </summary>
     protected MainController(INotificador notificador)
     {
@@ -22,7 +22,7 @@ public abstract class MainController : ControllerBase
     }
 
     /// <summary>
-    /// Verifica se a operação foi válida (se não houver notificações de erro)
+    /// Método que verifica se a operação foi válida (se não houver notificações de erro)
     /// </summary>
     /// <returns>Retorna se a operação é válida</returns>
     protected bool OperacaoValida()
@@ -31,10 +31,10 @@ public abstract class MainController : ControllerBase
     }
 
     /// <summary>
-    /// Cria uma resposta personalizada com base no resultado da operação
+    /// Método que cria uma resposta personalizada com base no resultado da operação
     /// </summary>
     /// <param name="result">Resultado da operação</param>
-    /// <returns>Resposta personalizada</returns>
+    /// <returns>Retorna uma resposta personalizada</returns>
     protected ActionResult CustomResponse(object result = null)
     {
         if (OperacaoValida())
@@ -54,10 +54,10 @@ public abstract class MainController : ControllerBase
     }
 
     /// <summary>
-    /// Notifica um erro de modelo inválido
+    /// Método que notifica um erro de modelo inválido
     /// </summary>
     /// <param name="modelState">Estado do modelo</param>
-    /// <returns>Resposta personalizada</returns>
+    /// <returns>Retorna uma resposta personalizada</returns>
     protected ActionResult CustomResponse(ModelStateDictionary modelState)
     {
         if (!modelState.IsValid)
@@ -69,7 +69,7 @@ public abstract class MainController : ControllerBase
     }
 
     /// <summary>
-    /// Notifica erros no ModelState
+    /// Método que notifica erros no ModelState
     /// </summary>
     /// <param name="mensagem">Mensagem de erro</param>
     protected void NotificarErroModelInvalida(ModelStateDictionary modelState)
@@ -84,9 +84,9 @@ public abstract class MainController : ControllerBase
     }
 
     /// <summary>
-    /// Envia uma notificação de erro
+    /// Método que envia uma notificação de erro
     /// </summary>
-    /// <param name="mensagem">Mensagem de erro</param>
+    /// <param name="mensagem">Retorna uma mensagem de erro</param>
     protected void NotificarErro(string mensagem)
     {
         _notificador.Handle(new Notificacao(mensagem));

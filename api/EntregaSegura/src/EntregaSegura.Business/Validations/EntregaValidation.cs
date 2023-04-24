@@ -4,12 +4,12 @@ using FluentValidation;
 namespace EntregaSegura.Business.Validations;
 
 /// <summary>
-/// Classe de validação de entregas
+/// Classe que representa a validação do modelo de endereço
 /// </summary>
 public class EntregaValidation : AbstractValidator<Entrega>
 {
     /// <summary>
-    /// Valida uma entrega
+    /// Construtor padrão que define as regras de validação
     /// </summary>
     public EntregaValidation()
     {

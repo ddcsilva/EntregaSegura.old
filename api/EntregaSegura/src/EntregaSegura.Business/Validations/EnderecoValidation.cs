@@ -4,12 +4,12 @@ using FluentValidation;
 namespace EntregaSegura.Business.Validations;
 
 /// <summary>
-/// Classe de validação de condomínios
+/// Classe que representa a validação do modelo de endereço
 /// </summary>
 public class EnderecoValidation : AbstractValidator<Endereco>
 {
     /// <summary>
-    /// Valida um condomínio
+    /// Construtor padrão que define as regras de validação
     /// </summary>
     public EnderecoValidation()
     {

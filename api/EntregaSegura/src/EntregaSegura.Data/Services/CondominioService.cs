@@ -7,7 +7,7 @@ using EntregaSegura.Business.Validations;
 namespace EntregaSegura.Business.Services;
 
 /// <summary>
-/// Classe de serviço para a entidade Condominio
+/// Classe que representa o serviço do condomínio
 /// </summary>
 public class CondominioService : BaseService, ICondominioService
 {

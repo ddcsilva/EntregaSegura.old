@@ -5,12 +5,12 @@ using FluentValidation;
 namespace EntregaSegura.Business.Validations;
 
 /// <summary>
-/// Classe de validação de condomínios
+/// Classe que representa a validação do modelo de condomínio
 /// </summary>
 public class CondominioValidation : AbstractValidator<Condominio>
 {
     /// <summary>
-    /// Valida um condomínio
+    /// Construtor padrão que define as regras de validação
     /// </summary>
     public CondominioValidation()
     {

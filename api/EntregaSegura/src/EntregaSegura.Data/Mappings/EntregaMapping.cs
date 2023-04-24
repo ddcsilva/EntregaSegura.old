@@ -10,7 +10,7 @@ namespace EntregaSegura.Data.Mappings;
 public class EntregaMapping : IEntityTypeConfiguration<Entrega>
 {
     /// <summary>
-    /// Configura as propriedades da entidade <see cref="Entrega"/> para a tabela TB_ENTREGAS
+    /// Método que configura as propriedades da entidade <see cref="Entrega"/> para a tabela TB_ENTREGAS no banco de dados
     /// </summary>
     public void Configure(EntityTypeBuilder<Entrega> builder)
     {

@@ -3,7 +3,7 @@
 namespace EntregaSegura.Business.Interfaces.Repositories;
 
 /// <summary>
-/// Interface de repositório para a entidade Condominio
+/// Interface que representa o repositório especializado de condomínio
 /// </summary>
 public interface ICondominioRepository : IRepository<Condominio>
 {

@@ -2,10 +2,13 @@ using System.Text.RegularExpressions;
 
 namespace EntregaSegura.Business.Utils.Validations;
 
+/// <summary>
+/// Classe que representa a validação adicional de e-mail
+/// </summary>
 public class EmailValidation
 {
     /// <summary>
-    /// Valida um e-mail
+    /// Método que valida se o e-mail é válido
     /// </summary>
     /// <param name="email">E-mail a ser validado</param>
     /// <returns>Retorna se o e-mail é válido</returns>

@@ -1,7 +1,7 @@
 namespace EntregaSegura.Business.Utils;
 
 /// <summary>
-/// Classe de notificação
+/// Classe que representa uma notificação de erro.
 /// </summary>
 public class Notificacao
 {
@@ -14,6 +14,6 @@ public class Notificacao
         Mensagem = mensagem;
     }
 
-    // Retorna a mensagem da notificação
+    // Propriedade somente leitura que armazena a mensagem da notificação.
     public string Mensagem { get; }
 }

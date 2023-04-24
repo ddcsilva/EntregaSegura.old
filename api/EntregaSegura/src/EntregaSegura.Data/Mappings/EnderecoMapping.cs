@@ -10,7 +10,7 @@ namespace EntregaSegura.Data.Mappings;
 public class EnderecoMapping : IEntityTypeConfiguration<Endereco>
 {
     /// <summary>
-    /// Configura as propriedades da entidade <see cref="Endereco"/> para a tabela TB_ENDERECOS no banco de dados
+    /// Método que configura as propriedades da entidade <see cref="Endereco"/> para a tabela TB_ENDERECOS no banco de dados
     /// </summary>
     public void Configure(EntityTypeBuilder<Endereco> builder)
     {

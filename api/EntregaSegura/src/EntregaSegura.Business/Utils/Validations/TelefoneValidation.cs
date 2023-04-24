@@ -1,9 +1,12 @@
 namespace EntregaSegura.Business.Utils.Validations;
 
+/// <summary>
+/// Classe que representa a validação adicional de telefone
+/// </summary>
 public class TelefoneValidation
 {
     /// <summary>
-    /// Valida um telefone
+    /// Método que valida se o telefone é válido
     /// </summary>
     /// <param name="telefone">Telefone a ser validado</param>
     /// <returns>Retorna se o telefone é válido</returns>
@@ -18,7 +21,7 @@ public class TelefoneValidation
     }
 
     /// <summary>
-    /// Remove a formatação de um telefone
+    /// Método que remove a formatação de um telefone
     /// </summary>
     /// <param name="telefone">Telefone a ser formatado</param>
     /// <returns>Retorna o telefone sem formatação</returns>
@@ -28,7 +31,7 @@ public class TelefoneValidation
     }
 
     /// <summary>
-    /// Verifica se um telefone possui o tamanho correto
+    /// Método que
     /// </summary>
     /// <param name="telefone">Telefone a ser verificado</param>
     /// <param name="tamanho">Tamanho do telefone</param>

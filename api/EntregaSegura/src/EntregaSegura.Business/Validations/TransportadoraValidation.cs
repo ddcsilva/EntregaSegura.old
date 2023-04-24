@@ -5,12 +5,12 @@ using FluentValidation;
 namespace EntregaSegura.Business.Validations;
 
 /// <summary>
-/// Classe de validação de transportadoras
+/// Classe que representa a validação do modelo de transportadora
 /// </summary>
 public class TransportadoraValidation : AbstractValidator<Transportadora>
 {
     /// <summary>
-    /// Valida uma transportadora
+    /// Construtor padrão que define as regras de validação
     /// </summary>
     public TransportadoraValidation()
     {

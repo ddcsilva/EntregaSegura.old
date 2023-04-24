@@ -1,12 +1,12 @@
 namespace EntregaSegura.Business.Models;
 
 /// <summary>
-/// Classe base para as entidades do sistema.
+/// Classe que representa a base de todas as entidades do sistema.
 /// </summary>
 public abstract class BaseEntity
 {
     /// <summary>
-    /// Construtor padrão.
+    /// Construtor padrão que inicializa as propriedades.
     /// </summary>
     protected BaseEntity()
     {

@@ -14,7 +14,7 @@ public abstract class BaseService
     private readonly INotificador _notificador;
 
     /// <summary>
-    /// Construtor padrão que recebe o notificador
+    /// Construtor padrão que recebe o notificador de erros
     /// </summary>
     protected BaseService(INotificador notificador)
     {

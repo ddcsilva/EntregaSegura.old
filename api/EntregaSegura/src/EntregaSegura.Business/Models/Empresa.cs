@@ -6,7 +6,7 @@ namespace EntregaSegura.Business.Models;
 public abstract class Empresa : BaseEntity
 {
     /// <summary>
-    /// Construtor padrão.
+    /// Construtor padrão que inicializa as propriedades.
     /// </summary>
     protected Empresa()
     {

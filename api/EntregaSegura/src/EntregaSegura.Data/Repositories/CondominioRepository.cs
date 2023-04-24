@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace EntregaSegura.Data.Repositories;
 
 /// <summary>
-/// Repositório para a entidade Condominio
+/// Classe que representa o repositório de condomínios
 /// </summary>
 public class CondominioRepository : Repository<Condominio>, ICondominioRepository
 {
@@ -19,7 +19,7 @@ public class CondominioRepository : Repository<Condominio>, ICondominioRepositor
     /// Método para obter um condomínio com o endereço
     /// </summary>
     /// <param name="condominioId">Id do condomínio</param>
-    /// <returns>Condomínio com o endereço</returns>
+    /// <returns>Retorna o condomínio com o endereço</returns>
     public async Task<Condominio> ObterCondominioComEndereco(Guid condominioId)
     {
         return await _context.Condominios
@@ -32,7 +32,7 @@ public class CondominioRepository : Repository<Condominio>, ICondominioRepositor
     /// Método para obter um condomínio com as unidades
     /// </summary>
     /// <param name="id">Id do condomínio</param>
-    /// <returns>Condomínio com as unidades</returns>
+    /// <returns>Retorna o condomínio com as unidades</returns>
     public Task<Condominio> ObterCondominioComUnidades(Guid id)
     {
         return _context.Condominios
@@ -44,7 +44,7 @@ public class CondominioRepository : Repository<Condominio>, ICondominioRepositor
     /// <summary>
     /// Método para obter todos os condomínios com o endereço
     /// </summary>
-    /// <returns>Lista de condomínios com o endereço</returns>
+    /// <returns>Retorna uma lista de condomínios com o endereço</returns>
     public Task<List<Condominio>> ObterTodosCondominioscomEndereco()
     {
         return _context.Condominios
@@ -56,7 +56,7 @@ public class CondominioRepository : Repository<Condominio>, ICondominioRepositor
     /// <summary>
     /// Método para obter todos os condomínios com as unidades
     /// </summary>
-    /// <returns>Lista de condomínios com as unidades</returns>
+    /// <returns>Retorna uma lista de condomínios com as unidades</returns>
     public Task<List<Condominio>> ObterTodosCondominioscomUnidades()
     {
         return _context.Condominios

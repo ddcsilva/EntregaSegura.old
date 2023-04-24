@@ -3,7 +3,7 @@ using EntregaSegura.Business.Models;
 namespace EntregaSegura.Business.Interfaces.Services;
 
 /// <summary>
-/// Interface de serviço para a entidade Condominio
+/// Interface que representa o serviço especializado de condomínio
 /// </summary>
 public interface ICondominioService : IDisposable
 {

@@ -3,7 +3,7 @@ using EntregaSegura.Business.Models;
 namespace EntregaSegura.Business.Interfaces.Repositories;
 
 /// <summary>
-/// Interface de repositório para a entidade Endereco
+/// Interface que representa o repositório especializado de endereço
 /// </summary>
 public interface IEnderecoRepository : IRepository<Endereco>
 {

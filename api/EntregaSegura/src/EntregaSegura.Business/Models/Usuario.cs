@@ -8,7 +8,7 @@ namespace EntregaSegura.Business.Models;
 public abstract class Usuario : BaseEntity
 {
     /// <summary>
-    /// Construtor padrão.
+    /// Construtor padrão que inicializa as propriedades.
     /// </summary>
     protected Usuario()
     {

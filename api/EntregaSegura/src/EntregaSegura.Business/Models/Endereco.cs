@@ -6,7 +6,7 @@ namespace EntregaSegura.Business.Models;
 public sealed class Endereco : BaseEntity
 {
     /// <summary>
-    /// Construtor padrão.
+    /// Construtor padrão que inicializa as propriedades.
     /// </summary>
     public Endereco()
     {
