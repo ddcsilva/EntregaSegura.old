@@ -26,43 +26,43 @@ public class EnderecoMapping : IEntityTypeConfiguration<Endereco>
         builder.Property(e => e.Logradouro)
             .HasColumnName("END_LOGRADOURO")
             .IsRequired()
-            .HasComment("Logradouro do endereço")
-            .HasMaxLength(100);
+            .HasColumnType("varchar(100)")
+            .HasComment("Logradouro do endereço");
 
         builder.Property(e => e.Numero)
             .HasColumnName("END_NUMERO")
             .IsRequired()
-            .HasComment("Número do endereço")
-            .HasMaxLength(10);
+            .HasColumnType("varchar(10)")
+            .HasComment("Número do endereço");
 
         builder.Property(e => e.Complemento)
             .HasColumnName("END_COMPLEMENTO")
-            .HasComment("Complemento do endereço")
-            .HasMaxLength(100);
+            .HasColumnType("varchar(100)")
+            .HasComment("Complemento do endereço");
 
         builder.Property(e => e.CEP)
             .HasColumnName("END_CEP")
             .IsRequired()
-            .HasComment("CEP do endereço")
-            .HasMaxLength(8);
+            .HasColumnType("varchar(8)")
+            .HasComment("CEP do endereço");
 
         builder.Property(e => e.Bairro)
             .HasColumnName("END_BAIRRO")
             .IsRequired()
-            .HasComment("Bairro do endereço")
-            .HasMaxLength(100);
+            .HasColumnType("varchar(50)")
+            .HasComment("Bairro do endereço");
 
         builder.Property(e => e.Cidade)
             .HasColumnName("END_CIDADE")
             .IsRequired()
-            .HasComment("Cidade do endereço")
-            .HasMaxLength(50);
+            .HasColumnType("varchar(50)")
+            .HasComment("Cidade do endereço");
 
         builder.Property(e => e.Estado)
             .HasColumnName("END_ESTADO")
             .IsRequired()
-            .HasComment("Estado do endereço")
-            .HasMaxLength(2);
+            .HasColumnType("varchar(2)")
+            .HasComment("Estado do endereço");
 
         // Relacionamento 1:1 (Um endereço pertence a um condomínio) e 1:1 (Um condomínio só pode ter um endereço)
         builder.HasOne(e => e.Condominio)

@@ -26,29 +26,31 @@ public class EntregaMapping : IEntityTypeConfiguration<Entrega>
         builder.Property(e => e.Remetente)
             .HasColumnName("ETG_REMETENTE")
             .IsRequired()
-            .HasComment("Nome do remetente da entrega")
-            .HasMaxLength(100);
+            .HasColumnType("varchar(100)")
+            .HasComment("Nome do remetente da entrega");
 
         builder.Property(e => e.Destinatario)
             .HasColumnName("ETG_DESTINATARIO")
             .IsRequired()
-            .HasComment("Nome do destinatário da entrega")
-            .HasMaxLength(100);
+            .HasColumnType("varchar(100)")
+            .HasComment("Nome do destinatário da entrega");
 
         builder.Property(e => e.DataRecebimento)
             .HasColumnName("ETG_DATA_RECEBIMENTO")
+            .HasColumnType("datetime")
             .IsRequired()
             .HasComment("Data de recebimento da entrega");
 
         builder.Property(e => e.DataRetirada)
             .HasColumnName("ETG_DATA_RETIRADA")
+            .HasColumnType("datetime")
             .HasComment("Data de retirada da entrega");
 
         builder.Property(e => e.Status)
             .HasColumnName("ETG_STATUS")
             .IsRequired()
-            .HasComment("Status da entrega")
-            .HasMaxLength(1);
+            .HasColumnType("char(1)")
+            .HasComment("Status da entrega");
 
         // Relacionamento 1:1 (Uma entrega pertence a uma transportadora) e 1:N (Uma transportadora pode ter várias entregas)
         builder.HasOne(e => e.Transportadora)

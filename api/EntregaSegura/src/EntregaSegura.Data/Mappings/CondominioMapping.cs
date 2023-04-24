@@ -26,26 +26,26 @@ public class CondominioMapping : IEntityTypeConfiguration<Condominio>
         builder.Property(c => c.Nome)
             .HasColumnName("CND_NOME")
             .IsRequired()
-            .HasComment("Nome do condomínio")
-            .HasMaxLength(100);
+            .HasColumnType("varchar(100)")
+            .HasComment("Nome do condomínio");
 
         builder.Property(c => c.CNPJ)
             .HasColumnName("CND_CNPJ")
             .IsRequired()
-            .HasComment("CNPJ do condomínio")
-            .HasMaxLength(14);
+            .HasColumnType("varchar(14)")
+            .HasComment("CNPJ do condomínio");;
 
         builder.Property(c => c.Telefone)
             .HasColumnName("CND_TELEFONE")
             .IsRequired()
-            .HasComment("Telefone do condomínio")
-            .HasMaxLength(11);
+            .HasColumnType("varchar(11)")
+            .HasComment("Telefone do condomínio");
 
         builder.Property(c => c.Email)
             .HasColumnName("CND_EMAIL")
             .IsRequired()
-            .HasComment("E-mail do condomínio")
-            .HasMaxLength(100);
+            .HasColumnType("varchar(100)")
+            .HasComment("E-mail do condomínio");
 
         // Relacionamento 1:1 (Um condomínio possui um endereço)
         builder.HasOne(c => c.Endereco)
