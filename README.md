@@ -1,4 +1,4 @@
-EntregaSegura - API
+EntregaSegura
 ===================
 
 EntregaSegura é um sistema de gerenciamento de entregas para condomínios desenvolvido como um trabalho de conclusão de curso (TCC) de pós-graduação. O objetivo do projeto é facilitar o controle e a comunicação de entregas entre portaria, moradores e administradores de condomínios. *Este projeto é puramente acadêmico e não está associado a nenhum produto comercial com o mesmo nome*.
