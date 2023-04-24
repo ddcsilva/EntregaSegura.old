@@ -5,7 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<EntregaSeguraContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("CondoNexusConnection"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("EntregaSeguraConnection"),
+    b => b.MigrationsAssembly("EntregaSegura.Data"));
 });
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

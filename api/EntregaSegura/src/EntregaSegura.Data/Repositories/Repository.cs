@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using EntregaSegura.Business.Interfaces.Repositories;
 using EntregaSegura.Business.Models;
 using EntregaSegura.Data.Contexts;
@@ -67,6 +68,15 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
     {
         _dbSet.Remove(new TEntity { Id = id });
         await SaveChanges();
+    }
+
+    /// <summary>
+    /// Retorna uma lista de entidades que atendem a um predicado.
+    /// </summary>
+    /// <param name="predicate">Predicado a ser utilizado na busca.</param>
+    public async Task<IEnumerable<TEntity>> Buscar(Expression<Func<TEntity, bool>> predicate)
+    {
+        return await _dbSet.AsNoTracking().Where(predicate).ToListAsync();
     }
 
     /// <summary>
