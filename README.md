@@ -5,8 +5,8 @@ EntregaSegura é um sistema de gerenciamento de entregas para condomínios desen
 
 Tecnologias
 -----------
-API: .NET 6
-Cliente: Angular 13
+- API: .NET 6
+- Cliente: Angular 13
 
 Funcionalidades
 ---------------
