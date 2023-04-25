@@ -7,12 +7,21 @@ namespace EntregaSegura.Business.Interfaces;
 /// </summary>
 public interface INotificador
 {
-    // Retorna se há notificações ou não
+    /// <summary>
+    /// Verifica se existe alguma notificação de erro
+    /// </summary>
+    /// <returns>Retorna verdadeiro se existir alguma notificação de erro</returns>
     bool TemNotificacao();
 
-    // Retorna uma lista de notificações de erros
+    /// <summary>
+    /// Obtém a lista de notificações de erro
+    /// </summary>
+    /// <returns>Retorna a lista de notificações de erro</returns>
     List<Notificacao> ObterNotificacoes();
 
-    // Adiciona uma notificação 
+    /// <summary>
+    /// Adiciona uma notificação de erro
+    /// </summary>
+    /// <param name="notificacao">Notificação de erro</param>
     void Handle(Notificacao notificacao);
 }
