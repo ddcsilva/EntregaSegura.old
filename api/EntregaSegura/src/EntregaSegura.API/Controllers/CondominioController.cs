@@ -39,11 +39,11 @@ public class CondominiosController : MainController
     /// Endpoint que retorna todos os condomínios
     /// </summary>
     /// <returns>Retonar uma lista de condomínios</returns>
-    [HttpGet]
-    public async Task<IEnumerable<CondominioDTO>> ObterTodos()
+    public async Task<ActionResult<IEnumerable<CondominioDTO>>> ObterTodos()
     {
-        var condominios = _mapper.Map<IEnumerable<CondominioDTO>>(await _condominioRepository.ObterTodos());
-        return condominios;
+        var condominios = await _condominioRepository.ObterTodos();
+
+        return Ok(_mapper.Map<IEnumerable<CondominioDTO>>(condominios));
     }
 
     /// <summary>
