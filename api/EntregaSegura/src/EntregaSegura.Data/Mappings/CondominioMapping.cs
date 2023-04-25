@@ -17,7 +17,7 @@ public class CondominioMapping : IEntityTypeConfiguration<Condominio>
         builder.ToTable("TB_CONDOMINIOS");
         
         builder.HasKey(c => c.Id)
-            .HasName("PK_CND_ID");
+            .HasName("PK_CONDOMINIOS");
 
         builder.Property(c => c.Id)
             .HasColumnName("CND_ID")
@@ -47,18 +47,37 @@ public class CondominioMapping : IEntityTypeConfiguration<Condominio>
             .HasColumnType("varchar(100)")
             .HasComment("E-mail do condomínio");
 
-        // Relacionamento 1:1 (Um condomínio possui um endereço)
+        builder.Property(c => c.DataCriacao)
+            .HasColumnName("CND_DATA_CRIACAO")
+            .IsRequired()
+            .HasColumnType("datetime")
+            .HasDefaultValueSql("GETDATE()")
+            .HasComment("Data de criação do condomínio");
+
+        builder.Property(c => c.DataUltimaModificacao)
+            .HasColumnName("CND_DATA_ULTIMA_MODIFICACAO")
+            .HasColumnType("datetime")
+            .HasComment("Data da última modificação do condomínio");
+
+        builder.Property(c => c.Excluido)
+            .HasColumnName("CND_EXCLUIDO")
+            .IsRequired()
+            .HasColumnType("bit")
+            .HasDefaultValue(false)
+            .HasComment("Flag que indica se o condomínio foi excluído");
+
+        // Um condomínio possui um endereço e um endereço pertence a um condomínio
         builder.HasOne(c => c.Endereco)
             .WithOne(e => e.Condominio)
             .HasForeignKey<Endereco>(e => e.CondominioId)
             .HasConstraintName("FK_CONDOMINIO_ENDERECO")
-            .OnDelete(DeleteBehavior.Cascade); // Se um condomínio for excluído, o endereço também será
+            .OnDelete(DeleteBehavior.Restrict);
 
-        // Relacionamento 1:N (Um condomínio possui várias unidades)
+        // Um condomínio possui várias unidades e uma unidade pertence a um condomínio
         builder.HasMany(c => c.Unidades)
             .WithOne(u => u.Condominio)
             .HasForeignKey(u => u.CondominioId)
             .HasConstraintName("FK_CONDOMINIO_UNIDADE")
-            .OnDelete(DeleteBehavior.Cascade); // Se um condomínio for excluído, as unidades também serão
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

@@ -8,7 +8,7 @@ namespace EntregaSegura.Business.Models;
 public sealed class Entrega : BaseEntity
 {
     /// <summary>
-    /// Construtor padrão que inicializa as propriedades.
+    /// Construtor padrão que inicializa as propriedades, exceto as de relacionamento e define o status como <see cref="StatusEntrega.Recebida"/>.
     /// </summary>
     public Entrega()
     {
@@ -28,15 +28,19 @@ public sealed class Entrega : BaseEntity
     public string Observacao { get; set; }
     public StatusEntrega Status { get; set; }
 
-    // Relacionamento 1:1 (Uma entrega pertence a uma transportadora)
+    // Uma entrega pertence a apenas uma transportadora
     public Guid TransportadoraId { get; set; }
     public Transportadora Transportadora { get; set; }
 
-    // Relacionamento 1:1 (Uma entrega pertence a uma unidade)
+    // Uma entrega pertence a apenas uma unidade
     public Guid UnidadeId { get; set; }
     public Unidade Unidade { get; set; }
 
-    // Relacionamento 1:1 (Uma entrega só pode ser recebida por um funcionário)
+    // Uma entrega pertence a apenas um morador
+    public Guid MoradorId { get; set; }
+    public Morador Morador { get; set; }
+
+    // Uma entrega só pode ser manipulada por um funcionário
     public Guid FuncionarioId { get; set; }
     public Funcionario Funcionario { get; set; }
 }

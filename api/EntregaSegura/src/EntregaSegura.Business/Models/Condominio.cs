@@ -1,21 +1,21 @@
 namespace EntregaSegura.Business.Models;
 
 /// <summary>
-/// Classe que representa um condomínio.
+/// Classe que representa um condomínio
 /// </summary>
 public sealed class Condominio : Empresa
 {
     /// <summary>
-    /// Construtor padrão.
+    /// Construtor padrão que inicializa a propriedade Unidades.
     /// </summary>
     public Condominio()
     {
-
+        Unidades = new List<Unidade>();
     }
 
-    // Relacionamento 1:1 (Um condomínio possui um endereço)
+     // Um condomínio possui um endereço
     public Endereco Endereco { get; set; }
 
-    // Relacionamento 1:N (Um condomínio possui várias unidades)
-    public IEnumerable<Unidade> Unidades { get; set; }
+    // Um condomínio possui várias unidades
+    public ICollection<Unidade> Unidades { get; set; }
 }

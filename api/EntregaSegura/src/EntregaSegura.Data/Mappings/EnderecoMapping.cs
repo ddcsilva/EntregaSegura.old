@@ -15,9 +15,9 @@ public class EnderecoMapping : IEntityTypeConfiguration<Endereco>
     public void Configure(EntityTypeBuilder<Endereco> builder)
     {
         builder.ToTable("TB_ENDERECOS");
-        
+
         builder.HasKey(e => e.Id)
-            .HasName("PK_END_ID");
+            .HasName("PK_ENDERECOS");
 
         builder.Property(e => e.Id)
             .HasColumnName("END_ID")
@@ -64,11 +64,35 @@ public class EnderecoMapping : IEntityTypeConfiguration<Endereco>
             .HasColumnType("varchar(2)")
             .HasComment("Estado do endereço");
 
-        // Relacionamento 1:1 (Um endereço pertence a um condomínio) e 1:1 (Um condomínio só pode ter um endereço)
+        builder.Property(e => e.DataCriacao)
+            .HasColumnName("END_DATA_CRIACAO")
+            .IsRequired()
+            .HasColumnType("datetime")
+            .HasDefaultValueSql("GETDATE()")
+            .HasComment("Data de criação do endereço");
+
+        builder.Property(e => e.DataUltimaModificacao)
+            .HasColumnName("END_DATA_ULTIMA_MODIFICACAO")
+            .HasColumnType("datetime")
+            .HasComment("Data da última modificação do endereço");
+
+        builder.Property(e => e.CondominioId)
+            .HasColumnName("CON_ID")
+            .IsRequired()
+            .HasComment("Chave estrangeira do condomínio");
+
+        builder.Property(e => e.Excluido)
+            .HasColumnName("END_EXCLUIDO")
+            .IsRequired()
+            .HasColumnType("bit")
+            .HasDefaultValue(false)
+            .HasComment("Flag que indica se o endereço foi excluído");
+
+        // Um endereço pertence a um condomínio e um condomínio possui um endereço
         builder.HasOne(e => e.Condominio)
             .WithOne(c => c.Endereco)
             .HasForeignKey<Endereco>(e => e.CondominioId)
             .HasConstraintName("FK_ENDERECO_CONDOMINIO")
-            .OnDelete(DeleteBehavior.Cascade); // Se um endereço for excluído, o condomínio também será
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

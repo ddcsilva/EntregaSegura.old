@@ -8,9 +8,24 @@ namespace EntregaSegura.Business.Interfaces;
 /// </summary>
 public interface ITransportadoraRepository : IRepository<Transportadora>
 {
-    // Obtém uma transportadora pelo Nome
+    /// <summary>
+    /// Obtém uma transportadora pelo seu nome
+    /// </summary>
+    /// <param name="nome">Nome da transportadora</param>
+    /// <returns>Retorna uma transportadora</returns>
     Task<IEnumerable<Transportadora>> ObterTransportadorasPorNome(string nome);
 
-    // Obtém uma transportadora pelo CNPJ
+    /// <summary>
+    /// Obtém uma transportadora pelo seu CNPJ
+    /// </summary>
+    /// <param name="cnpj">CNPJ da transportadora</param>
+    /// <returns>Retorna uma transportadora</returns>
     Task<IEnumerable<Transportadora>> ObterTransportadorasPorCnpj(string cnpj);
+
+    /// <summary>
+    /// Obtém todas as transportadoras que realizaram entregas em uma unidade
+    /// </summary>
+    /// <param name="unidadeId">Id da unidade</param>
+    /// <returns>Rertorna uma lista de transportadoras</returns>
+    Task<IEnumerable<Transportadora>> ObterTodasTransportadorasQueRealizaramEntregasPorUnidade(int unidadeId);
 }

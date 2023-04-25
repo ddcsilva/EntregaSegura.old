@@ -6,17 +6,18 @@ namespace EntregaSegura.Business.Models;
 public sealed class Morador : Usuario
 {
     /// <summary>
-    /// Construtor padrão.
+    /// Construtor padrão que inicializa a propriedade Entregas.
     /// </summary>
     public Morador()
     {
-        
+        Entregas = new List<Entrega>();
     }
-
-    // Relacionamento 1:1 (Um morador pertence a uma unidade)
+    
     public Guid UnidadeId { get; set; }
+
+    // Um morador pertence a apenas uma unidade
     public Unidade Unidade { get; set; }
 
-    // Relacionamento 1:N (Um morador pode ter várias entregas)
+    // Um morador pode receber várias entregas
     public IEnumerable<Entrega> Entregas { get; set; }
 }

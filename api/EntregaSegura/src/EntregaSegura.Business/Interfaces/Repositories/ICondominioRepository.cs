@@ -7,15 +7,17 @@ namespace EntregaSegura.Business.Interfaces.Repositories;
 /// </summary>
 public interface ICondominioRepository : IRepository<Condominio>
 {
-    // Obtém um condomínio com o endereço
+    /// <summary>
+    /// Obtém um condomínio com o endereço
+    /// </summary>
+    /// <param name="id">Identificador do condomínio</param>
+    /// <returns>Condomínio com o endereço</returns>
     Task<Condominio> ObterCondominioComEndereco(Guid id);
 
-    // Obtém um condomínio com as unidades
+    /// <summary>
+    /// Obtém um condomínio com as unidades
+    /// </summary>
+    /// <param name="id">Identificador do condomínio</param>
+    /// <returns>Condomínio com as unidades</returns>
     Task<Condominio> ObterCondominioComUnidades(Guid id);
-
-    // Obtém todos os condomínios com o endereço
-    Task<List<Condominio>> ObterTodosCondominioscomEndereco();
-
-    // Obtém todos os condomínios com as unidades
-    Task<List<Condominio>> ObterTodosCondominioscomUnidades();
 }

@@ -6,7 +6,7 @@ namespace EntregaSegura.Business.Models;
 public sealed class Endereco : BaseEntity
 {
     /// <summary>
-    /// Construtor padrão que inicializa as propriedades.
+    /// Construtor padrão que inicializa todas as propriedades, exceto as de relacionamento.
     /// </summary>
     public Endereco()
     {
@@ -27,7 +27,7 @@ public sealed class Endereco : BaseEntity
     public string Cidade { get; set; }
     public string Estado { get; set; }
 
-    // Relacionamento 1:1 (Um endereço pertence a um condomínio)
+    // Um endereço pertence a um condomínio
     public Guid CondominioId { get; set; }
     public Condominio Condominio { get; set; }
 }

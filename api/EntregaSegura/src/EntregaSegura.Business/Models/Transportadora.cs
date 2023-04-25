@@ -6,13 +6,13 @@ namespace EntregaSegura.Business.Models;
 public sealed class Transportadora : Empresa
 {
     /// <summary>
-    /// Construtor padrão.
+    /// Construtor padrão que inicializa a propriedade Entregas.
     /// </summary>
     public Transportadora()
     {
-        
+        Entregas = new List<Entrega>();
     }
 
-    // Relacionamento 1:N (Uma transportadora possui várias entregas) e N:1 (Uma entrega pertence a uma transportadora)
+    // Uma transportadora pode realizar várias entregas
     public IEnumerable<Entrega> Entregas { get; set; }
 }

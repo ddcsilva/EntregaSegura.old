@@ -17,7 +17,7 @@ public class TransportadoraMapping : IEntityTypeConfiguration<Transportadora>
         builder.ToTable("TB_TRANSPORTADORAS");
 
         builder.HasKey(e => e.Id)
-            .HasName("PK_TRA_ID");
+            .HasName("PK_TRANSPORTADORAS");
 
         builder.Property(e => e.Id)
             .HasColumnName("TRA_ID")
@@ -46,6 +46,18 @@ public class TransportadoraMapping : IEntityTypeConfiguration<Transportadora>
             .IsRequired()
             .HasColumnType("varchar(100)")
             .HasComment("E-mail da transportadora");
+
+        builder.Property(e => e.DataCriacao)
+            .HasColumnName("TRA_DATA_CRIACAO")
+            .IsRequired()
+            .HasColumnType("datetime")
+            .HasDefaultValueSql("GETDATE()")
+            .HasComment("Data de criação da transportadora");
+
+        builder.Property(e => e.DataUltimaModificacao)
+            .HasColumnName("TRA_DATA_ULTIMA_MODIFICACAO")
+            .HasColumnType("datetime")
+            .HasComment("Data da última modificação da transportadora");
 
         // Relacionamento 1:N (Uma transportadora possui várias entregas) e N:1 (Uma entrega pertence a uma transportadora)
         builder.HasMany(t => t.Entregas)

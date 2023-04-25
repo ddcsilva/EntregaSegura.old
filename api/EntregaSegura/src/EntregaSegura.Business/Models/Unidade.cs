@@ -6,24 +6,26 @@ namespace EntregaSegura.Business.Models;
 public sealed class Unidade : BaseEntity
 {
     /// <summary>
-    /// Construtor padrão que inicializa as propriedades.
+    /// Construtor padrão que inicializa as propriedades Entregas e Moradores.
     /// </summary>
     public Unidade()
     {
         Numero = string.Empty;
         Bloco = string.Empty;
+        Entregas = new List<Entrega>();
+        Moradores = new List<Morador>();
     }
 
     public string Numero { get; set; }
     public string Bloco { get; set; }
-
-    // Relacionamento 1:1 (Uma unidade pertence a um condomínio)
     public Guid CondominioId { get; set; }
+    
+    // Uma unidade pertence a apenas um condomínio
     public Condominio Condominio { get; set; }
 
-    // Relacionamento 1:N (Uma unidade possui várias entregas)
+    // Uma unidade pode receber várias entregas
     public IEnumerable<Entrega> Entregas { get; set; }
 
-    // Relacionamento 1:N (Uma unidade possui vários moradores)
+    // Uma unidade pode ter vários moradores
     public IEnumerable<Morador> Moradores { get; set; } 
 }
