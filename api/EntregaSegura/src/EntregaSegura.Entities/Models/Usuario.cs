@@ -1,0 +1,13 @@
+using EntregaSegura.Entities.Models.Enums;
+
+namespace EntregaSegura.Entities.Models;
+
+/// <summary>
+/// Classe que representa um usuário.
+/// </summary>
+public abstract class Usuario : BaseEntity
+{
+    public string? Nome { get; set; }
+    public string? CPF { get; set; }
+    public StatusConta Status { get; set; }
+}

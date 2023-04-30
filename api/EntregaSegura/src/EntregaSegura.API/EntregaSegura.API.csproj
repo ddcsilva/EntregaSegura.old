@@ -20,10 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EntregaSegura.Business\EntregaSegura.Business.csproj" />
     <ProjectReference Include="..\EntregaSegura.Contracts\EntregaSegura.Contracts.csproj" />
-    <ProjectReference Include="..\EntregaSegura.Data\EntregaSegura.Data.csproj" />
     <ProjectReference Include="..\EntregaSegura.LoggerService\EntregaSegura.LoggerService.csproj" />
+    <ProjectReference Include="..\EntregaSegura.Repository\EntregaSegura.Repository.csproj" />
   </ItemGroup>
 
 </Project>
