@@ -1,12 +1,16 @@
 using Microsoft.AspNetCore.HttpOverrides;
+using NLog;
 using EntregaSegura.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 
 builder.Services.ConfigurarCors();
 builder.Services.ConfigurarIntegraçãoComIIS();
+builder.Services.ConfigurarLogger();
+
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
