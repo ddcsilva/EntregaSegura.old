@@ -13,7 +13,7 @@ builder.Services.ConfigurarRepositoryManager();
 builder.Services.ConfigurarServiceManager();
 builder.Services.ConfigurarSqlContext(builder.Configuration);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddApplicationPart(typeof(EntregaSegura.Presentation.AssemblyReference).Assembly);
 
 var app = builder.Build();
 

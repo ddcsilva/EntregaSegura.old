@@ -4,9 +4,12 @@ using EntregaSegura.Repository.Contexts;
 
 namespace EntregaSegura.Repository;
 
-public class CondominioRepository : RepositoryBase<Condominio>, ICondominioRepository
+public sealed class CondominioRepository : RepositoryBase<Condominio>, ICondominioRepository
 {
-    public CondominioRepository(EntregaSeguraContext context) : base(context)
+    public CondominioRepository(EntregaSeguraContext entregaSeguraContexto) : base(entregaSeguraContexto) { }
+
+    public IEnumerable<Condominio> ObterTodosCondominios(bool rastrearAlteracoes)
     {
+        return BuscarTodos(rastrearAlteracoes).OrderBy(c => c.Nome).ToList();
     }
 }

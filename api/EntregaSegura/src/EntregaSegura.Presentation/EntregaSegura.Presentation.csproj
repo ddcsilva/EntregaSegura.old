@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EntregaSegura.Entities\EntregaSegura.Entities.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EntregaSegura.Service.Contracts\EntregaSegura.Service.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

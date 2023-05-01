@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EntregaSegura.Entities\EntregaSegura.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\EntregaSegura.Contracts\EntregaSegura.Contracts.csproj" />
     <ProjectReference Include="..\EntregaSegura.LoggerService\EntregaSegura.LoggerService.csproj" />
+    <ProjectReference Include="..\EntregaSegura.Presentation\EntregaSegura.Presentation.csproj" />
     <ProjectReference Include="..\EntregaSegura.Repository\EntregaSegura.Repository.csproj" />
     <ProjectReference Include="..\EntregaSegura.Service\EntregaSegura.Service.csproj" />
   </ItemGroup>
