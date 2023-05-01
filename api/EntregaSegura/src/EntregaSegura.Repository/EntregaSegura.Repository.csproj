@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EntregaSegura.Contracts\EntregaSegura.Contracts.csproj" />
     <ProjectReference Include="..\EntregaSegura.Entities\EntregaSegura.Entities.csproj" />
   </ItemGroup>
 
