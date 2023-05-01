@@ -17,5 +17,5 @@ public abstract class BaseEntity
     public Guid Id { get; set; }
     public DateTime DataCriacao { get; set; }
     public DateTime? DataUltimaModificacao { get; set; }
-    public bool Excluido { get; set; }
+    public bool? Excluido { get; set; }
 }

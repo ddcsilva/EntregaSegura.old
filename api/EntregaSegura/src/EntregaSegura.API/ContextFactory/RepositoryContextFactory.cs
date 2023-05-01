@@ -1,21 +1,22 @@
-using EntregaSegura.Repository;
+using EntregaSegura.Repository.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
 namespace EntregaSegura.API.ContextFactory;
 
-public class RepositoryContextFactory : IDesignTimeDbContextFactory<RepositoryContext>
+public class RepositoryContextFactory : IDesignTimeDbContextFactory<EntregaSeguraContext>
 {
-    public RepositoryContext CreateDbContext(string[] args)
+    public EntregaSeguraContext CreateDbContext(string[] args)
     {
         var configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json")
             .Build();
 
-        var builder = new DbContextOptionsBuilder<RepositoryContext>()
-            .UseSqlServer(configuration.GetConnectionString("SqlServerConnection"));
+        var builder = new DbContextOptionsBuilder<EntregaSeguraContext>()
+            .UseSqlServer(configuration.GetConnectionString("SqlServerConnection"),
+                optionsBuilder => optionsBuilder.MigrationsAssembly("EntregaSegura.API"));
 
-        return new RepositoryContext(builder.Options);
+        return new EntregaSeguraContext(builder.Options);
     }
 }
