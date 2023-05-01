@@ -3,7 +3,7 @@ using EntregaSegura.Repository.Contexts;
 
 namespace EntregaSegura.Repository;
 
-public class RepositoryManager : IRepositoryManager
+public sealed class RepositoryManager : IRepositoryManager
 {
     private readonly EntregaSeguraContext _context;
     private readonly Lazy<ICondominioRepository> _condominioRepository;

@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntregaSegura.Entities", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntregaSegura.Repository", "src\EntregaSegura.Repository\EntregaSegura.Repository.csproj", "{3F83D561-09AB-4715-8AE0-9E897895155E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntregaSegura.Service.Contracts", "src\EntregaSegura.Service.Contracts\EntregaSegura.Service.Contracts.csproj", "{D791426E-7EC5-4880-8C10-AE008E8063D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntregaSegura.Service", "src\EntregaSegura.Service\EntregaSegura.Service.csproj", "{8C522D87-E803-4570-9121-205781EB1448}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{3F83D561-09AB-4715-8AE0-9E897895155E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F83D561-09AB-4715-8AE0-9E897895155E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F83D561-09AB-4715-8AE0-9E897895155E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D791426E-7EC5-4880-8C10-AE008E8063D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D791426E-7EC5-4880-8C10-AE008E8063D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D791426E-7EC5-4880-8C10-AE008E8063D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D791426E-7EC5-4880-8C10-AE008E8063D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C522D87-E803-4570-9121-205781EB1448}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C522D87-E803-4570-9121-205781EB1448}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C522D87-E803-4570-9121-205781EB1448}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C522D87-E803-4570-9121-205781EB1448}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

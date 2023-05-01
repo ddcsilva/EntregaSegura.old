@@ -10,6 +10,8 @@ builder.Services.ConfigurarCors();
 builder.Services.ConfigurarIntegraçãoComIIS();
 builder.Services.ConfigurarLogger();
 builder.Services.ConfigurarRepositoryManager();
+builder.Services.ConfigurarServiceManager();
+builder.Services.ConfigurarSqlContext(builder.Configuration);
 
 builder.Services.AddControllers();
 

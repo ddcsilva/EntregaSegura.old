@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EntregaSegura.Contracts\EntregaSegura.Contracts.csproj" />
+    <ProjectReference Include="..\EntregaSegura.Service.Contracts\EntregaSegura.Service.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
