@@ -1,5 +1,6 @@
 using EntregaSegura.Contracts;
 using EntregaSegura.LoggerService;
+using EntregaSegura.Repository;
 
 namespace EntregaSegura.API.Extensions;
 
@@ -29,5 +30,10 @@ public static class ServiceExtensions
     public static void ConfigurarLogger(this IServiceCollection services)
     {
         services.AddSingleton<ILoggerManager, LoggerManager>();
+    }
+
+    public static void ConfigurarRepositoryManager(this IServiceCollection services)
+    {
+        services.AddScoped<IRepositoryManager, RepositoryManager>();
     }
 }
