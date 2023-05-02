@@ -21,17 +21,9 @@ public sealed class TransportadoraService : ITransportadoraService
 
     public IEnumerable<TransportadoraDTO> ObterTodasTransportadoras(bool rastrearAlteracoes)
     {
-        try
-        {
-            var transportadoras = _repository.Transportadora.ObterTodasTransportadoras(rastrearAlteracoes);
-            var transportadoraDTO = _mapper.Map<IEnumerable<TransportadoraDTO>>(transportadoras);
+        var transportadoras = _repository.Transportadora.ObterTodasTransportadoras(rastrearAlteracoes);
+        var transportadoraDTO = _mapper.Map<IEnumerable<TransportadoraDTO>>(transportadoras);
 
-            return transportadoraDTO;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogErro($"Ocorreu um erro ao tentar obter todas as transportadoras: {ex.Message}");
-            throw;
-        }
+        return transportadoraDTO;
     }
 }

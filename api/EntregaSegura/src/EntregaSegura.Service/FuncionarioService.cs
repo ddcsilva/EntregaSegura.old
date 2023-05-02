@@ -21,17 +21,9 @@ public sealed class FuncionarioService : IFuncionarioService
 
     public IEnumerable<FuncionarioDTO> ObterTodosFuncionarios(bool rastrearAlteracoes)
     {
-        try
-        {
-            var funcionarios = _repository.Funcionario.ObterTodosFuncionarios(rastrearAlteracoes);
-            var funcionariosDTO = _mapper.Map<IEnumerable<FuncionarioDTO>>(funcionarios);
-            
-            return funcionariosDTO;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogErro($"Ocorreu um erro ao tentar obter todas os funcionários: {ex.Message}");
-            throw;
-        }
+        var funcionarios = _repository.Funcionario.ObterTodosFuncionarios(rastrearAlteracoes);
+        var funcionariosDTO = _mapper.Map<IEnumerable<FuncionarioDTO>>(funcionarios);
+
+        return funcionariosDTO;
     }
 }

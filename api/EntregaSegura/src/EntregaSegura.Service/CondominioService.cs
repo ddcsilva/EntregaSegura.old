@@ -20,17 +20,9 @@ public sealed class CondominioService : ICondominioService
 
     public IEnumerable<CondominioDTO> ObterTodosCondominios(bool rastrearAlteracoes)
     {
-        try
-        {
-            var condominios = _repository.Condominio.ObterTodosCondominios(rastrearAlteracoes);
-            var condominiosDTO = _mapper.Map<IEnumerable<CondominioDTO>>(condominios);
+        var condominios = _repository.Condominio.ObterTodosCondominios(rastrearAlteracoes);
+        var condominiosDTO = _mapper.Map<IEnumerable<CondominioDTO>>(condominios);
 
-            return condominiosDTO;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogErro($"Ocorreu um erro ao tentar obter todos os condomínios: {ex.Message}");
-            throw;
-        }
+        return condominiosDTO;
     }
 }

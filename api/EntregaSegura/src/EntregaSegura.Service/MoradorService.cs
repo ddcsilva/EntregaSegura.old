@@ -21,17 +21,9 @@ public sealed class MoradorService : IMoradorService
 
     public IEnumerable<MoradorDTO> ObterTodosMoradores(bool rastrearAlteracoes)
     {
-        try
-        {
-            var moradores = _repository.Morador.ObterTodosMoradores(rastrearAlteracoes);
-            var moradoresDTO = _mapper.Map<IEnumerable<MoradorDTO>>(moradores);
+        var moradores = _repository.Morador.ObterTodosMoradores(rastrearAlteracoes);
+        var moradoresDTO = _mapper.Map<IEnumerable<MoradorDTO>>(moradores);
 
-            return moradoresDTO;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogErro($"Ocorreu um erro ao tentar obter todas os moradores: {ex.Message}");
-            throw;
-        }
+        return moradoresDTO;
     }
 }

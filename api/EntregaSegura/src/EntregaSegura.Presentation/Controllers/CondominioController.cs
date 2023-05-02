@@ -17,14 +17,7 @@ public class CondominioController : ControllerBase
     [HttpGet]
     public IActionResult ObterCondominios()
     {
-        try
-        {
-            var condominios = _service.CondominioService.ObterTodosCondominios(false);
-            return Ok(condominios);
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, $"Ocorreu um erro ao tentar obter todos os condomínios: {ex.Message}");
-        }
+        var condominios = _service.CondominioService.ObterTodosCondominios(false);
+        return Ok(condominios);
     }
 }

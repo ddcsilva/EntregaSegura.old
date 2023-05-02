@@ -21,17 +21,9 @@ public sealed class UnidadeService : IUnidadeService
 
     public IEnumerable<UnidadeDTO> ObterTodasUnidades(bool rastrearAlteracoes)
     {
-        try
-        {
-            var unidades = _repository.Unidade.ObterTodasUnidades(rastrearAlteracoes);
-            var unidadesDTO = _mapper.Map<IEnumerable<UnidadeDTO>>(unidades);
+        var unidades = _repository.Unidade.ObterTodasUnidades(rastrearAlteracoes);
+        var unidadesDTO = _mapper.Map<IEnumerable<UnidadeDTO>>(unidades);
 
-            return unidadesDTO;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogErro($"Ocorreu um erro ao tentar obter todas as unidades: {ex.Message}");
-            throw;
-        }
+        return unidadesDTO;
     }
 }

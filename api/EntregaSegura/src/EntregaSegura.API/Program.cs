@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using NLog;
 using EntregaSegura.API.Extensions;
+using EntregaSegura.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,11 +19,10 @@ builder.Services.AddControllers().AddApplicationPart(typeof(EntregaSegura.Presen
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-}
-else
+var logger = app.Services.GetRequiredService<ILoggerManager>();
+app.ConfigurarExceptionHandler(logger);
+
+if (app.Environment.IsProduction())
 {
     app.UseHsts();
 }

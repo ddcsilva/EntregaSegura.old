@@ -21,17 +21,9 @@ public sealed class EntregaService : IEntregaService
 
     public IEnumerable<EntregaDTO> ObterTodasEntregas(bool rastrearAlteracoes)
     {
-        try
-        {
-            var entregas = _repository.Entrega.ObterTodasEntregas(rastrearAlteracoes);
-            var entregasDTO = _mapper.Map<IEnumerable<EntregaDTO>>(entregas);
-            
-            return entregasDTO;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogErro($"Ocorreu um erro ao tentar obter todas as entregas: {ex.Message}");
-            throw;
-        }
+        var entregas = _repository.Entrega.ObterTodasEntregas(rastrearAlteracoes);
+        var entregasDTO = _mapper.Map<IEnumerable<EntregaDTO>>(entregas);
+
+        return entregasDTO;
     }
 }

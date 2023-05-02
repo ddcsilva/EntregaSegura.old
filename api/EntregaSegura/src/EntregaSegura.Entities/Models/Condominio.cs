@@ -8,6 +8,7 @@ public sealed class Condominio : Empresa
     public Condominio()
     {
         Unidades = new List<Unidade>();
+        Funcionarios = new List<Funcionario>();
     }
 
      // Um condomínio possui um endereço

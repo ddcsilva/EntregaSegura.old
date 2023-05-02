@@ -17,14 +17,7 @@ public class TransportadorasController : ControllerBase
     [HttpGet]
     public IActionResult ObterTransportadoras()
     {
-        try
-        {
-            var transportadoras = _service.TransportadoraService.ObterTodasTransportadoras(false);
-            return Ok(transportadoras);
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, $"Ocorreu um erro ao tentar obter todas as transportadoras: {ex.Message}");
-        }
+        var transportadoras = _service.TransportadoraService.ObterTodasTransportadoras(false);
+        return Ok(transportadoras);
     }
 }
