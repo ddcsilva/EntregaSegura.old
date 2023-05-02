@@ -12,4 +12,9 @@ public sealed class FuncionarioRepository : RepositoryBase<Funcionario>, IFuncio
     {
         return BuscarTodos(rastrearAlteracoes).OrderBy(c => c.Nome).ToList();
     }
+
+    public Funcionario? ObterFuncionarioPorId(Guid funcionarioId, bool rastrearAlteracoes)
+    {
+        return BuscarPorCondicao(c => c.Id == funcionarioId, rastrearAlteracoes).FirstOrDefault();
+    }
 }

@@ -20,4 +20,12 @@ public class FuncionariosController : ControllerBase
         var funcionarios = _service.FuncionarioService.ObterTodosFuncionarios(false);
         return Ok(funcionarios);
     }
+
+    [HttpGet("{id}")]
+    public IActionResult ObterFuncionarioPorId(Guid id)
+    {
+        var funcionario = _service.FuncionarioService.ObterFuncionarioPorId(id, false);
+
+        return Ok(funcionario);
+    }
 }

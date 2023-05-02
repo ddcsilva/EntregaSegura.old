@@ -26,4 +26,12 @@ public sealed class FuncionarioService : IFuncionarioService
 
         return funcionariosDTO;
     }
+
+    public FuncionarioDTO ObterFuncionarioPorId(Guid funcionarioId, bool rastrearAlteracoes)
+    {
+        var funcionario = _repository.Funcionario.ObterFuncionarioPorId(funcionarioId, rastrearAlteracoes);
+        var funcionarioDTO = _mapper.Map<FuncionarioDTO>(funcionario);
+
+        return funcionarioDTO;
+    }
 }

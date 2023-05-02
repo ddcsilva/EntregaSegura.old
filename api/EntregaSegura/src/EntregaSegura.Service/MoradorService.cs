@@ -26,4 +26,12 @@ public sealed class MoradorService : IMoradorService
 
         return moradoresDTO;
     }
+
+    public MoradorDTO ObterMoradorPorId(Guid moradorId, bool rastrearAlteracoes)
+    {
+        var morador = _repository.Morador.ObterMoradorPorId(moradorId, rastrearAlteracoes);
+        var moradorDTO = _mapper.Map<MoradorDTO>(morador);
+
+        return moradorDTO;
+    }
 }

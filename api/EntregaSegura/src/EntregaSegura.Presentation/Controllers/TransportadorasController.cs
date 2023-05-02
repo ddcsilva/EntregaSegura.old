@@ -20,4 +20,12 @@ public class TransportadorasController : ControllerBase
         var transportadoras = _service.TransportadoraService.ObterTodasTransportadoras(false);
         return Ok(transportadoras);
     }
+
+    [HttpGet("{id}")]
+    public IActionResult ObterTransportadoraPorId(Guid id)
+    {
+        var transportadora = _service.TransportadoraService.ObterTransportadoraPorId(id, false);
+
+        return Ok(transportadora);
+    }
 }

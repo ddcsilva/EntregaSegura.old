@@ -12,4 +12,9 @@ public sealed class EntregaRepository : RepositoryBase<Entrega>, IEntregaReposit
     {
         return BuscarTodos(rastrearAlteracoes).OrderByDescending(c => c.DataRecebimento).ToList();
     }
+
+    public Entrega? ObterEntregaPorId(Guid entregaId, bool rastrearAlteracoes)
+    {
+        return BuscarPorCondicao(c => c.Id == entregaId, rastrearAlteracoes).FirstOrDefault();
+    }
 }

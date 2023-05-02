@@ -20,4 +20,12 @@ public class EntregasController : ControllerBase
         var entregas = _service.EntregaService.ObterTodasEntregas(false);
         return Ok(entregas);
     }
+
+    [HttpGet("{id}")]
+    public IActionResult ObterEntregaPorId(Guid id)
+    {
+        var entrega = _service.EntregaService.ObterEntregaPorId(id, false);
+
+        return Ok(entrega);
+    }
 }

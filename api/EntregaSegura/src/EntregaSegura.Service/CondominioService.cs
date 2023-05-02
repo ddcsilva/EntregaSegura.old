@@ -25,4 +25,12 @@ public sealed class CondominioService : ICondominioService
 
         return condominiosDTO;
     }
+
+    public CondominioDTO ObterCondominioPorId(Guid condominioId, bool rastrearAlteracoes)
+    {
+        var condominio = _repository.Condominio.ObterCondominioPorId(condominioId, rastrearAlteracoes);
+        var condominioDTO = _mapper.Map<CondominioDTO>(condominio);
+
+        return condominioDTO;
+    }
 }

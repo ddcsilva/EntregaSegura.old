@@ -26,4 +26,12 @@ public sealed class UnidadeService : IUnidadeService
 
         return unidadesDTO;
     }
+
+    public UnidadeDTO ObterUnidadePorId(Guid unidadeId, bool rastrearAlteracoes)
+    {
+        var unidade = _repository.Unidade.ObterUnidadePorId(unidadeId, rastrearAlteracoes);
+        var unidadeDTO = _mapper.Map<UnidadeDTO>(unidade);
+
+        return unidadeDTO;
+    }
 }

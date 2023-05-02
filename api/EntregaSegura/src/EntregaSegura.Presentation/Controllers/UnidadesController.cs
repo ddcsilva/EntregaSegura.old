@@ -20,4 +20,12 @@ public class UnidadesController : ControllerBase
         var unidades = _service.UnidadeService.ObterTodasUnidades(false);
         return Ok(unidades);
     }
+
+    [HttpGet("{id}")]
+    public IActionResult ObterUnidadePorId(Guid id)
+    {
+        var unidade = _service.UnidadeService.ObterUnidadePorId(id, false);
+
+        return Ok(unidade);
+    }
 }

@@ -20,4 +20,12 @@ public class MoradoresController : ControllerBase
         var moradores = _service.MoradorService.ObterTodosMoradores(false);
         return Ok(moradores);
     }
+
+    [HttpGet("{id}")]
+    public IActionResult ObterMoradorPorId(Guid id)
+    {
+        var morador = _service.MoradorService.ObterMoradorPorId(id, false);
+
+        return Ok(morador);
+    }
 }

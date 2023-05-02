@@ -26,4 +26,12 @@ public sealed class TransportadoraService : ITransportadoraService
 
         return transportadoraDTO;
     }
+
+    public TransportadoraDTO ObterTransportadoraPorId(Guid transportadoraId, bool rastrearAlteracoes)
+    {
+        var transportadora = _repository.Transportadora.ObterTransportadoraPorId(transportadoraId, rastrearAlteracoes);
+        var transportadoraDTO = _mapper.Map<TransportadoraDTO>(transportadora);
+
+        return transportadoraDTO;
+    }
 }

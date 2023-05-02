@@ -12,4 +12,9 @@ public sealed class TransportadoraRepository : RepositoryBase<Transportadora>, I
     {
         return BuscarTodos(rastrearAlteracoes).OrderBy(c => c.Nome).ToList();
     }
+
+    public Transportadora? ObterTransportadoraPorId(Guid transportadoraId, bool rastrearAlteracoes)
+    {
+        return BuscarPorCondicao(c => c.Id == transportadoraId, rastrearAlteracoes).FirstOrDefault();
+    }
 }

@@ -26,4 +26,12 @@ public sealed class EntregaService : IEntregaService
 
         return entregasDTO;
     }
+
+    public EntregaDTO ObterEntregaPorId(Guid entregaId, bool rastrearAlteracoes)
+    {
+        var entrega = _repository.Entrega.ObterEntregaPorId(entregaId, rastrearAlteracoes);
+        var entregaDTO = _mapper.Map<EntregaDTO>(entrega);
+
+        return entregaDTO;
+    }
 }

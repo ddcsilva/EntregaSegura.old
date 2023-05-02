@@ -20,4 +20,11 @@ public class CondominioController : ControllerBase
         var condominios = _service.CondominioService.ObterTodosCondominios(false);
         return Ok(condominios);
     }
+
+    [HttpGet("{id:guid}")]
+    public IActionResult ObterCondominioPorId(Guid id)
+    {
+        var condominio = _service.CondominioService.ObterCondominioPorId(id, false);
+        return Ok(condominio);
+    }
 }
