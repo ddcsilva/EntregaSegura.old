@@ -4,9 +4,12 @@ using EntregaSegura.Repository.Contexts;
 
 namespace EntregaSegura.Repository;
 
-public class FuncionarioRepository : RepositoryBase<Funcionario>, IFuncionarioRepository
+public sealed class FuncionarioRepository : RepositoryBase<Funcionario>, IFuncionarioRepository
 {
-    public FuncionarioRepository(EntregaSeguraContext context) : base(context)
+    public FuncionarioRepository(EntregaSeguraContext context) : base(context) { }
+
+    public IEnumerable<Funcionario> ObterTodosFuncionarios(bool rastrearAlteracoes)
     {
+        return BuscarTodos(rastrearAlteracoes).OrderBy(c => c.Nome).ToList();
     }
 }
