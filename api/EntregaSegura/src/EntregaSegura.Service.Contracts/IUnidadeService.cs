@@ -1,8 +1,8 @@
-using EntregaSegura.Entities.Models;
+using EntregaSegura.Shared.DTOs;
 
 namespace EntregaSegura.Service.Contracts;
 
 public interface IUnidadeService
 {
-    IEnumerable<Unidade> ObterTodasUnidades(bool rastrearAlteracoes);
+    IEnumerable<UnidadeDTO> ObterTodasUnidades(bool rastrearAlteracoes);
 }

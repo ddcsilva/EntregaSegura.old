@@ -13,9 +13,9 @@ public sealed class Morador : Usuario
         Entregas = new List<Entrega>();
     }
     
-    public Guid UnidadeId { get; set; }
 
     // Um morador pertence a apenas uma unidade
+    public Guid UnidadeId { get; set; }
     public Unidade? Unidade { get; set; }
 
     // Um morador pode receber várias entregas

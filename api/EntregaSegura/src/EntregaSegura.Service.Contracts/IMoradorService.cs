@@ -1,8 +1,8 @@
-using EntregaSegura.Entities.Models;
+using EntregaSegura.Shared.DTOs;
 
 namespace EntregaSegura.Service.Contracts;
 
 public interface IMoradorService
 {
-    IEnumerable<Morador> ObterTodosMoradores(bool rastrearAlteracoes);
+    IEnumerable<MoradorDTO> ObterTodosMoradores(bool rastrearAlteracoes);
 }

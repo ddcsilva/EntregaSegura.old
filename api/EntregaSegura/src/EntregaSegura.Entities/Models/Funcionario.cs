@@ -23,4 +23,8 @@ public sealed class Funcionario : Usuario
 
     // Um funcionário pode manipular várias entregas
     public IEnumerable<Entrega> Entregas { get; set; }
+
+    // Um funcionário pertence a apenas um condomínio
+    public Guid CondominioId { get; set; }
+    public Condominio? Condominio { get; set; }
 }

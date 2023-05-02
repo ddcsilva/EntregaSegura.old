@@ -83,6 +83,8 @@ public class EntregaSeguraContext : DbContext
             Id = moradorId,
             Nome = "Morador Exemplo",
             CPF = "12345678901",
+            Email = "morador@email.com",
+            Telefone = "11999999999",
             Status = StatusConta.Aprovada,
             UnidadeId = unidadeId
         });
@@ -92,8 +94,11 @@ public class EntregaSeguraContext : DbContext
             Id = funcionarioId,
             Nome = "Funcionario Exemplo",
             CPF = "98765432109",
+            Email = "funcionario@email.com",
+            Telefone = "11999999999",
             Status = StatusConta.Aprovada,
-            Cargo = CargoFuncionario.Porteiro
+            Cargo = CargoFuncionario.Porteiro,
+            CondominioId = condominioId
         });
 
         modelBuilder.Entity<Transportadora>().HasData(new Transportadora

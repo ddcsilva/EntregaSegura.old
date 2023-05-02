@@ -1,3 +1,4 @@
+using AutoMapper;
 using EntregaSegura.Contracts;
 using EntregaSegura.Service.Contracts;
 
@@ -13,15 +14,15 @@ public sealed class ServiceManager : IServiceManager
     private readonly Lazy<TransportadoraService> _transportadoraService;
     private readonly Lazy<UnidadeService> _unidadeService;
 
-    public ServiceManager(IRepositoryManager repository, ILoggerManager logger)
+    public ServiceManager(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
     {
-        _condominioService = new Lazy<CondominioService>(() => new CondominioService(repository, logger));
-        _enderecoService = new Lazy<EnderecoService>(() => new EnderecoService(repository, logger));
-        _entregaService = new Lazy<EntregaService>(() => new EntregaService(repository, logger));
-        _funcionarioService = new Lazy<FuncionarioService>(() => new FuncionarioService(repository, logger));
-        _moradorService = new Lazy<MoradorService>(() => new MoradorService(repository, logger));
-        _transportadoraService = new Lazy<TransportadoraService>(() => new TransportadoraService(repository, logger));
-        _unidadeService = new Lazy<UnidadeService>(() => new UnidadeService(repository, logger));
+        _condominioService = new Lazy<CondominioService>(() => new CondominioService(repository, logger, mapper));
+        _enderecoService = new Lazy<EnderecoService>(() => new EnderecoService(repository, logger, mapper));
+        _entregaService = new Lazy<EntregaService>(() => new EntregaService(repository, logger, mapper));
+        _funcionarioService = new Lazy<FuncionarioService>(() => new FuncionarioService(repository, logger, mapper));
+        _moradorService = new Lazy<MoradorService>(() => new MoradorService(repository, logger, mapper));
+        _transportadoraService = new Lazy<TransportadoraService>(() => new TransportadoraService(repository, logger, mapper));
+        _unidadeService = new Lazy<UnidadeService>(() => new UnidadeService(repository, logger, mapper));
     }
 
     public ICondominioService CondominioService => _condominioService.Value;

@@ -83,6 +83,13 @@ public class CondominioConfiguration : IEntityTypeConfiguration<Condominio>
             .HasConstraintName("FK_CONDOMINIO_UNIDADE")
             .OnDelete(DeleteBehavior.Restrict);
 
+        // Um condomínio possui vários funcionários e um funcionário pertence a um condomínio
+        builder.HasMany(c => c.Funcionarios)
+            .WithOne(f => f.Condominio)
+            .HasForeignKey(f => f.CondominioId)
+            .HasConstraintName("FK_CONDOMINIO_FUNCIONARIO")
+            .OnDelete(DeleteBehavior.Restrict);
+
         builder.HasIndex(c => c.CNPJ)
             .HasDatabaseName("IX_CONDOMINIOS_CNPJ")
             .IsUnique();

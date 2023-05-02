@@ -28,26 +28,6 @@ namespace EntregaSegura.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TB_FUNCIONARIOS",
-                columns: table => new
-                {
-                    FUN_ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false, comment: "Chave primária do funcionário"),
-                    FUN_NOME = table.Column<string>(type: "varchar(100)", nullable: false, comment: "Nome do funcionário"),
-                    FUN_CPF = table.Column<string>(type: "varchar(100)", nullable: false, comment: "CPF do funcionário"),
-                    FUN_STATUS = table.Column<int>(type: "int", nullable: false, comment: "Status do funcionário"),
-                    FUN_CARGO = table.Column<int>(type: "int", nullable: false, comment: "Cargo do funcionário"),
-                    FUN_DATA_ADMISSAO = table.Column<DateTime>(type: "datetime", nullable: false, comment: "Data de admissão do funcionário"),
-                    FUN_DATA_DEMISSAO = table.Column<DateTime>(type: "datetime", nullable: true, comment: "Data de demissão do funcionário"),
-                    FUN_DATA_CRIACAO = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "GETDATE()", comment: "Data de criação do funcionário"),
-                    FUN_DATA_ULTIMA_MODIFICACAO = table.Column<DateTime>(type: "datetime", nullable: true, comment: "Data da última modificação do funcionário"),
-                    FUN_EXCLUIDO = table.Column<bool>(type: "bit", nullable: false, defaultValue: false, comment: "Flag que indica se o funcionário foi excluído")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FUNCIONARIOS", x => x.FUN_ID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "TB_TRANSPORTADORAS",
                 columns: table => new
                 {
@@ -94,6 +74,35 @@ namespace EntregaSegura.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TB_FUNCIONARIOS",
+                columns: table => new
+                {
+                    FUN_ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false, comment: "Chave primária do funcionário"),
+                    FUN_NOME = table.Column<string>(type: "varchar(100)", nullable: false, comment: "Nome do funcionário"),
+                    FUN_CPF = table.Column<string>(type: "varchar(100)", nullable: false, comment: "CPF do funcionário"),
+                    FUN_EMAIL = table.Column<string>(type: "varchar(100)", nullable: false, comment: "Email do funcionário"),
+                    FUN_TELEFONE = table.Column<string>(type: "varchar(100)", nullable: false, comment: "Telefone do funcionário"),
+                    FUN_STATUS = table.Column<int>(type: "int", nullable: false, comment: "Status do funcionário"),
+                    FUN_CARGO = table.Column<int>(type: "int", nullable: false, comment: "Cargo do funcionário"),
+                    FUN_DATA_ADMISSAO = table.Column<DateTime>(type: "datetime", nullable: false, comment: "Data de admissão do funcionário"),
+                    FUN_DATA_DEMISSAO = table.Column<DateTime>(type: "datetime", nullable: true, comment: "Data de demissão do funcionário"),
+                    FUN_DATA_CRIACAO = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "GETDATE()", comment: "Data de criação do funcionário"),
+                    FUN_DATA_ULTIMA_MODIFICACAO = table.Column<DateTime>(type: "datetime", nullable: true, comment: "Data da última modificação do funcionário"),
+                    FUN_EXCLUIDO = table.Column<bool>(type: "bit", nullable: false, defaultValue: false, comment: "Flag que indica se o funcionário foi excluído"),
+                    FUN_CONDOMINIO_ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false, comment: "Chave estrangeira do condomínio")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FUNCIONARIOS", x => x.FUN_ID);
+                    table.ForeignKey(
+                        name: "FK_FUNCIONARIO_CONDOMINIO",
+                        column: x => x.FUN_CONDOMINIO_ID,
+                        principalTable: "TB_CONDOMINIOS",
+                        principalColumn: "CND_ID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TB_UNIDADES",
                 columns: table => new
                 {
@@ -123,6 +132,8 @@ namespace EntregaSegura.API.Migrations
                     MOR_ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false, comment: "Chave primária do morador"),
                     MOR_NOME = table.Column<string>(type: "varchar(100)", nullable: false, comment: "Nome do morador"),
                     MOR_CPF = table.Column<string>(type: "varchar(100)", nullable: false, comment: "CPF do morador"),
+                    MOR_EMAIL = table.Column<string>(type: "varchar(100)", nullable: false, comment: "Email do morador"),
+                    MOR_TELEFONE = table.Column<string>(type: "varchar(100)", nullable: false, comment: "Telefone do morador"),
                     MOR_STATUS = table.Column<int>(type: "int", nullable: false, comment: "Status do morador"),
                     MOR_UNIDADE_ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false, comment: "Chave estrangeira da unidade do morador"),
                     MOR_DATA_CRIACAO = table.Column<DateTime>(type: "datetime", nullable: false, comment: "Data de criação do morador"),
@@ -192,37 +203,37 @@ namespace EntregaSegura.API.Migrations
             migrationBuilder.InsertData(
                 table: "TB_CONDOMINIOS",
                 columns: new[] { "CND_ID", "CND_CNPJ", "CND_DATA_CRIACAO", "CND_DATA_ULTIMA_MODIFICACAO", "CND_EMAIL", "CND_NOME", "CND_TELEFONE" },
-                values: new object[] { new Guid("ffda5784-a210-4b7c-be99-bd838e47ddc9"), "11111111111111", new DateTime(2023, 4, 30, 21, 59, 47, 657, DateTimeKind.Local).AddTicks(8286), null, "contato@condominioexemplo.com.br", "Condomínio Exemplo", "11999999999" });
-
-            migrationBuilder.InsertData(
-                table: "TB_FUNCIONARIOS",
-                columns: new[] { "FUN_ID", "FUN_CPF", "FUN_CARGO", "FUN_DATA_ADMISSAO", "FUN_DATA_CRIACAO", "FUN_DATA_DEMISSAO", "FUN_DATA_ULTIMA_MODIFICACAO", "FUN_NOME", "FUN_STATUS" },
-                values: new object[] { new Guid("a0972428-747f-45d1-ae55-644299ed323e"), "98765432109", 2, new DateTime(2023, 4, 30, 21, 59, 47, 657, DateTimeKind.Local).AddTicks(8426), new DateTime(2023, 4, 30, 21, 59, 47, 657, DateTimeKind.Local).AddTicks(8425), null, null, "Funcionario Exemplo", 2 });
+                values: new object[] { new Guid("e4e6af8b-8588-438b-9750-c45227c3aa92"), "11111111111111", new DateTime(2023, 5, 2, 8, 5, 19, 210, DateTimeKind.Local).AddTicks(5694), null, "contato@condominioexemplo.com.br", "Condomínio Exemplo", "11999999999" });
 
             migrationBuilder.InsertData(
                 table: "TB_TRANSPORTADORAS",
                 columns: new[] { "TRA_ID", "TRA_CNPJ", "TRA_DATA_CRIACAO", "TRA_DATA_ULTIMA_MODIFICACAO", "TRA_EMAIL", "TRA_NOME", "TRA_TELEFONE" },
-                values: new object[] { new Guid("123e0362-5b09-43e9-83c4-483b1377bf29"), "22222222222222", new DateTime(2023, 4, 30, 21, 59, 47, 657, DateTimeKind.Local).AddTicks(8439), null, "contato@transportadoraexemplo.com.br", "Transportadora Exemplo", "11988888888" });
+                values: new object[] { new Guid("c7c480da-a12a-4620-8e46-56e1294dce20"), "22222222222222", new DateTime(2023, 5, 2, 8, 5, 19, 210, DateTimeKind.Local).AddTicks(5911), null, "contato@transportadoraexemplo.com.br", "Transportadora Exemplo", "11988888888" });
 
             migrationBuilder.InsertData(
                 table: "TB_ENDERECOS",
                 columns: new[] { "END_ID", "END_BAIRRO", "END_CEP", "END_CIDADE", "END_COMPLEMENTO", "CON_ID", "END_DATA_CRIACAO", "END_DATA_ULTIMA_MODIFICACAO", "END_ESTADO", "END_LOGRADOURO", "END_NUMERO" },
-                values: new object[] { new Guid("bad5e429-fb34-4808-9b39-5be3a1b37295"), "Bairro Exemplo", "11111111", "Cidade Exemplo", "Bloco A", new Guid("ffda5784-a210-4b7c-be99-bd838e47ddc9"), new DateTime(2023, 4, 30, 21, 59, 47, 657, DateTimeKind.Local).AddTicks(8387), null, "SP", "Rua Exemplo", "100" });
+                values: new object[] { new Guid("e51dbc58-a60f-4e88-9b47-d6893907eff4"), "Bairro Exemplo", "11111111", "Cidade Exemplo", "Bloco A", new Guid("e4e6af8b-8588-438b-9750-c45227c3aa92"), new DateTime(2023, 5, 2, 8, 5, 19, 210, DateTimeKind.Local).AddTicks(5818), null, "SP", "Rua Exemplo", "100" });
+
+            migrationBuilder.InsertData(
+                table: "TB_FUNCIONARIOS",
+                columns: new[] { "FUN_ID", "FUN_CPF", "FUN_CARGO", "FUN_CONDOMINIO_ID", "FUN_DATA_ADMISSAO", "FUN_DATA_CRIACAO", "FUN_DATA_DEMISSAO", "FUN_DATA_ULTIMA_MODIFICACAO", "FUN_EMAIL", "FUN_NOME", "FUN_STATUS", "FUN_TELEFONE" },
+                values: new object[] { new Guid("dc860e6a-2763-46ba-8912-2a7c79884c82"), "98765432109", 2, new Guid("e4e6af8b-8588-438b-9750-c45227c3aa92"), new DateTime(2023, 5, 2, 8, 5, 19, 210, DateTimeKind.Local).AddTicks(5896), new DateTime(2023, 5, 2, 8, 5, 19, 210, DateTimeKind.Local).AddTicks(5895), null, null, "funcionario@email.com", "Funcionario Exemplo", 2, "11999999999" });
 
             migrationBuilder.InsertData(
                 table: "TB_UNIDADES",
                 columns: new[] { "UND_ID", "UND_BLOCO", "CON_ID", "UND_DATA_CRIACAO", "UND_NUMERO" },
-                values: new object[] { new Guid("808a6d66-c121-4caf-828f-5b89823a4ea5"), "A", new Guid("ffda5784-a210-4b7c-be99-bd838e47ddc9"), new DateTime(2023, 4, 30, 21, 59, 47, 657, DateTimeKind.Local).AddTicks(8401), "101" });
+                values: new object[] { new Guid("e42af47c-24c2-4f83-a8cb-3cc95213ddc6"), "A", new Guid("e4e6af8b-8588-438b-9750-c45227c3aa92"), new DateTime(2023, 5, 2, 8, 5, 19, 210, DateTimeKind.Local).AddTicks(5832), "101" });
 
             migrationBuilder.InsertData(
                 table: "TB_MORADORES",
-                columns: new[] { "MOR_ID", "MOR_CPF", "MOR_DATA_CRIACAO", "MOR_DATA_ULTIMA_MODIFICACAO", "MOR_NOME", "MOR_STATUS", "MOR_UNIDADE_ID" },
-                values: new object[] { new Guid("830bb4db-843e-4407-aad6-3a63e950c675"), "12345678901", new DateTime(2023, 4, 30, 21, 59, 47, 657, DateTimeKind.Local).AddTicks(8415), null, "Morador Exemplo", 2, new Guid("808a6d66-c121-4caf-828f-5b89823a4ea5") });
+                columns: new[] { "MOR_ID", "MOR_CPF", "MOR_DATA_CRIACAO", "MOR_DATA_ULTIMA_MODIFICACAO", "MOR_EMAIL", "MOR_NOME", "MOR_STATUS", "MOR_TELEFONE", "MOR_UNIDADE_ID" },
+                values: new object[] { new Guid("a4dd6d7c-dc82-4de0-87ba-47060eedf07f"), "12345678901", new DateTime(2023, 5, 2, 8, 5, 19, 210, DateTimeKind.Local).AddTicks(5884), null, "morador@email.com", "Morador Exemplo", 2, "11999999999", new Guid("e42af47c-24c2-4f83-a8cb-3cc95213ddc6") });
 
             migrationBuilder.InsertData(
                 table: "TB_ENTREGAS",
                 columns: new[] { "ETG_ID", "ETG_DATA_CRIACAO", "ETG_DATA_RECEBIMENTO", "ETG_DATA_RETIRADA", "ETG_DATA_ULTIMA_MODIFICACAO", "ETG_DESCRICAO", "ETG_DESTINATARIO", "FUN_ID", "MOR_ID", "ETG_OBSERVACAO", "ETG_REMETENTE", "ETG_STATUS", "TRP_ID", "UND_ID" },
-                values: new object[] { new Guid("6956ef85-ec71-43d5-843f-6a6cba951456"), new DateTime(2023, 4, 30, 21, 59, 47, 657, DateTimeKind.Local).AddTicks(8449), new DateTime(2023, 4, 30, 21, 59, 47, 657, DateTimeKind.Local).AddTicks(8451), null, null, "Descrição da entrega", "Destinatario Exemplo", new Guid("a0972428-747f-45d1-ae55-644299ed323e"), new Guid("830bb4db-843e-4407-aad6-3a63e950c675"), "Observação da entrega", "Remetente Exemplo", 1, new Guid("123e0362-5b09-43e9-83c4-483b1377bf29"), new Guid("808a6d66-c121-4caf-828f-5b89823a4ea5") });
+                values: new object[] { new Guid("a1fe4de0-33e2-451a-a8ef-667e282e7f8a"), new DateTime(2023, 5, 2, 8, 5, 19, 210, DateTimeKind.Local).AddTicks(5922), new DateTime(2023, 5, 2, 8, 5, 19, 210, DateTimeKind.Local).AddTicks(5923), null, null, "Descrição da entrega", "Destinatario Exemplo", new Guid("dc860e6a-2763-46ba-8912-2a7c79884c82"), new Guid("a4dd6d7c-dc82-4de0-87ba-47060eedf07f"), "Observação da entrega", "Remetente Exemplo", 1, new Guid("c7c480da-a12a-4620-8e46-56e1294dce20"), new Guid("e42af47c-24c2-4f83-a8cb-3cc95213ddc6") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CONDOMINIOS_CNPJ",
@@ -278,6 +289,11 @@ namespace EntregaSegura.API.Migrations
                 table: "TB_FUNCIONARIOS",
                 column: "FUN_CPF",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TB_FUNCIONARIOS_FUN_CONDOMINIO_ID",
+                table: "TB_FUNCIONARIOS",
+                column: "FUN_CONDOMINIO_ID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MORADORES_CPF",

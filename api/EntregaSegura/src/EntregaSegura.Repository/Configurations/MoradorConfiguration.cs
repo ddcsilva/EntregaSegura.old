@@ -32,34 +32,48 @@ public class MoradorConfiguration : IEntityTypeConfiguration<Morador>
             .HasColumnType("varchar(11)")
             .HasComment("CPF do morador");
 
+        builder.Property(m => m.Email)
+            .HasColumnName("MOR_EMAIL")
+            .HasColumnOrder(4)
+            .IsRequired()
+            .HasColumnType("varchar(100)")
+            .HasComment("Email do morador");
+
+        builder.Property(m => m.Telefone)
+            .HasColumnName("MOR_TELEFONE")
+            .HasColumnOrder(5)
+            .IsRequired()
+            .HasColumnType("varchar(11)")
+            .HasComment("Telefone do morador");
+
         builder.Property(m => m.Status)
             .HasColumnName("MOR_STATUS")
-            .HasColumnOrder(4)
+            .HasColumnOrder(6)
             .IsRequired()
             .HasComment("Status do morador");
 
         builder.Property(m => m.UnidadeId)
             .HasColumnName("MOR_UNIDADE_ID")
-            .HasColumnOrder(5)
+            .HasColumnOrder(7)
             .IsRequired()
             .HasComment("Chave estrangeira da unidade do morador");
 
         builder.Property(m => m.DataCriacao)
             .HasColumnName("MOR_DATA_CRIACAO")
-            .HasColumnOrder(6)
+            .HasColumnOrder(8)
             .IsRequired()
             .HasColumnType("datetime")
             .HasComment("Data de criação do morador");
 
         builder.Property(m => m.DataUltimaModificacao)
             .HasColumnName("MOR_DATA_ULTIMA_MODIFICACAO")
-            .HasColumnOrder(7)
+            .HasColumnOrder(9)
             .HasColumnType("datetime")
             .HasComment("Data da última modificação do morador");
 
         builder.Property(m => m.Excluido)
             .HasColumnName("MOR_EXCLUIDO")
-            .HasColumnOrder(8)
+            .HasColumnOrder(10)
             .IsRequired()
             .HasDefaultValue(false)
             .HasComment("Flag que indica se o morador foi excluído");

@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntregaSegura.Service", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntregaSegura.Presentation", "src\EntregaSegura.Presentation\EntregaSegura.Presentation.csproj", "{B49BDCBF-72AD-47DB-AF9A-BEC4046F9883}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntregaSegura.Shared", "src\EntregaSegura.Shared\EntregaSegura.Shared.csproj", "{04F3F007-5913-472D-98E4-115F48408074}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{B49BDCBF-72AD-47DB-AF9A-BEC4046F9883}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B49BDCBF-72AD-47DB-AF9A-BEC4046F9883}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B49BDCBF-72AD-47DB-AF9A-BEC4046F9883}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04F3F007-5913-472D-98E4-115F48408074}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04F3F007-5913-472D-98E4-115F48408074}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04F3F007-5913-472D-98E4-115F48408074}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04F3F007-5913-472D-98E4-115F48408074}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

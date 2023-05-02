@@ -15,4 +15,7 @@ public sealed class Condominio : Empresa
 
     // Um condomínio possui várias unidades
     public ICollection<Unidade> Unidades { get; set; }
+
+    // Um condomínio possui vários funcionários
+    public ICollection<Funcionario> Funcionarios { get; set; }
 }

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EntregaSegura.Presentation.Controllers;
 
-[Route("api/transportadoras")]
+[Route("api/unidades")]
 [ApiController]
 public class UnidadesController : ControllerBase
 {

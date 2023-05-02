@@ -1,8 +1,8 @@
-using EntregaSegura.Entities.Models;
+using EntregaSegura.Shared.DTOs;
 
 namespace EntregaSegura.Service.Contracts;
 
 public interface IFuncionarioService
 {
-    IEnumerable<Funcionario> ObterTodosFuncionarios(bool rastrearAlteracoes);
+    IEnumerable<FuncionarioDTO> ObterTodosFuncionarios(bool rastrearAlteracoes);
 }
