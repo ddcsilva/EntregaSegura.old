@@ -22,7 +22,7 @@ public sealed class Funcionario : Usuario
     public DateTime? DataDemissao { get; set; }
 
     // Um funcionário pode manipular várias entregas
-    public IEnumerable<Entrega> Entregas { get; set; }
+    public ICollection<Entrega> Entregas { get; set; }
 
     // Um funcionário pertence a apenas um condomínio
     public Guid CondominioId { get; set; }

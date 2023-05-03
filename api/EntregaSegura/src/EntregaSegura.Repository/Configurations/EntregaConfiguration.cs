@@ -24,72 +24,66 @@ public class EntregaConfiguration : IEntityTypeConfiguration<Entrega>
             .IsRequired()
             .HasComment("Chave estrangeira da transportadora");
 
-        builder.Property(e => e.UnidadeId)
-            .HasColumnName("UND_ID")
-            .HasColumnOrder(3)
-            .IsRequired()
-            .HasComment("Chave estrangeira da unidade");
-
         builder.Property(e => e.FuncionarioId)
             .HasColumnName("FUN_ID")
-            .HasColumnOrder(4)
+            .HasColumnOrder(3)
             .IsRequired()
             .HasComment("Chave estrangeira do funcionário");
 
         builder.Property(e => e.MoradorId)
             .HasColumnName("MOR_ID")
-            .HasColumnOrder(5)
+            .HasColumnOrder(4)
             .IsRequired()
             .HasComment("Chave estrangeira do morador");
 
         builder.Property(e => e.Remetente)
             .HasColumnName("ETG_REMETENTE")
-            .HasColumnOrder(6)
+            .HasColumnOrder(5)
             .IsRequired()
             .HasColumnType("varchar(100)")
             .HasComment("Nome do remetente da entrega");
 
         builder.Property(e => e.Destinatario)
             .HasColumnName("ETG_DESTINATARIO")
-            .HasColumnOrder(7)
+            .HasColumnOrder(6)
             .IsRequired()
             .HasColumnType("varchar(100)")
             .HasComment("Nome do destinatário da entrega");
 
         builder.Property(e => e.DataRecebimento)
             .HasColumnName("ETG_DATA_RECEBIMENTO")
-            .HasColumnOrder(8)
+            .HasColumnOrder(7)
             .HasColumnType("datetime")
             .IsRequired()
             .HasComment("Data de recebimento da entrega");
 
         builder.Property(e => e.DataRetirada)
             .HasColumnName("ETG_DATA_RETIRADA")
-            .HasColumnOrder(9)
+            .HasColumnOrder(8)
             .HasColumnType("datetime")
             .HasComment("Data de retirada da entrega");
 
         builder.Property(e => e.Descricao)
             .HasColumnName("ETG_DESCRICAO")
-            .HasColumnOrder(10)
+            .HasColumnOrder(9)
             .HasColumnType("varchar(200)")
             .HasComment("Descrição da entrega");
 
         builder.Property(e => e.Observacao)
             .HasColumnName("ETG_OBSERVACAO")
-            .HasColumnOrder(11)
+            .HasColumnOrder(10)
             .HasColumnType("varchar(200)")
             .HasComment("Observação da entrega");
 
         builder.Property(e => e.Status)
             .HasColumnName("ETG_STATUS")
-            .HasColumnOrder(12)
+            .HasColumnOrder(11)
             .IsRequired()
             .HasComment("Status da entrega");
 
         builder.Property(e => e.DataCriacao)
             .HasColumnName("ETG_DATA_CRIACAO")
-            .HasColumnOrder(13)
+            .HasColumnOrder(12)
             .IsRequired()
             .HasColumnType("datetime")
             .HasDefaultValueSql("GETDATE()")
@@ -97,13 +91,13 @@ public class EntregaConfiguration : IEntityTypeConfiguration<Entrega>
 
         builder.Property(e => e.DataUltimaModificacao)
             .HasColumnName("ETG_DATA_ULTIMA_MODIFICACAO")
-            .HasColumnOrder(14)
+            .HasColumnOrder(13)
             .HasColumnType("datetime")
             .HasComment("Data da última modificação da entrega");
 
         builder.Property(e => e.Excluido)
             .HasColumnName("ETG_EXCLUIDO")
-            .HasColumnOrder(15)
+            .HasColumnOrder(14)
             .IsRequired()
             .HasColumnType("bit")
             .HasDefaultValue(false)
@@ -114,13 +108,6 @@ public class EntregaConfiguration : IEntityTypeConfiguration<Entrega>
             .WithMany(t => t.Entregas)
             .HasForeignKey(e => e.TransportadoraId)
             .HasConstraintName("FK_ENTREGA_TRANSPORTADORA")
-            .OnDelete(DeleteBehavior.Restrict);
-
-        // Uma entrega pertence a apenas uma unidade e uma unidade pode ter várias entregas
-        builder.HasOne(e => e.Unidade)
-            .WithMany(u => u.Entregas)
-            .HasForeignKey(e => e.UnidadeId)
-            .HasConstraintName("FK_ENTREGA_UNIDADE")
             .OnDelete(DeleteBehavior.Restrict);
 
         // Uma entrega pertence a apenas um morador e um morador pode ter várias entregas

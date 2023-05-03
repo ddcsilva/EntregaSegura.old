@@ -7,6 +7,11 @@ namespace EntregaSegura.Entities.Models;
 /// </summary>
 public abstract class Usuario : BaseEntity
 {
+    public Usuario()
+    {
+        Status = StatusConta.Aprovada;
+    }
+
     public string? Nome { get; set; }
     public string? CPF { get; set; }
     public string? Email { get; set; }

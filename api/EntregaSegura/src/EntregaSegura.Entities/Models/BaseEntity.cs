@@ -12,10 +12,11 @@ public abstract class BaseEntity
     {
         Id = Guid.NewGuid();
         DataCriacao = DateTime.Now;
+        Excluido = false;
     }
 
     public Guid Id { get; set; }
     public DateTime DataCriacao { get; set; }
     public DateTime? DataUltimaModificacao { get; set; }
-    public bool? Excluido { get; set; }
+    public bool Excluido { get; set; }
 }

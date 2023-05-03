@@ -28,10 +28,6 @@ public sealed class Entrega : BaseEntity
     public Guid TransportadoraId { get; set; }
     public Transportadora? Transportadora { get; set; }
 
-    // Uma entrega pertence a apenas uma unidade
-    public Guid UnidadeId { get; set; }
-    public Unidade? Unidade { get; set; }
-
     // Uma entrega pertence a apenas um morador
     public Guid MoradorId { get; set; }
     public Morador? Morador { get; set; }

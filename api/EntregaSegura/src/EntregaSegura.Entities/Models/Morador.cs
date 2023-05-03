@@ -19,5 +19,5 @@ public sealed class Morador : Usuario
     public Unidade? Unidade { get; set; }
 
     // Um morador pode receber várias entregas
-    public IEnumerable<Entrega> Entregas { get; set; }
+    public ICollection<Entrega> Entregas { get; set; }
 }

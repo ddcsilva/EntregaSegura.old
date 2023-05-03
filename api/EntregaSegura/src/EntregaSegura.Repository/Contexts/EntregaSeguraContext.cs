@@ -24,7 +24,7 @@ public class EntregaSeguraContext : DbContext
         // Configuração para que o banco de dados utilize o tipo varchar ao invés de nvarchar
         foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
         {
-            property.SetColumnType("varchar(100)");
+            property.SetColumnType("nvarchar(100)");
         }
 
         // Configuração para que o banco de dados utilize o tipo decimal ao invés de double
@@ -120,7 +120,6 @@ public class EntregaSeguraContext : DbContext
             Observacao = "Observação da entrega",
             Status = StatusEntrega.Recebida,
             TransportadoraId = transportadoraId,
-            UnidadeId = unidadeId,
             MoradorId = moradorId,
             FuncionarioId = funcionarioId
         });

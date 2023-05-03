@@ -14,5 +14,5 @@ public sealed class Transportadora : Empresa
     }
 
     // Uma transportadora pode realizar várias entregas
-    public IEnumerable<Entrega> Entregas { get; set; }
+    public ICollection<Entrega> Entregas { get; set; }
 }

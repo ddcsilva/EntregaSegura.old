@@ -63,12 +63,6 @@ public class UnidadeConfiguration : IEntityTypeConfiguration<Unidade>
             .HasConstraintName("FK_UNIDADES_CONDOMINIOS")
             .OnDelete(DeleteBehavior.Restrict);
 
-        builder.HasMany(u => u.Entregas)
-            .WithOne(e => e.Unidade)
-            .HasForeignKey(e => e.UnidadeId)
-            .HasConstraintName("FK_ENTREGAS_UNIDADES")
-            .OnDelete(DeleteBehavior.Restrict);
-
         builder.HasMany(u => u.Moradores)
             .WithOne(m => m.Unidade)
             .HasForeignKey(m => m.UnidadeId)

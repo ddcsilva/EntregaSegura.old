@@ -10,7 +10,6 @@ public sealed class Unidade : BaseEntity
     /// </summary>
     public Unidade()
     {
-        Entregas = new List<Entrega>();
         Moradores = new List<Morador>();
     }
 
@@ -21,9 +20,6 @@ public sealed class Unidade : BaseEntity
     // Uma unidade pertence a apenas um condomínio
     public Condominio? Condominio { get; set; }
 
-    // Uma unidade pode receber várias entregas
-    public IEnumerable<Entrega> Entregas { get; set; }
-
     // Uma unidade pode ter vários moradores
-    public IEnumerable<Morador> Moradores { get; set; } 
+    public ICollection<Morador> Moradores { get; set; } 
 }
