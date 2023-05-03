@@ -1,5 +1,6 @@
 using AutoMapper;
 using EntregaSegura.Contracts;
+using EntregaSegura.Entities.Exceptions;
 using EntregaSegura.Entities.Models;
 using EntregaSegura.Service.Contracts;
 using EntregaSegura.Shared.DTOs;
@@ -27,9 +28,13 @@ public sealed class FuncionarioService : IFuncionarioService
         return funcionariosDTO;
     }
 
-    public FuncionarioDTO ObterFuncionarioPorId(Guid funcionarioId, bool rastrearAlteracoes)
+    public FuncionarioDTO ObterFuncionarioPorId(Guid id, bool rastrearAlteracoes)
     {
-        var funcionario = _repository.Funcionario.ObterFuncionarioPorId(funcionarioId, rastrearAlteracoes);
+        var funcionario = _repository.Funcionario.ObterFuncionarioPorId(id, rastrearAlteracoes);
+
+        if (funcionario == null)
+            throw new EntregaSeguraNotFoundException(id);
+
         var funcionarioDTO = _mapper.Map<FuncionarioDTO>(funcionario);
 
         return funcionarioDTO;

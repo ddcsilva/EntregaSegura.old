@@ -1,5 +1,6 @@
 using AutoMapper;
 using EntregaSegura.Contracts;
+using EntregaSegura.Entities.Exceptions;
 using EntregaSegura.Entities.Models;
 using EntregaSegura.Service.Contracts;
 using EntregaSegura.Shared.DTOs;
@@ -27,9 +28,13 @@ public sealed class UnidadeService : IUnidadeService
         return unidadesDTO;
     }
 
-    public UnidadeDTO ObterUnidadePorId(Guid unidadeId, bool rastrearAlteracoes)
+    public UnidadeDTO ObterUnidadePorId(Guid id, bool rastrearAlteracoes)
     {
-        var unidade = _repository.Unidade.ObterUnidadePorId(unidadeId, rastrearAlteracoes);
+        var unidade = _repository.Unidade.ObterUnidadePorId(id, rastrearAlteracoes);
+
+        if (unidade == null)
+            throw new EntregaSeguraNotFoundException(id);
+
         var unidadeDTO = _mapper.Map<UnidadeDTO>(unidade);
 
         return unidadeDTO;

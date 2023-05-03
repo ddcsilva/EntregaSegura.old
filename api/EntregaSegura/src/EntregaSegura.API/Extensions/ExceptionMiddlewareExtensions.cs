@@ -1,6 +1,7 @@
 using System.Net;
 using EntregaSegura.Contracts;
 using EntregaSegura.Entities.ErrorModel;
+using EntregaSegura.Entities.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 
 namespace EntregaSegura.API.Extensions;
@@ -20,12 +21,18 @@ public static class ExceptionMiddlewareExtensions
 
                 if (contextFeature != null)
                 {
+                    context.Response.StatusCode = contextFeature.Error switch
+                    {
+                        NotFoundException => (int)HttpStatusCode.NotFound,
+                        _ => (int)HttpStatusCode.InternalServerError
+                    };
+
                     logger.LogErro($"Algo deu errado: {contextFeature.Error}");
 
                     await context.Response.WriteAsync(new ErrorDetails()
                     {
                         StatusCode = context.Response.StatusCode,
-                        Mensagem = "Erro Interno no Servidor"
+                        Mensagem = contextFeature.Error.Message
                     }.ToString());
                 }
             });

@@ -1,5 +1,6 @@
 using AutoMapper;
 using EntregaSegura.Contracts;
+using EntregaSegura.Entities.Exceptions;
 using EntregaSegura.Service.Contracts;
 using EntregaSegura.Shared.DTOs;
 
@@ -26,9 +27,13 @@ public sealed class CondominioService : ICondominioService
         return condominiosDTO;
     }
 
-    public CondominioDTO ObterCondominioPorId(Guid condominioId, bool rastrearAlteracoes)
+    public CondominioDTO ObterCondominioPorId(Guid id, bool rastrearAlteracoes)
     {
-        var condominio = _repository.Condominio.ObterCondominioPorId(condominioId, rastrearAlteracoes);
+        var condominio = _repository.Condominio.ObterCondominioPorId(id, rastrearAlteracoes);
+
+        if (condominio == null)
+            throw new EntregaSeguraNotFoundException(id);
+
         var condominioDTO = _mapper.Map<CondominioDTO>(condominio);
 
         return condominioDTO;

@@ -1,6 +1,6 @@
 using AutoMapper;
 using EntregaSegura.Contracts;
-using EntregaSegura.Entities.Models;
+using EntregaSegura.Entities.Exceptions;
 using EntregaSegura.Service.Contracts;
 using EntregaSegura.Shared.DTOs;
 
@@ -27,9 +27,13 @@ public sealed class TransportadoraService : ITransportadoraService
         return transportadoraDTO;
     }
 
-    public TransportadoraDTO ObterTransportadoraPorId(Guid transportadoraId, bool rastrearAlteracoes)
+    public TransportadoraDTO ObterTransportadoraPorId(Guid id, bool rastrearAlteracoes)
     {
-        var transportadora = _repository.Transportadora.ObterTransportadoraPorId(transportadoraId, rastrearAlteracoes);
+        var transportadora = _repository.Transportadora.ObterTransportadoraPorId(id, rastrearAlteracoes);
+
+        if (transportadora == null)
+            throw new EntregaSeguraNotFoundException(id);
+
         var transportadoraDTO = _mapper.Map<TransportadoraDTO>(transportadora);
 
         return transportadoraDTO;
