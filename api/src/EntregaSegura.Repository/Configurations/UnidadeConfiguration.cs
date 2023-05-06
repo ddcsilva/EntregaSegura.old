@@ -43,19 +43,18 @@ public class UnidadeConfiguration : IEntityTypeConfiguration<Unidade>
             .HasDefaultValueSql("GETDATE()")
             .HasComment("Data de criação da unidade");
 
-        builder.Property(u => u.DataUltimaModificacao)
-            .HasColumnName("UND_DATA_ULTIMA_MODIFICACAO")
+        builder.Property(u => u.DataAtualizacao)
+            .HasColumnName("UND_DATA_ATUALIZACAO")
             .HasColumnOrder(6)
             .IsRequired()
             .HasDefaultValueSql("GETDATE()")
-            .HasComment("Data da última modificação da unidade");
+            .HasComment("Data da última atualização da unidade");
 
-        builder.Property(u => u.Excluido)
-            .HasColumnName("UND_EXCLUIDO")
+        builder.Property(u => u.DataExclusao)
+            .HasColumnName("UND_DATA_EXCLUSAO")
             .HasColumnOrder(7)
-            .IsRequired()
-            .HasDefaultValue(false)
-            .HasComment("Flag que indica se a unidade foi excluída");
+            .HasColumnType("datetime")
+            .HasComment("Data da exclusão da unidade");
 
         builder.HasOne(u => u.Condominio)
             .WithMany(c => c.Unidades)

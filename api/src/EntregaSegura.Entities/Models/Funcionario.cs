@@ -7,9 +7,6 @@ namespace EntregaSegura.Entities.Models;
 /// </summary>
 public sealed class Funcionario : Usuario
 {
-    /// <summary>
-    /// Construtor padrão que inicializa a propriedade Entregas, define o cargo como Porteiro e a data de admissão como a data atual.
-    /// </summary>
     public Funcionario()
     {
         Cargo = CargoFuncionario.Porteiro;

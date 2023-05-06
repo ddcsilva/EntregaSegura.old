@@ -4,6 +4,6 @@ namespace EntregaSegura.Contracts;
 
 public interface IMoradorRepository
 {
-    IEnumerable<Morador> ObterTodosMoradores(bool rastrearAlteracoes);
-    Morador? ObterMoradorPorId(Guid moradorId, bool rastrearAlteracoes);
+    IEnumerable<Morador> ObterMoradores(bool rastrearAlteracoes);
+    Morador? ObterMorador(Guid moradorId, bool rastrearAlteracoes);
 }

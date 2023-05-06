@@ -4,6 +4,6 @@ namespace EntregaSegura.Contracts;
 
 public interface ITransportadoraRepository
 {
-    IEnumerable<Transportadora> ObterTodasTransportadoras(bool rastrearAlteracoes);
-    Transportadora? ObterTransportadoraPorId(Guid transportadoraId, bool rastrearAlteracoes);
+    IEnumerable<Transportadora> ObterTransportadoras(bool rastrearAlteracoes);
+    Transportadora? ObterTransportadora(Guid transportadoraId, bool rastrearAlteracoes);
 }

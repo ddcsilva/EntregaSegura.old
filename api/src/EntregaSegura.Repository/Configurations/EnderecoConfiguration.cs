@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace EntregaSegura.Repository.Configurations;
 
+/// <summary>
+/// Classe que representa a configuração da entidade Endereco
+/// </summary>
 public class EnderecoConfiguration : IEntityTypeConfiguration<Endereco>
 {
     public void Configure(EntityTypeBuilder<Endereco> builder)
@@ -80,19 +83,19 @@ public class EnderecoConfiguration : IEntityTypeConfiguration<Endereco>
             .HasDefaultValueSql("GETDATE()")
             .HasComment("Data de criação do endereço");
 
-        builder.Property(e => e.DataUltimaModificacao)
-            .HasColumnName("END_DATA_ULTIMA_MODIFICACAO")
+        builder.Property(e => e.DataAtualizacao)
+            .HasColumnName("END_DATA_ATUALIZACAO")
             .HasColumnOrder(11)
-            .HasColumnType("datetime")
-            .HasComment("Data da última modificação do endereço");
-
-        builder.Property(e => e.Excluido)
-            .HasColumnName("END_EXCLUIDO")
-            .HasColumnOrder(12)
             .IsRequired()
-            .HasColumnType("bit")
-            .HasDefaultValue(false)
-            .HasComment("Flag que indica se o endereço foi excluído");
+            .HasColumnType("datetime")
+            .HasDefaultValueSql("GETDATE()")
+            .HasComment("Data da última atualização do endereço");
+
+        builder.Property(e => e.DataExclusao)
+            .HasColumnName("END_DATA_EXCLUSAO")
+            .HasColumnOrder(12)
+            .HasColumnType("datetime")
+            .HasComment("Data da exclusão do endereço");
 
         // Um endereço pertence a um condomínio e um condomínio possui um endereço
         builder.HasOne(e => e.Condominio)

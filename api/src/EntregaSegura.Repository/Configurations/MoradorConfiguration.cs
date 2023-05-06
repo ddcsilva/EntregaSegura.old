@@ -65,18 +65,18 @@ public class MoradorConfiguration : IEntityTypeConfiguration<Morador>
             .HasColumnType("datetime")
             .HasComment("Data de criação do morador");
 
-        builder.Property(m => m.DataUltimaModificacao)
-            .HasColumnName("MOR_DATA_ULTIMA_MODIFICACAO")
+        builder.Property(m => m.DataAtualizacao)
+            .HasColumnName("MOR_DATA_ATUALIZACAO")
             .HasColumnOrder(9)
-            .HasColumnType("datetime")
-            .HasComment("Data da última modificação do morador");
-
-        builder.Property(m => m.Excluido)
-            .HasColumnName("MOR_EXCLUIDO")
-            .HasColumnOrder(10)
             .IsRequired()
-            .HasDefaultValue(false)
-            .HasComment("Flag que indica se o morador foi excluído");
+            .HasColumnType("datetime")
+            .HasComment("Data da última atualização do morador");
+
+        builder.Property(m => m.DataExclusao)
+            .HasColumnName("MOR_DATA_EXCLUSAO")
+            .HasColumnOrder(10)
+            .HasColumnType("datetime")
+            .HasComment("Data da exclusão do morador");
 
         builder.HasOne(m => m.Unidade)
             .WithMany(u => u.Moradores)
@@ -96,5 +96,9 @@ public class MoradorConfiguration : IEntityTypeConfiguration<Morador>
 
         builder.HasIndex(m => m.UnidadeId)
             .HasDatabaseName("IX_MORADORES_UNIDADE_ID");
+
+        builder.HasIndex(m => m.Email)
+            .HasDatabaseName("IX_MORADORES_EMAIL")
+            .IsUnique();
     }
 }

@@ -4,12 +4,15 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace EntregaSegura.Repository.Configurations;
 
+/// <summary>
+/// Classe que representa a configuração da entidade Entrega
+/// </summary>
 public class EntregaConfiguration : IEntityTypeConfiguration<Entrega>
 {
     public void Configure(EntityTypeBuilder<Entrega> builder)
     {
         builder.ToTable("TB_ENTREGAS");
-        
+
         builder.HasKey(e => e.Id)
             .HasName("PK_ENTREGAS");
 
@@ -89,19 +92,19 @@ public class EntregaConfiguration : IEntityTypeConfiguration<Entrega>
             .HasDefaultValueSql("GETDATE()")
             .HasComment("Data de criação da entrega");
 
-        builder.Property(e => e.DataUltimaModificacao)
-            .HasColumnName("ETG_DATA_ULTIMA_MODIFICACAO")
+        builder.Property(e => e.DataAtualizacao)
+            .HasColumnName("ETG_DATA_ATUALIZACAO")
             .HasColumnOrder(13)
-            .HasColumnType("datetime")
-            .HasComment("Data da última modificação da entrega");
-
-        builder.Property(e => e.Excluido)
-            .HasColumnName("ETG_EXCLUIDO")
-            .HasColumnOrder(14)
             .IsRequired()
-            .HasColumnType("bit")
-            .HasDefaultValue(false)
-            .HasComment("Flag de exclusão da entrega");
+            .HasColumnType("datetime")
+            .HasDefaultValueSql("GETDATE()")
+            .HasComment("Data da última atualização da entrega");
+
+        builder.Property(e => e.DataExclusao)
+            .HasColumnName("ETG_DATA_EXCLUSAO")
+            .HasColumnOrder(14)
+            .HasColumnType("datetime")
+            .HasComment("Data da exclusão da entrega");
 
         // Uma entrega pertence a apenas uma transportadora e uma transportadora pode ter várias entregas
         builder.HasOne(e => e.Transportadora)

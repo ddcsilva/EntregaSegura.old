@@ -4,6 +4,6 @@ namespace EntregaSegura.Service.Contracts;
 
 public interface IUnidadeService
 {
-    IEnumerable<UnidadeDTO> ObterTodasUnidades(bool rastrearAlteracoes);
-    UnidadeDTO ObterUnidadePorId(Guid unidadeId, bool rastrearAlteracoes);
+    IEnumerable<UnidadeDTO> ObterUnidades(bool rastrearAlteracoes);
+    UnidadeDTO ObterUnidade(Guid unidadeId, bool rastrearAlteracoes);
 }

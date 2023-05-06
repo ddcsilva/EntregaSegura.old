@@ -8,12 +8,12 @@ public class UnidadeRepository : RepositoryBase<Unidade>, IUnidadeRepository
 {
     public UnidadeRepository(EntregaSeguraContext context) : base(context) { }
 
-    public IEnumerable<Unidade> ObterTodasUnidades(bool rastrearAlteracoes)
+    public IEnumerable<Unidade> ObterUnidades(bool rastrearAlteracoes)
     {
         return BuscarTodos(rastrearAlteracoes).OrderByDescending(c => c.Bloco).ToList();
     }
 
-    public Unidade? ObterUnidadePorId(Guid unidadeId, bool rastrearAlteracoes)
+    public Unidade? ObterUnidade(Guid unidadeId, bool rastrearAlteracoes)
     {
         return BuscarPorCondicao(c => c.Id == unidadeId, rastrearAlteracoes).FirstOrDefault();
     }

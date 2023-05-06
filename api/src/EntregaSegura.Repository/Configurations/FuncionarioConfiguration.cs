@@ -79,19 +79,19 @@ public class FuncionarioConfiguration : IEntityTypeConfiguration<Funcionario>
             .HasDefaultValueSql("GETDATE()")
             .HasComment("Data de criação do funcionário");
 
-        builder.Property(f => f.DataUltimaModificacao)
-            .HasColumnName("FUN_DATA_ULTIMA_MODIFICACAO")
+        builder.Property(f => f.DataAtualizacao)
+            .HasColumnName("FUN_DATA_ATUALIZACAO")
             .HasColumnOrder(11)
-            .HasColumnType("datetime")
-            .HasComment("Data da última modificação do funcionário");
-
-        builder.Property(f => f.Excluido)
-            .HasColumnName("FUN_EXCLUIDO")
-            .HasColumnOrder(12)
             .IsRequired()
-            .HasColumnType("bit")
-            .HasDefaultValue(false)
-            .HasComment("Flag que indica se o funcionário foi excluído");
+            .HasColumnType("datetime")
+            .HasDefaultValueSql("GETDATE()")
+            .HasComment("Data da última atualização do funcionário");
+
+        builder.Property(f => f.DataExclusao)
+            .HasColumnName("FUN_DATA_EXCLUSAO")
+            .HasColumnOrder(12)
+            .HasColumnType("datetime")
+            .HasComment("Data da exclusão do funcionário");
 
         builder.Property(f => f.CondominioId)
             .HasColumnName("FUN_CONDOMINIO_ID")
@@ -113,6 +113,10 @@ public class FuncionarioConfiguration : IEntityTypeConfiguration<Funcionario>
 
         builder.HasIndex(f => f.CPF)
             .HasDatabaseName("IX_FUNCIONARIO_CPF")
+            .IsUnique();
+
+        builder.HasIndex(f => f.Email)
+            .HasDatabaseName("IX_FUNCIONARIO_EMAIL")
             .IsUnique();
     }
 }

@@ -7,9 +7,6 @@ namespace EntregaSegura.Entities.Models;
 /// </summary>
 public sealed class Entrega : BaseEntity
 {
-    /// <summary>
-    /// Construtor padrão que inicializa as propriedades, exceto as de relacionamento e define o status como <see cref="StatusEntrega.Recebida"/>.
-    /// </summary>
     public Entrega()
     {
         DataRecebimento = DateTime.Now;

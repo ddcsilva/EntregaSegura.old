@@ -19,17 +19,17 @@ public sealed class CondominioService : ICondominioService
         _mapper = mapper;
     }
 
-    public IEnumerable<CondominioDTO> ObterTodosCondominios(bool rastrearAlteracoes)
+    public IEnumerable<CondominioDTO> ObterCondominios(bool rastrearAlteracoes)
     {
-        var condominios = _repository.Condominio.ObterTodosCondominios(rastrearAlteracoes);
+        var condominios = _repository.Condominio.ObterCondominios(rastrearAlteracoes);
         var condominiosDTO = _mapper.Map<IEnumerable<CondominioDTO>>(condominios);
 
         return condominiosDTO;
     }
 
-    public CondominioDTO ObterCondominioPorId(Guid id, bool rastrearAlteracoes)
+    public CondominioDTO ObterCondominio(Guid id, bool rastrearAlteracoes)
     {
-        var condominio = _repository.Condominio.ObterCondominioPorId(id, rastrearAlteracoes);
+        var condominio = _repository.Condominio.ObterCondominio(id, rastrearAlteracoes);
 
         if (condominio == null)
             throw new EntregaSeguraNotFoundException(id);

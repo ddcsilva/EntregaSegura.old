@@ -17,14 +17,14 @@ public class UnidadesController : ControllerBase
     [HttpGet]
     public IActionResult ObterUnidades()
     {
-        var unidades = _service.UnidadeService.ObterTodasUnidades(false);
+        var unidades = _service.UnidadeService.ObterUnidades(false);
         return Ok(unidades);
     }
 
     [HttpGet("{id}")]
     public IActionResult ObterUnidadePorId(Guid id)
     {
-        var unidade = _service.UnidadeService.ObterUnidadePorId(id, false);
+        var unidade = _service.UnidadeService.ObterUnidade(id, false);
 
         return Ok(unidade);
     }

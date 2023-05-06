@@ -17,14 +17,14 @@ public class TransportadorasController : ControllerBase
     [HttpGet]
     public IActionResult ObterTransportadoras()
     {
-        var transportadoras = _service.TransportadoraService.ObterTodasTransportadoras(false);
+        var transportadoras = _service.TransportadoraService.ObterTransportadoras(false);
         return Ok(transportadoras);
     }
 
     [HttpGet("{id}")]
     public IActionResult ObterTransportadoraPorId(Guid id)
     {
-        var transportadora = _service.TransportadoraService.ObterTransportadoraPorId(id, false);
+        var transportadora = _service.TransportadoraService.ObterTransportadora(id, false);
 
         return Ok(transportadora);
     }

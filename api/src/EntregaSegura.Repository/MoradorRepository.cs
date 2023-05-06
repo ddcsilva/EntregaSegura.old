@@ -8,12 +8,12 @@ public sealed class MoradorRepository : RepositoryBase<Morador>, IMoradorReposit
 {
     public MoradorRepository(EntregaSeguraContext context) : base(context) { }
 
-    public IEnumerable<Morador> ObterTodosMoradores(bool rastrearAlteracoes)
+    public IEnumerable<Morador> ObterMoradores(bool rastrearAlteracoes)
     {
         return BuscarTodos(rastrearAlteracoes).OrderBy(c => c.Nome).ToList();
     }
 
-    public Morador? ObterMoradorPorId(Guid moradorId, bool rastrearAlteracoes)
+    public Morador? ObterMorador(Guid moradorId, bool rastrearAlteracoes)
     {
         return BuscarPorCondicao(c => c.Id == moradorId, rastrearAlteracoes).FirstOrDefault();
     }

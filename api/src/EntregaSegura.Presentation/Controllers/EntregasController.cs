@@ -17,14 +17,14 @@ public class EntregasController : ControllerBase
     [HttpGet]
     public IActionResult ObterEntregas()
     {
-        var entregas = _service.EntregaService.ObterTodasEntregas(false);
+        var entregas = _service.EntregaService.ObterEntregas(false);
         return Ok(entregas);
     }
 
     [HttpGet("{id}")]
     public IActionResult ObterEntregaPorId(Guid id)
     {
-        var entrega = _service.EntregaService.ObterEntregaPorId(id, false);
+        var entrega = _service.EntregaService.ObterEntrega(id, false);
 
         return Ok(entrega);
     }

@@ -54,19 +54,19 @@ public class CondominioConfiguration : IEntityTypeConfiguration<Condominio>
             .HasDefaultValueSql("GETDATE()")
             .HasComment("Data de criação do condomínio");
 
-        builder.Property(c => c.DataUltimaModificacao)
-            .HasColumnName("CND_DATA_ULTIMA_MODIFICACAO")
+        builder.Property(c => c.DataAtualizacao)
+            .HasColumnName("CND_DATA_ATUALIZACAO")
             .HasColumnOrder(7)
-            .HasColumnType("datetime")
-            .HasComment("Data da última modificação do condomínio");
-
-        builder.Property(c => c.Excluido)
-            .HasColumnName("CND_EXCLUIDO")
-            .HasColumnOrder(8)
             .IsRequired()
-            .HasColumnType("bit")
-            .HasDefaultValue(false)
-            .HasComment("Flag que indica se o condomínio foi excluído");
+            .HasColumnType("datetime")
+            .HasDefaultValueSql("GETDATE()")
+            .HasComment("Data da última atualização do condomínio");
+
+        builder.Property(c => c.DataExclusao)
+            .HasColumnName("CND_DATA_EXCLUSAO")
+            .HasColumnOrder(8)
+            .HasColumnType("datetime")
+            .HasComment("Data da exclusão do condomínio");
 
         // Um condomínio possui um endereço e um endereço pertence a um condomínio
         builder.HasOne(c => c.Endereco)
@@ -74,7 +74,6 @@ public class CondominioConfiguration : IEntityTypeConfiguration<Condominio>
             .HasForeignKey<Endereco>(e => e.CondominioId)
             .HasConstraintName("FK_CONDOMINIO_ENDERECO")
             .OnDelete(DeleteBehavior.Cascade);
-
 
         // Um condomínio possui várias unidades e uma unidade pertence a um condomínio
         builder.HasMany(c => c.Unidades)

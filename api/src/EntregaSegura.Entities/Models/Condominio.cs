@@ -11,7 +11,7 @@ public sealed class Condominio : Empresa
         Funcionarios = new List<Funcionario>();
     }
 
-     // Um condomínio possui um endereço
+    // Um condomínio possui um endereço
     public Endereco? Endereco { get; set; }
 
     // Um condomínio possui várias unidades

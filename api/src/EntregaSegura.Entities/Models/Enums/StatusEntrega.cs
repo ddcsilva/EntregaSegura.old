@@ -7,5 +7,7 @@ public enum StatusEntrega
 {
     Recebida = 1,
     Notificada = 2,
-    Retirada = 3
+    AguardandoRetirada = 3,
+    Retirada = 4,
+    EntregaAtrasada = 5
 }

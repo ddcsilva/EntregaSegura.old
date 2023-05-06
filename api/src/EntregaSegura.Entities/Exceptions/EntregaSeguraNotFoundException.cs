@@ -4,7 +4,7 @@ namespace EntregaSegura.Entities.Exceptions
     {
         public EntregaSeguraNotFoundException(Guid id) : base($"Não foi possível encontrar o registro com o id: {id}")
         {
-            
+
         }
     }
 }

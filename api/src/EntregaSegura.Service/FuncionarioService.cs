@@ -1,7 +1,6 @@
 using AutoMapper;
 using EntregaSegura.Contracts;
 using EntregaSegura.Entities.Exceptions;
-using EntregaSegura.Entities.Models;
 using EntregaSegura.Service.Contracts;
 using EntregaSegura.Shared.DTOs;
 
@@ -20,17 +19,17 @@ public sealed class FuncionarioService : IFuncionarioService
         _mapper = mapper;
     }
 
-    public IEnumerable<FuncionarioDTO> ObterTodosFuncionarios(bool rastrearAlteracoes)
+    public IEnumerable<FuncionarioDTO> ObterFuncionarios(bool rastrearAlteracoes)
     {
-        var funcionarios = _repository.Funcionario.ObterTodosFuncionarios(rastrearAlteracoes);
+        var funcionarios = _repository.Funcionario.ObterFuncionarios(rastrearAlteracoes);
         var funcionariosDTO = _mapper.Map<IEnumerable<FuncionarioDTO>>(funcionarios);
 
         return funcionariosDTO;
     }
 
-    public FuncionarioDTO ObterFuncionarioPorId(Guid id, bool rastrearAlteracoes)
+    public FuncionarioDTO ObterFuncionario(Guid id, bool rastrearAlteracoes)
     {
-        var funcionario = _repository.Funcionario.ObterFuncionarioPorId(id, rastrearAlteracoes);
+        var funcionario = _repository.Funcionario.ObterFuncionario(id, rastrearAlteracoes);
 
         if (funcionario == null)
             throw new EntregaSeguraNotFoundException(id);

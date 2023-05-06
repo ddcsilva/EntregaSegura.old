@@ -17,14 +17,14 @@ public class CondominioController : ControllerBase
     [HttpGet]
     public IActionResult ObterCondominios()
     {
-        var condominios = _service.CondominioService.ObterTodosCondominios(false);
+        var condominios = _service.CondominioService.ObterCondominios(false);
         return Ok(condominios);
     }
 
     [HttpGet("{id:guid}")]
     public IActionResult ObterCondominioPorId(Guid id)
     {
-        var condominio = _service.CondominioService.ObterCondominioPorId(id, false);
+        var condominio = _service.CondominioService.ObterCondominio(id, false);
         return Ok(condominio);
     }
 }

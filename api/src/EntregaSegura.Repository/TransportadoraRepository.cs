@@ -8,12 +8,12 @@ public sealed class TransportadoraRepository : RepositoryBase<Transportadora>, I
 {
     public TransportadoraRepository(EntregaSeguraContext context) : base(context) { }
 
-    public IEnumerable<Transportadora> ObterTodasTransportadoras(bool rastrearAlteracoes)
+    public IEnumerable<Transportadora> ObterTransportadoras(bool rastrearAlteracoes)
     {
         return BuscarTodos(rastrearAlteracoes).OrderBy(c => c.Nome).ToList();
     }
 
-    public Transportadora? ObterTransportadoraPorId(Guid transportadoraId, bool rastrearAlteracoes)
+    public Transportadora? ObterTransportadora(Guid transportadoraId, bool rastrearAlteracoes)
     {
         return BuscarPorCondicao(c => c.Id == transportadoraId, rastrearAlteracoes).FirstOrDefault();
     }

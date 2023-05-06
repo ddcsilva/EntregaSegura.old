@@ -17,14 +17,14 @@ public class MoradoresController : ControllerBase
     [HttpGet]
     public IActionResult ObterMoradores()
     {
-        var moradores = _service.MoradorService.ObterTodosMoradores(false);
+        var moradores = _service.MoradorService.ObterMoradores(false);
         return Ok(moradores);
     }
 
     [HttpGet("{id}")]
     public IActionResult ObterMoradorPorId(Guid id)
     {
-        var morador = _service.MoradorService.ObterMoradorPorId(id, false);
+        var morador = _service.MoradorService.ObterMorador(id, false);
 
         return Ok(morador);
     }

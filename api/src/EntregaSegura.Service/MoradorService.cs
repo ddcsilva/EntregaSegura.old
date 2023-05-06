@@ -1,7 +1,6 @@
 using AutoMapper;
 using EntregaSegura.Contracts;
 using EntregaSegura.Entities.Exceptions;
-using EntregaSegura.Entities.Models;
 using EntregaSegura.Service.Contracts;
 using EntregaSegura.Shared.DTOs;
 
@@ -20,17 +19,17 @@ public sealed class MoradorService : IMoradorService
         _mapper = mapper;
     }
 
-    public IEnumerable<MoradorDTO> ObterTodosMoradores(bool rastrearAlteracoes)
+    public IEnumerable<MoradorDTO> ObterMoradores(bool rastrearAlteracoes)
     {
-        var moradores = _repository.Morador.ObterTodosMoradores(rastrearAlteracoes);
+        var moradores = _repository.Morador.ObterMoradores(rastrearAlteracoes);
         var moradoresDTO = _mapper.Map<IEnumerable<MoradorDTO>>(moradores);
 
         return moradoresDTO;
     }
 
-    public MoradorDTO ObterMoradorPorId(Guid id, bool rastrearAlteracoes)
+    public MoradorDTO ObterMorador(Guid id, bool rastrearAlteracoes)
     {
-        var morador = _repository.Morador.ObterMoradorPorId(id, rastrearAlteracoes);
+        var morador = _repository.Morador.ObterMorador(id, rastrearAlteracoes);
 
         if (morador == null)
             throw new EntregaSeguraNotFoundException(id);

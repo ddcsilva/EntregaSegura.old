@@ -5,9 +5,6 @@ namespace EntregaSegura.Entities.Models;
 /// </summary>
 public sealed class Unidade : BaseEntity
 {
-    /// <summary>
-    /// Construtor padrão que inicializa as propriedades Entregas e Moradores.
-    /// </summary>
     public Unidade()
     {
         Moradores = new List<Morador>();

@@ -4,6 +4,6 @@ namespace EntregaSegura.Service.Contracts;
 
 public interface ITransportadoraService
 {
-    IEnumerable<TransportadoraDTO> ObterTodasTransportadoras(bool rastrearAlteracoes);
-    TransportadoraDTO ObterTransportadoraPorId(Guid transportadoraId, bool rastrearAlteracoes);
+    IEnumerable<TransportadoraDTO> ObterTransportadoras(bool rastrearAlteracoes);
+    TransportadoraDTO ObterTransportadora(Guid transportadoraId, bool rastrearAlteracoes);
 }

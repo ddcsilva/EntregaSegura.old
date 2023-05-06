@@ -5,9 +5,6 @@ namespace EntregaSegura.Entities.Models;
 /// </summary>
 public sealed class Transportadora : Empresa
 {
-    /// <summary>
-    /// Construtor padrão que inicializa a propriedade Entregas.
-    /// </summary>
     public Transportadora()
     {
         Entregas = new List<Entrega>();

@@ -8,5 +8,5 @@ public sealed class EnderecoRepository : RepositoryBase<Endereco>, IEnderecoRepo
 {
     public EnderecoRepository(EntregaSeguraContext context) : base(context)
     {
-    }    
+    }
 }

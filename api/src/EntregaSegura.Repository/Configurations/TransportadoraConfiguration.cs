@@ -6,9 +6,6 @@ namespace EntregaSegura.Repository.Configurations;
 
 public class TransportadoraConfiguration : IEntityTypeConfiguration<Transportadora>
 {
-    /// <summary>
-    /// Método que configura as propriedades da entidade <see cref="Transportadora"/> para a tabela TB_TRANSPORTADORAS no banco de dados
-    /// </summary>
     public void Configure(EntityTypeBuilder<Transportadora> builder)
     {
         builder.ToTable("TB_TRANSPORTADORAS");
@@ -57,19 +54,19 @@ public class TransportadoraConfiguration : IEntityTypeConfiguration<Transportado
             .HasDefaultValueSql("GETDATE()")
             .HasComment("Data de criação da transportadora");
 
-        builder.Property(e => e.DataUltimaModificacao)
-            .HasColumnName("TRA_DATA_ULTIMA_MODIFICACAO")
+        builder.Property(e => e.DataAtualizacao)
+            .HasColumnName("TRA_DATA_ATUALIZACAO")
             .HasColumnOrder(7)
-            .HasColumnType("datetime")
-            .HasComment("Data da última modificação da transportadora");
-
-        builder.Property(e => e.Excluido)
-            .HasColumnName("TRA_EXCLUIDO")
-            .HasColumnOrder(8)
             .IsRequired()
-            .HasColumnType("bit")
-            .HasDefaultValueSql("0")
-            .HasComment("Flag de exclusão da transportadora");
+            .HasColumnType("datetime")
+            .HasDefaultValueSql("GETDATE()")
+            .HasComment("Data da última atualização da transportadora");
+
+        builder.Property(e => e.DataExclusao)
+            .HasColumnName("TRA_DATA_EXCLUSAO")
+            .HasColumnOrder(8)
+            .HasColumnType("datetime")
+            .HasComment("Data da exclusão da transportadora");
 
         // Uma transportadora possui várias entregas e uma entrega possui uma transportadora
         builder.HasMany(t => t.Entregas)
@@ -88,6 +85,10 @@ public class TransportadoraConfiguration : IEntityTypeConfiguration<Transportado
 
         builder.HasIndex(e => e.Nome)
             .HasDatabaseName("IX_TRANSPORTADORAS_NOME")
+            .IsUnique();
+
+        builder.HasIndex(e => e.Telefone)
+            .HasDatabaseName("IX_TRANSPORTADORAS_TELEFONE")
             .IsUnique();
     }
 }

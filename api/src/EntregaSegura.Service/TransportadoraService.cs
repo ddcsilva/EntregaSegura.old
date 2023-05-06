@@ -19,17 +19,17 @@ public sealed class TransportadoraService : ITransportadoraService
         _mapper = mapper;
     }
 
-    public IEnumerable<TransportadoraDTO> ObterTodasTransportadoras(bool rastrearAlteracoes)
+    public IEnumerable<TransportadoraDTO> ObterTransportadoras(bool rastrearAlteracoes)
     {
-        var transportadoras = _repository.Transportadora.ObterTodasTransportadoras(rastrearAlteracoes);
+        var transportadoras = _repository.Transportadora.ObterTransportadoras(rastrearAlteracoes);
         var transportadoraDTO = _mapper.Map<IEnumerable<TransportadoraDTO>>(transportadoras);
 
         return transportadoraDTO;
     }
 
-    public TransportadoraDTO ObterTransportadoraPorId(Guid id, bool rastrearAlteracoes)
+    public TransportadoraDTO ObterTransportadora(Guid id, bool rastrearAlteracoes)
     {
-        var transportadora = _repository.Transportadora.ObterTransportadoraPorId(id, rastrearAlteracoes);
+        var transportadora = _repository.Transportadora.ObterTransportadora(id, rastrearAlteracoes);
 
         if (transportadora == null)
             throw new EntregaSeguraNotFoundException(id);

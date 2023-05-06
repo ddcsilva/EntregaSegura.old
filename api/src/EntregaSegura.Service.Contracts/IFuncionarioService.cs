@@ -4,6 +4,6 @@ namespace EntregaSegura.Service.Contracts;
 
 public interface IFuncionarioService
 {
-    IEnumerable<FuncionarioDTO> ObterTodosFuncionarios(bool rastrearAlteracoes);
-    FuncionarioDTO ObterFuncionarioPorId(Guid funcionarioId, bool rastrearAlteracoes);
+    IEnumerable<FuncionarioDTO> ObterFuncionarios(bool rastrearAlteracoes);
+    FuncionarioDTO ObterFuncionario(Guid funcionarioId, bool rastrearAlteracoes);
 }

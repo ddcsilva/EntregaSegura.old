@@ -8,12 +8,12 @@ public sealed class FuncionarioRepository : RepositoryBase<Funcionario>, IFuncio
 {
     public FuncionarioRepository(EntregaSeguraContext context) : base(context) { }
 
-    public IEnumerable<Funcionario> ObterTodosFuncionarios(bool rastrearAlteracoes)
+    public IEnumerable<Funcionario> ObterFuncionarios(bool rastrearAlteracoes)
     {
         return BuscarTodos(rastrearAlteracoes).OrderBy(c => c.Nome).ToList();
     }
 
-    public Funcionario? ObterFuncionarioPorId(Guid funcionarioId, bool rastrearAlteracoes)
+    public Funcionario? ObterFuncionario(Guid funcionarioId, bool rastrearAlteracoes)
     {
         return BuscarPorCondicao(c => c.Id == funcionarioId, rastrearAlteracoes).FirstOrDefault();
     }

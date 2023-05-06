@@ -8,13 +8,13 @@ public sealed class CondominioRepository : RepositoryBase<Condominio>, ICondomin
 {
     public CondominioRepository(EntregaSeguraContext entregaSeguraContexto) : base(entregaSeguraContexto) { }
 
-    public IEnumerable<Condominio> ObterTodosCondominios(bool rastrearAlteracoes)
+    public IEnumerable<Condominio> ObterCondominios(bool rastrearAlteracoes)
     {
         return BuscarTodos(rastrearAlteracoes).OrderBy(c => c.Nome).ToList();
     }
 
-    public Condominio? ObterCondominioPorId(Guid condominioId, bool rastrearAlteracoes)
+    public Condominio? ObterCondominio(Guid condominioId, bool rastrearAlteracoes)
     {
-            return BuscarPorCondicao(c => c.Id.Equals(condominioId), rastrearAlteracoes).SingleOrDefault();
+        return BuscarPorCondicao(c => c.Id.Equals(condominioId), rastrearAlteracoes).SingleOrDefault();
     }
 }
