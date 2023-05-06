@@ -13,7 +13,7 @@ public class UnidadeRepository : RepositoryBase<Unidade>, IUnidadeRepository
         return BuscarTodos(rastrearAlteracoes).OrderByDescending(c => c.Bloco).ToList();
     }
 
-    public Unidade? ObterUnidade(Guid unidadeId, bool rastrearAlteracoes)
+    public Unidade ObterUnidade(Guid unidadeId, bool rastrearAlteracoes)
     {
         return BuscarPorCondicao(c => c.Id == unidadeId, rastrearAlteracoes).FirstOrDefault();
     }

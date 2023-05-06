@@ -27,12 +27,17 @@ public sealed class FuncionarioService : IFuncionarioService
         return funcionariosDTO;
     }
 
-    public FuncionarioDTO ObterFuncionario(Guid id, bool rastrearAlteracoes)
+    public FuncionarioDTO ObterFuncionario(Guid condominioId, Guid funcionarioId, bool rastrearAlteracoes)
     {
-        var funcionario = _repository.Funcionario.ObterFuncionario(id, rastrearAlteracoes);
+        var condominio = _repository.Condominio.ObterCondominio(condominioId, rastrearAlteracoes);
+
+        if (condominio == null)
+            throw new EntregaSeguraNotFoundException(condominioId);
+
+        var funcionario = _repository.Funcionario.ObterFuncionario(condominioId, funcionarioId, rastrearAlteracoes);
 
         if (funcionario == null)
-            throw new EntregaSeguraNotFoundException(id);
+            throw new EntregaSeguraNotFoundException(funcionarioId);
 
         var funcionarioDTO = _mapper.Map<FuncionarioDTO>(funcionario);
 

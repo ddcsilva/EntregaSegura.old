@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EntregaSegura.Presentation.Controllers;
 
-[Route("api/unidades")]
+[Route("api/condominios/{condominioId}/unidades")]
 [ApiController]
 public class UnidadesController : ControllerBase
 {

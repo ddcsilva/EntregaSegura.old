@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EntregaSegura.Presentation.Controllers;
 
-[Route("api/funcionarios")]
+[Route("api/condominios/{condominioId}/funcionarios")]
 [ApiController]
 public class FuncionariosController : ControllerBase
 {
@@ -21,11 +21,10 @@ public class FuncionariosController : ControllerBase
         return Ok(funcionarios);
     }
 
-    [HttpGet("{id}")]
-    public IActionResult ObterFuncionarioPorId(Guid id)
+    [HttpGet("{id:guid}")]
+    public IActionResult ObterFuncionarioDoCondominio(Guid condominioId, Guid funcionarioId)
     {
-        var funcionario = _service.FuncionarioService.ObterFuncionario(id, false);
-
+        var funcionario = _service.FuncionarioService.ObterFuncionario(condominioId, funcionarioId, false);
         return Ok(funcionario);
     }
 }

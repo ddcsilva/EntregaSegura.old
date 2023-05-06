@@ -13,7 +13,7 @@ public sealed class MoradorRepository : RepositoryBase<Morador>, IMoradorReposit
         return BuscarTodos(rastrearAlteracoes).OrderBy(c => c.Nome).ToList();
     }
 
-    public Morador? ObterMorador(Guid moradorId, bool rastrearAlteracoes)
+    public Morador ObterMorador(Guid moradorId, bool rastrearAlteracoes)
     {
         return BuscarPorCondicao(c => c.Id == moradorId, rastrearAlteracoes).FirstOrDefault();
     }

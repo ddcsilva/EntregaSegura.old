@@ -13,7 +13,7 @@ public sealed class CondominioRepository : RepositoryBase<Condominio>, ICondomin
         return BuscarTodos(rastrearAlteracoes).OrderBy(c => c.Nome).ToList();
     }
 
-    public Condominio? ObterCondominio(Guid condominioId, bool rastrearAlteracoes)
+    public Condominio ObterCondominio(Guid condominioId, bool rastrearAlteracoes)
     {
         return BuscarPorCondicao(c => c.Id.Equals(condominioId), rastrearAlteracoes).SingleOrDefault();
     }
