@@ -1,5 +1,8 @@
 namespace EntregaSegura.Shared.DTOs;
 
+/// <summary>
+/// Classe que representa um DTO (Data Transfer Object) para criar um novo registro de Condominio.
+/// </summary>
 public record CondominioCriacaoDTO(
     string Nome, 
     string CNPJ, 

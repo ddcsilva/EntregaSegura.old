@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EntregaSegura.Presentation.Controllers;
 
+/// <summary>
+/// Controlador para gerenciar operações relacionadas a moradores.
+/// </summary>
 [Route("api/condominios/{condominioId}/unidades/{unidadeId}/moradores")]
 [ApiController]
 public class MoradoresController : ControllerBase
@@ -14,6 +17,10 @@ public class MoradoresController : ControllerBase
         _service = service;
     }
 
+    /// <summary>
+    /// Retorna uma lista de todos os moradores.
+    /// </summary>
+    /// <returns>Uma lista de objetos MoradorDTO.</returns>
     [HttpGet]
     public IActionResult ObterMoradores()
     {
@@ -21,6 +28,11 @@ public class MoradoresController : ControllerBase
         return Ok(moradores);
     }
 
+    /// <summary>
+    /// Retorna um morador com base no ID fornecido.
+    /// </summary>
+    /// <param name="id">O ID do morador a ser retornado.</param>
+    /// <returns>Um objeto MoradorDTO correspondente ao ID fornecido.</returns>
     [HttpGet("{id}")]
     public IActionResult ObterMoradorPorId(Guid id)
     {

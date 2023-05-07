@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EntregaSegura.Presentation.Controllers;
 
+/// <summary>
+/// Controlador para gerenciar operações relacionadas às unidades residenciais.
+/// </summary>
 [Route("api/condominios/{condominioId}/unidades")]
 [ApiController]
 public class UnidadesController : ControllerBase
@@ -15,6 +18,10 @@ public class UnidadesController : ControllerBase
         _service = service;
     }
 
+    /// <summary>
+    /// Retorna uma lista de todas as unidades residenciais.
+    /// </summary>
+    /// <returns>Uma lista de objetos UnidadeDTO.</returns>
     [HttpGet]
     public IActionResult ObterUnidades()
     {
@@ -22,6 +29,10 @@ public class UnidadesController : ControllerBase
         return Ok(unidades);
     }
 
+    /// Retorna uma unidade residencial com base no ID fornecido.
+    /// </summary>
+    /// <param name="id">O ID da unidade residencial a ser retornado.</param>
+    /// <returns>Um objeto UnidadeDTO correspondente ao ID fornecido.</returns>
     [HttpGet("{id:guid}", Name = "ObterUnidadeDoCondominio")]
     public IActionResult ObterUnidadePorId(Guid id)
     {
@@ -30,6 +41,12 @@ public class UnidadesController : ControllerBase
         return Ok(unidade);
     }
 
+    /// <summary>
+    /// Cria uma nova unidade residencial para o condomínio com o ID fornecido.
+    /// </summary>
+    /// <param name="condominioId">O ID do condomínio ao qual a unidade residencial pertencerá.</param>
+    /// <param name="unidade">Um objeto UnidadeCriacaoDTO contendo os dados da nova unidade residencial.</param>
+    /// <returns>O objeto UnidadeDTO criado com seu ID gerado.</returns>
     [HttpPost]
     public IActionResult CriarUnidadeParaCondominio(Guid condominioId, [FromBody] UnidadeCriacaoDTO unidade)
     {

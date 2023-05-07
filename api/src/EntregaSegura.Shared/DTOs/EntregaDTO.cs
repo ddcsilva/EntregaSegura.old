@@ -1,5 +1,8 @@
 ﻿namespace EntregaSegura.Shared.DTOs;
 
+/// <summary>
+/// Classe que representa um DTO (Data Transfer Object) para representar um registro de Entrega.
+/// </summary>
 public record EntregaDTO(
     Guid Id, 
     string Destinatario, 

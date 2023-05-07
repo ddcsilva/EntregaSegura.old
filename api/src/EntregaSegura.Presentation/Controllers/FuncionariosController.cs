@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EntregaSegura.Presentation.Controllers;
 
+/// <summary>
+/// Controlador para gerenciar operações relacionadas a funcionários.
+/// </summary>
 [Route("api/condominios/{condominioId}/funcionarios")]
 [ApiController]
 public class FuncionariosController : ControllerBase
@@ -14,6 +17,10 @@ public class FuncionariosController : ControllerBase
         _service = service;
     }
 
+    /// <summary>
+    /// Retorna uma lista de todos os funcionários.
+    /// </summary>
+    /// <returns>Uma lista de objetos FuncionarioDTO.</returns>
     [HttpGet]
     public IActionResult ObterFuncionarios()
     {
@@ -21,6 +28,12 @@ public class FuncionariosController : ControllerBase
         return Ok(funcionarios);
     }
 
+    /// <summary>
+    /// Retorna um funcionário com base nos IDs do condomínio e do funcionário fornecidos.
+    /// </summary>
+    /// <param name="condominioId">O ID do condomínio ao qual o funcionário pertence.</param>
+    /// <param name="funcionarioId">O ID do funcionário a ser retornado.</param>
+    /// <returns>Um objeto FuncionarioDTO correspondente aos IDs fornecidos.</returns>
     [HttpGet("{id:guid}")]
     public IActionResult ObterFuncionarioDoCondominio(Guid condominioId, Guid funcionarioId)
     {
