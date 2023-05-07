@@ -17,4 +17,9 @@ public sealed class CondominioRepository : RepositoryBase<Condominio>, ICondomin
     {
         return BuscarPorCondicao(c => c.Id.Equals(condominioId), rastrearAlteracoes).SingleOrDefault();
     }
+
+    public void CriarCondominio(Condominio condominio)
+    {
+        Criar(condominio);
+    }
 }

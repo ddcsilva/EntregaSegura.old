@@ -8,8 +8,10 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<Condominio, CondominioDTO>();
-        CreateMap<Endereco, EnderecoDTO>();
+        CreateMap<Condominio, CondominioDTO>()
+            .ForCtorParam("Endereco", 
+                option => option.MapFrom(src => $"{src.Logradouro}, {src.Numero}, {src.Complemento}{(src.Complemento == null ? "" : $", ")}{src.Bairro}"));
+        CreateMap<CondominioCriacaoDTO, Condominio>();
         CreateMap<Entrega, EntregaDTO>();
         CreateMap<Funcionario, FuncionarioDTO>();
         CreateMap<Morador, MoradorDTO>();

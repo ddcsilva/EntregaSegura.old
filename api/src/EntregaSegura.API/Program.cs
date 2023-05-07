@@ -15,7 +15,11 @@ builder.Services.ConfigurarServiceManager();
 builder.Services.ConfigurarSqlContext(builder.Configuration);
 builder.Services.AddAutoMapper(typeof(Program));
 
-builder.Services.AddControllers().AddApplicationPart(typeof(EntregaSegura.Presentation.AssemblyReference).Assembly);
+builder.Services.AddControllers(config =>
+{
+    config.RespectBrowserAcceptHeader = true;
+    config.ReturnHttpNotAcceptable = true;
+}).AddApplicationPart(typeof(EntregaSegura.Presentation.AssemblyReference).Assembly);
 
 var app = builder.Build();
 

@@ -7,7 +7,6 @@ public sealed class RepositoryManager : IRepositoryManager
 {
     private readonly EntregaSeguraContext _context;
     private readonly Lazy<ICondominioRepository> _condominioRepository;
-    private readonly Lazy<IEnderecoRepository> _enderecoRepository;
     private readonly Lazy<IEntregaRepository> _entregaRepository;
     private readonly Lazy<IFuncionarioRepository> _funcionarioRepository;
     private readonly Lazy<IMoradorRepository> _moradorRepository;
@@ -18,7 +17,6 @@ public sealed class RepositoryManager : IRepositoryManager
     {
         _context = context;
         _condominioRepository = new Lazy<ICondominioRepository>(() => new CondominioRepository(_context));
-        _enderecoRepository = new Lazy<IEnderecoRepository>(() => new EnderecoRepository(_context));
         _entregaRepository = new Lazy<IEntregaRepository>(() => new EntregaRepository(_context));
         _funcionarioRepository = new Lazy<IFuncionarioRepository>(() => new FuncionarioRepository(_context));
         _moradorRepository = new Lazy<IMoradorRepository>(() => new MoradorRepository(_context));
@@ -27,7 +25,6 @@ public sealed class RepositoryManager : IRepositoryManager
     }
 
     public ICondominioRepository Condominio => _condominioRepository.Value;
-    public IEnderecoRepository Endereco => _enderecoRepository.Value;
     public IEntregaRepository Entrega => _entregaRepository.Value;
     public IFuncionarioRepository Funcionario => _funcionarioRepository.Value;
     public IMoradorRepository Morador => _moradorRepository.Value;

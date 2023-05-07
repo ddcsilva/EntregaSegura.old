@@ -3,7 +3,6 @@ namespace EntregaSegura.Service.Contracts;
 public interface IServiceManager
 {
     ICondominioService CondominioService { get; }
-    IEnderecoService EnderecoService { get; }
     IEntregaService EntregaService { get; }
     IFuncionarioService FuncionarioService { get; }
     IMoradorService MoradorService { get; }

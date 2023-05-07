@@ -46,9 +46,57 @@ public class CondominioConfiguration : IEntityTypeConfiguration<Condominio>
             .HasColumnType("varchar(100)")
             .HasComment("E-mail do condomínio");
 
+        builder.Property(e => e.Logradouro)
+            .HasColumnName("CND_LOGRADOURO")
+            .HasColumnOrder(6)
+            .IsRequired()
+            .HasColumnType("varchar(100)")
+            .HasComment("Logradouro do endereço do condomínio");
+
+        builder.Property(e => e.Numero)
+            .HasColumnName("CND_NUMERO")
+            .HasColumnOrder(7)
+            .IsRequired()
+            .HasColumnType("varchar(10)")
+            .HasComment("Número do endereço do condomínio");
+
+        builder.Property(e => e.Complemento)
+            .HasColumnName("CND_COMPLEMENTO")
+            .HasColumnOrder(8)
+            .HasColumnType("varchar(100)")
+            .HasComment("Complemento do endereço do condomínio");
+
+        builder.Property(e => e.CEP)
+            .HasColumnName("CND_CEP")
+            .HasColumnOrder(9)
+            .IsRequired()
+            .HasColumnType("varchar(8)")
+            .HasComment("CEP do endereço do condomínio");
+
+        builder.Property(e => e.Bairro)
+            .HasColumnName("CND_BAIRRO")
+            .HasColumnOrder(10)
+            .IsRequired()
+            .HasColumnType("varchar(50)")
+            .HasComment("Bairro do endereço do condomínio");
+
+        builder.Property(e => e.Cidade)
+            .HasColumnName("CND_CIDADE")
+            .HasColumnOrder(11)
+            .IsRequired()
+            .HasColumnType("varchar(50)")
+            .HasComment("Cidade do endereço do condomínio");
+
+        builder.Property(e => e.Estado)
+            .HasColumnName("CND_ESTADO")
+            .HasColumnOrder(12)
+            .IsRequired()
+            .HasColumnType("varchar(2)")
+            .HasComment("Estado do endereço do condomínio");
+
         builder.Property(c => c.DataCriacao)
             .HasColumnName("CND_DATA_CRIACAO")
-            .HasColumnOrder(6)
+            .HasColumnOrder(13)
             .IsRequired()
             .HasColumnType("datetime")
             .HasDefaultValueSql("GETDATE()")
@@ -56,7 +104,7 @@ public class CondominioConfiguration : IEntityTypeConfiguration<Condominio>
 
         builder.Property(c => c.DataAtualizacao)
             .HasColumnName("CND_DATA_ATUALIZACAO")
-            .HasColumnOrder(7)
+            .HasColumnOrder(14)
             .IsRequired()
             .HasColumnType("datetime")
             .HasDefaultValueSql("GETDATE()")
@@ -64,16 +112,9 @@ public class CondominioConfiguration : IEntityTypeConfiguration<Condominio>
 
         builder.Property(c => c.DataExclusao)
             .HasColumnName("CND_DATA_EXCLUSAO")
-            .HasColumnOrder(8)
+            .HasColumnOrder(15)
             .HasColumnType("datetime")
             .HasComment("Data da exclusão do condomínio");
-
-        // Um condomínio possui um endereço e um endereço pertence a um condomínio
-        builder.HasOne(c => c.Endereco)
-            .WithOne(e => e.Condominio)
-            .HasForeignKey<Endereco>(e => e.CondominioId)
-            .HasConstraintName("FK_CONDOMINIO_ENDERECO")
-            .OnDelete(DeleteBehavior.Cascade);
 
         // Um condomínio possui várias unidades e uma unidade pertence a um condomínio
         builder.HasMany(c => c.Unidades)

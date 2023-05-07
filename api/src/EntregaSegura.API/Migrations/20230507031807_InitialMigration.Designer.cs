@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EntregaSegura.API.Migrations
 {
     [DbContext(typeof(EntregaSeguraContext))]
-    [Migration("20230506222547_InitialMigration")]
+    [Migration("20230507031807_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,6 +33,20 @@ namespace EntregaSegura.API.Migrations
                         .HasColumnOrder(1)
                         .HasComment("Chave primária do condomínio");
 
+                    b.Property<string>("Bairro")
+                        .IsRequired()
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("CND_BAIRRO")
+                        .HasColumnOrder(10)
+                        .HasComment("Bairro do endereço do condomínio");
+
+                    b.Property<string>("CEP")
+                        .IsRequired()
+                        .HasColumnType("varchar(8)")
+                        .HasColumnName("CND_CEP")
+                        .HasColumnOrder(9)
+                        .HasComment("CEP do endereço do condomínio");
+
                     b.Property<string>("CNPJ")
                         .IsRequired()
                         .HasColumnType("varchar(14)")
@@ -40,11 +54,24 @@ namespace EntregaSegura.API.Migrations
                         .HasColumnOrder(3)
                         .HasComment("CNPJ do condomínio");
 
+                    b.Property<string>("Cidade")
+                        .IsRequired()
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("CND_CIDADE")
+                        .HasColumnOrder(11)
+                        .HasComment("Cidade do endereço do condomínio");
+
+                    b.Property<string>("Complemento")
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("CND_COMPLEMENTO")
+                        .HasColumnOrder(8)
+                        .HasComment("Complemento do endereço do condomínio");
+
                     b.Property<DateTime>("DataAtualizacao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
                         .HasColumnName("CND_DATA_ATUALIZACAO")
-                        .HasColumnOrder(7)
+                        .HasColumnOrder(14)
                         .HasDefaultValueSql("GETDATE()")
                         .HasComment("Data da última atualização do condomínio");
 
@@ -52,14 +79,14 @@ namespace EntregaSegura.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
                         .HasColumnName("CND_DATA_CRIACAO")
-                        .HasColumnOrder(6)
+                        .HasColumnOrder(13)
                         .HasDefaultValueSql("GETDATE()")
                         .HasComment("Data de criação do condomínio");
 
                     b.Property<DateTime?>("DataExclusao")
                         .HasColumnType("datetime")
                         .HasColumnName("CND_DATA_EXCLUSAO")
-                        .HasColumnOrder(8)
+                        .HasColumnOrder(15)
                         .HasComment("Data da exclusão do condomínio");
 
                     b.Property<string>("Email")
@@ -69,12 +96,33 @@ namespace EntregaSegura.API.Migrations
                         .HasColumnOrder(5)
                         .HasComment("E-mail do condomínio");
 
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasColumnType("varchar(2)")
+                        .HasColumnName("CND_ESTADO")
+                        .HasColumnOrder(12)
+                        .HasComment("Estado do endereço do condomínio");
+
+                    b.Property<string>("Logradouro")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("CND_LOGRADOURO")
+                        .HasColumnOrder(6)
+                        .HasComment("Logradouro do endereço do condomínio");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("varchar(100)")
                         .HasColumnName("CND_NOME")
                         .HasColumnOrder(2)
                         .HasComment("Nome do condomínio");
+
+                    b.Property<string>("Numero")
+                        .IsRequired()
+                        .HasColumnType("varchar(10)")
+                        .HasColumnName("CND_NUMERO")
+                        .HasColumnOrder(7)
+                        .HasComment("Número do endereço do condomínio");
 
                     b.Property<string>("Telefone")
                         .IsRequired()
@@ -103,127 +151,20 @@ namespace EntregaSegura.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("502baf2c-f36a-4e7d-a535-da632f982172"),
-                            CNPJ = "11111111111111",
-                            DataAtualizacao = new DateTime(2023, 5, 6, 19, 25, 47, 112, DateTimeKind.Local).AddTicks(3107),
-                            DataCriacao = new DateTime(2023, 5, 6, 19, 25, 47, 112, DateTimeKind.Local).AddTicks(3097),
-                            Email = "contato@condominioexemplo.com.br",
-                            Nome = "Condomínio Exemplo",
-                            Telefone = "11999999999"
-                        });
-                });
-
-            modelBuilder.Entity("EntregaSegura.Entities.Models.Endereco", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("END_ID")
-                        .HasColumnOrder(1)
-                        .HasComment("Chave primária do endereço");
-
-                    b.Property<string>("Bairro")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)")
-                        .HasColumnName("END_BAIRRO")
-                        .HasColumnOrder(7)
-                        .HasComment("Bairro do endereço");
-
-                    b.Property<string>("CEP")
-                        .IsRequired()
-                        .HasColumnType("varchar(8)")
-                        .HasColumnName("END_CEP")
-                        .HasColumnOrder(6)
-                        .HasComment("CEP do endereço");
-
-                    b.Property<string>("Cidade")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)")
-                        .HasColumnName("END_CIDADE")
-                        .HasColumnOrder(8)
-                        .HasComment("Cidade do endereço");
-
-                    b.Property<string>("Complemento")
-                        .HasColumnType("varchar(100)")
-                        .HasColumnName("END_COMPLEMENTO")
-                        .HasColumnOrder(5)
-                        .HasComment("Complemento do endereço");
-
-                    b.Property<Guid>("CondominioId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("CON_ID")
-                        .HasColumnOrder(2)
-                        .HasComment("Chave estrangeira do condomínio");
-
-                    b.Property<DateTime>("DataAtualizacao")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasColumnName("END_DATA_ATUALIZACAO")
-                        .HasColumnOrder(11)
-                        .HasDefaultValueSql("GETDATE()")
-                        .HasComment("Data da última atualização do endereço");
-
-                    b.Property<DateTime>("DataCriacao")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasColumnName("END_DATA_CRIACAO")
-                        .HasColumnOrder(10)
-                        .HasDefaultValueSql("GETDATE()")
-                        .HasComment("Data de criação do endereço");
-
-                    b.Property<DateTime?>("DataExclusao")
-                        .HasColumnType("datetime")
-                        .HasColumnName("END_DATA_EXCLUSAO")
-                        .HasColumnOrder(12)
-                        .HasComment("Data da exclusão do endereço");
-
-                    b.Property<string>("Estado")
-                        .IsRequired()
-                        .HasColumnType("varchar(2)")
-                        .HasColumnName("END_ESTADO")
-                        .HasColumnOrder(9)
-                        .HasComment("Estado do endereço");
-
-                    b.Property<string>("Logradouro")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)")
-                        .HasColumnName("END_LOGRADOURO")
-                        .HasColumnOrder(3)
-                        .HasComment("Logradouro do endereço");
-
-                    b.Property<string>("Numero")
-                        .IsRequired()
-                        .HasColumnType("varchar(10)")
-                        .HasColumnName("END_NUMERO")
-                        .HasColumnOrder(4)
-                        .HasComment("Número do endereço");
-
-                    b.HasKey("Id")
-                        .HasName("PK_ENDERECOS");
-
-                    b.HasIndex("CEP")
-                        .HasDatabaseName("IX_ENDERECO_CEP");
-
-                    b.HasIndex("CondominioId")
-                        .IsUnique()
-                        .HasDatabaseName("IX_ENDERECO_CONDOMINIO");
-
-                    b.ToTable("TB_ENDERECOS", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("87e884bf-2426-414c-8679-3d0632dc10d6"),
+                            Id = new Guid("17f36e9f-8cbe-4dcd-b312-70e2ec47058f"),
                             Bairro = "Bairro Exemplo",
                             CEP = "11111111",
+                            CNPJ = "11111111111111",
                             Cidade = "Cidade Exemplo",
                             Complemento = "Bloco A",
-                            CondominioId = new Guid("502baf2c-f36a-4e7d-a535-da632f982172"),
-                            DataAtualizacao = new DateTime(2023, 5, 6, 19, 25, 47, 112, DateTimeKind.Local).AddTicks(3214),
-                            DataCriacao = new DateTime(2023, 5, 6, 19, 25, 47, 112, DateTimeKind.Local).AddTicks(3214),
+                            DataAtualizacao = new DateTime(2023, 5, 7, 0, 18, 7, 502, DateTimeKind.Local).AddTicks(9949),
+                            DataCriacao = new DateTime(2023, 5, 7, 0, 18, 7, 502, DateTimeKind.Local).AddTicks(9941),
+                            Email = "contato@condominioexemplo.com.br",
                             Estado = "SP",
                             Logradouro = "Rua Exemplo",
-                            Numero = "100"
+                            Nome = "Condomínio Exemplo",
+                            Numero = "100",
+                            Telefone = "11999999999"
                         });
                 });
 
@@ -334,18 +275,18 @@ namespace EntregaSegura.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("cbd10c3c-b8ac-4dbe-ab91-c0277716bc49"),
-                            DataAtualizacao = new DateTime(2023, 5, 6, 19, 25, 47, 112, DateTimeKind.Local).AddTicks(3364),
-                            DataCriacao = new DateTime(2023, 5, 6, 19, 25, 47, 112, DateTimeKind.Local).AddTicks(3364),
-                            DataRecebimento = new DateTime(2023, 5, 6, 19, 25, 47, 112, DateTimeKind.Local).AddTicks(3366),
+                            Id = new Guid("8339a211-dd63-43d0-bc26-193bb90f99f1"),
+                            DataAtualizacao = new DateTime(2023, 5, 7, 0, 18, 7, 503, DateTimeKind.Local).AddTicks(953),
+                            DataCriacao = new DateTime(2023, 5, 7, 0, 18, 7, 503, DateTimeKind.Local).AddTicks(953),
+                            DataRecebimento = new DateTime(2023, 5, 7, 0, 18, 7, 503, DateTimeKind.Local).AddTicks(955),
                             Descricao = "Descrição da entrega",
                             Destinatario = "Destinatario Exemplo",
-                            FuncionarioId = new Guid("e0024df7-457a-44b7-bf34-929d65e1981e"),
-                            MoradorId = new Guid("5e71fa02-7271-49be-8c41-9cf04a8eb471"),
+                            FuncionarioId = new Guid("c2fc8a76-2989-4b7d-8099-b3ab3f4a7188"),
+                            MoradorId = new Guid("0f2dcb61-c456-403a-918c-abd85214bdc1"),
                             Observacao = "Observação da entrega",
                             Remetente = "Remetente Exemplo",
                             Status = 1,
-                            TransportadoraId = new Guid("2ede059b-6321-4ead-aef3-01040f1c36b5")
+                            TransportadoraId = new Guid("1bc38b42-5ec3-4165-8f1f-2cebfc8b7d2e")
                         });
                 });
 
@@ -456,13 +397,13 @@ namespace EntregaSegura.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e0024df7-457a-44b7-bf34-929d65e1981e"),
+                            Id = new Guid("c2fc8a76-2989-4b7d-8099-b3ab3f4a7188"),
                             CPF = "98765432109",
                             Cargo = 2,
-                            CondominioId = new Guid("502baf2c-f36a-4e7d-a535-da632f982172"),
-                            DataAdmissao = new DateTime(2023, 5, 6, 19, 25, 47, 112, DateTimeKind.Local).AddTicks(3329),
-                            DataAtualizacao = new DateTime(2023, 5, 6, 19, 25, 47, 112, DateTimeKind.Local).AddTicks(3329),
-                            DataCriacao = new DateTime(2023, 5, 6, 19, 25, 47, 112, DateTimeKind.Local).AddTicks(3328),
+                            CondominioId = new Guid("17f36e9f-8cbe-4dcd-b312-70e2ec47058f"),
+                            DataAdmissao = new DateTime(2023, 5, 7, 0, 18, 7, 503, DateTimeKind.Local).AddTicks(62),
+                            DataAtualizacao = new DateTime(2023, 5, 7, 0, 18, 7, 503, DateTimeKind.Local).AddTicks(61),
+                            DataCriacao = new DateTime(2023, 5, 7, 0, 18, 7, 503, DateTimeKind.Local).AddTicks(61),
                             Email = "funcionario@email.com",
                             Nome = "Funcionario Exemplo",
                             Status = 2,
@@ -556,15 +497,15 @@ namespace EntregaSegura.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("5e71fa02-7271-49be-8c41-9cf04a8eb471"),
+                            Id = new Guid("0f2dcb61-c456-403a-918c-abd85214bdc1"),
                             CPF = "12345678901",
-                            DataAtualizacao = new DateTime(2023, 5, 6, 19, 25, 47, 112, DateTimeKind.Local).AddTicks(3312),
-                            DataCriacao = new DateTime(2023, 5, 6, 19, 25, 47, 112, DateTimeKind.Local).AddTicks(3311),
+                            DataAtualizacao = new DateTime(2023, 5, 7, 0, 18, 7, 503, DateTimeKind.Local).AddTicks(47),
+                            DataCriacao = new DateTime(2023, 5, 7, 0, 18, 7, 503, DateTimeKind.Local).AddTicks(47),
                             Email = "morador@email.com",
                             Nome = "Morador Exemplo",
                             Status = 2,
                             Telefone = "11999999999",
-                            UnidadeId = new Guid("085671e6-cea0-4cbb-a2f2-5ac83b7cc4e3")
+                            UnidadeId = new Guid("1f0c68f4-4357-4a80-a39c-920cd40e0a88")
                         });
                 });
 
@@ -651,10 +592,10 @@ namespace EntregaSegura.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("2ede059b-6321-4ead-aef3-01040f1c36b5"),
+                            Id = new Guid("1bc38b42-5ec3-4165-8f1f-2cebfc8b7d2e"),
                             CNPJ = "22222222222222",
-                            DataAtualizacao = new DateTime(2023, 5, 6, 19, 25, 47, 112, DateTimeKind.Local).AddTicks(3343),
-                            DataCriacao = new DateTime(2023, 5, 6, 19, 25, 47, 112, DateTimeKind.Local).AddTicks(3343),
+                            DataAtualizacao = new DateTime(2023, 5, 7, 0, 18, 7, 503, DateTimeKind.Local).AddTicks(933),
+                            DataCriacao = new DateTime(2023, 5, 7, 0, 18, 7, 503, DateTimeKind.Local).AddTicks(932),
                             Email = "contato@transportadoraexemplo.com.br",
                             Nome = "Transportadora Exemplo",
                             Telefone = "11988888888"
@@ -724,25 +665,13 @@ namespace EntregaSegura.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("085671e6-cea0-4cbb-a2f2-5ac83b7cc4e3"),
+                            Id = new Guid("1f0c68f4-4357-4a80-a39c-920cd40e0a88"),
                             Bloco = "A",
-                            CondominioId = new Guid("502baf2c-f36a-4e7d-a535-da632f982172"),
-                            DataAtualizacao = new DateTime(2023, 5, 6, 19, 25, 47, 112, DateTimeKind.Local).AddTicks(3293),
-                            DataCriacao = new DateTime(2023, 5, 6, 19, 25, 47, 112, DateTimeKind.Local).AddTicks(3293),
+                            CondominioId = new Guid("17f36e9f-8cbe-4dcd-b312-70e2ec47058f"),
+                            DataAtualizacao = new DateTime(2023, 5, 7, 0, 18, 7, 503, DateTimeKind.Local).AddTicks(33),
+                            DataCriacao = new DateTime(2023, 5, 7, 0, 18, 7, 503, DateTimeKind.Local).AddTicks(32),
                             Numero = "101"
                         });
-                });
-
-            modelBuilder.Entity("EntregaSegura.Entities.Models.Endereco", b =>
-                {
-                    b.HasOne("EntregaSegura.Entities.Models.Condominio", "Condominio")
-                        .WithOne("Endereco")
-                        .HasForeignKey("EntregaSegura.Entities.Models.Endereco", "CondominioId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired()
-                        .HasConstraintName("FK_ENDERECO_CONDOMINIO");
-
-                    b.Navigation("Condominio");
                 });
 
             modelBuilder.Entity("EntregaSegura.Entities.Models.Entrega", b =>
@@ -813,8 +742,6 @@ namespace EntregaSegura.API.Migrations
 
             modelBuilder.Entity("EntregaSegura.Entities.Models.Condominio", b =>
                 {
-                    b.Navigation("Endereco");
-
                     b.Navigation("Funcionarios");
 
                     b.Navigation("Unidades");

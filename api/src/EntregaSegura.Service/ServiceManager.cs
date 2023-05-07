@@ -7,7 +7,6 @@ namespace EntregaSegura.Service;
 public sealed class ServiceManager : IServiceManager
 {
     private readonly Lazy<CondominioService> _condominioService;
-    private readonly Lazy<EnderecoService> _enderecoService;
     private readonly Lazy<EntregaService> _entregaService;
     private readonly Lazy<FuncionarioService> _funcionarioService;
     private readonly Lazy<MoradorService> _moradorService;
@@ -17,7 +16,6 @@ public sealed class ServiceManager : IServiceManager
     public ServiceManager(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
     {
         _condominioService = new Lazy<CondominioService>(() => new CondominioService(repository, logger, mapper));
-        _enderecoService = new Lazy<EnderecoService>(() => new EnderecoService(repository, logger, mapper));
         _entregaService = new Lazy<EntregaService>(() => new EntregaService(repository, logger, mapper));
         _funcionarioService = new Lazy<FuncionarioService>(() => new FuncionarioService(repository, logger, mapper));
         _moradorService = new Lazy<MoradorService>(() => new MoradorService(repository, logger, mapper));
@@ -26,7 +24,6 @@ public sealed class ServiceManager : IServiceManager
     }
 
     public ICondominioService CondominioService => _condominioService.Value;
-    public IEnderecoService EnderecoService => _enderecoService.Value;
     public IEntregaService EntregaService => _entregaService.Value;
     public IFuncionarioService FuncionarioService => _funcionarioService.Value;
     public IMoradorService MoradorService => _moradorService.Value;

@@ -3,7 +3,6 @@ namespace EntregaSegura.Contracts;
 public interface IRepositoryManager
 {
     ICondominioRepository Condominio { get; }
-    IEnderecoRepository Endereco { get; }
     IEntregaRepository Entrega { get; }
     IFuncionarioRepository Funcionario { get; }
     IMoradorRepository Morador { get; }

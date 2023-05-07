@@ -1,5 +1,4 @@
 using EntregaSegura.Entities.Models;
-using EntregaSegura.Entities.Models.Enums;
 using EntregaSegura.Repository.Extensions;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,7 +9,6 @@ public class EntregaSeguraContext : DbContext
     public EntregaSeguraContext(DbContextOptions options) : base(options) { }
 
     public DbSet<Condominio> Condominios => Set<Condominio>();
-    public DbSet<Endereco> Enderecos => Set<Endereco>();
     public DbSet<Entrega> Entregas => Set<Entrega>();
     public DbSet<Funcionario> Funcionarios => Set<Funcionario>();
     public DbSet<Morador> Moradores => Set<Morador>();

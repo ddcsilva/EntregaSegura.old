@@ -22,13 +22,7 @@ public static class ModelBuilderExtensions
             Nome = "Condomínio Exemplo",
             CNPJ = "11111111111111",
             Telefone = "11999999999",
-            Email = "contato@condominioexemplo.com.br"
-        });
-
-        modelBuilder.Entity<Endereco>().HasData(new Endereco
-        {
-            Id = enderecoId,
-            CondominioId = condominioId,
+            Email = "contato@condominioexemplo.com.br",
             Logradouro = "Rua Exemplo",
             Numero = "100",
             Complemento = "Bloco A",
