@@ -8,13 +8,19 @@ public sealed class MoradorRepository : RepositoryBase<Morador>, IMoradorReposit
 {
     public MoradorRepository(EntregaSeguraContext context) : base(context) { }
 
-    public IEnumerable<Morador> ObterMoradores(bool rastrearAlteracoes)
+    public IEnumerable<Morador> ObterMoradores(Guid condominioId, Guid unidadeId, bool rastrearAlteracoes)
     {
-        return BuscarTodos(rastrearAlteracoes).OrderBy(c => c.Nome).ToList();
+        return BuscarPorCondicao(c => c.UnidadeId == unidadeId && c.Unidade.CondominioId == condominioId, rastrearAlteracoes).OrderBy(c => c.Nome).ToList();
     }
 
-    public Morador ObterMorador(Guid moradorId, bool rastrearAlteracoes)
+    public Morador ObterMorador(Guid condominioId, Guid unidadeId, Guid moradorId, bool rastrearAlteracoes)
     {
-        return BuscarPorCondicao(c => c.Id == moradorId, rastrearAlteracoes).FirstOrDefault();
+        return BuscarPorCondicao(c => c.Id == moradorId && c.UnidadeId == unidadeId && c.Unidade.CondominioId == condominioId, rastrearAlteracoes).SingleOrDefault();
+    }
+
+    public void CriarMoradorParaUnidade(Guid condominioId, Guid unidadeId, Morador morador)
+    {
+        morador.UnidadeId = unidadeId;
+        Criar(morador);
     }
 }
