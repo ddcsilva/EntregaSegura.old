@@ -42,9 +42,9 @@ public sealed class UnidadeService : IUnidadeService
 
     public UnidadeDTO CriarUnidadeParaCondominio(Guid condominioId, UnidadeCriacaoDTO unidadeCriacaoDTO, bool rastrearAlteracoes)
     {
-        var unidade = _repository.Condominio.ObterCondominio(condominioId, rastrearAlteracoes);
+        var condominio = _repository.Condominio.ObterCondominio(condominioId, rastrearAlteracoes);
 
-        if (unidade == null)
+        if (condominio == null)
             throw new EntregaSeguraNotFoundException(condominioId);
 
         var unidadeEntity = _mapper.Map<Unidade>(unidadeCriacaoDTO);

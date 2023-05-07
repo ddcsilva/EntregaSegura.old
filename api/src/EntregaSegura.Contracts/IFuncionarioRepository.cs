@@ -7,6 +7,7 @@ namespace EntregaSegura.Contracts;
 /// </summary>
 public interface IFuncionarioRepository
 {
-    IEnumerable<Funcionario> ObterFuncionarios(bool rastrearAlteracoes);
+    IEnumerable<Funcionario> ObterFuncionarios(Guid condominioId, bool rastrearAlteracoes);
     Funcionario ObterFuncionario(Guid condominioId, Guid funcionarioId, bool rastrearAlteracoes);
+    void CriarFuncionarioParaCondominio(Guid condominioId, Funcionario funcionario);
 }

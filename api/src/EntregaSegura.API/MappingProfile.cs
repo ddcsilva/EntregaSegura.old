@@ -21,6 +21,7 @@ public class MappingProfile : Profile
         CreateMap<CondominioCriacaoDTO, Condominio>();
         CreateMap<Entrega, EntregaDTO>();
         CreateMap<Funcionario, FuncionarioDTO>();
+        CreateMap<FuncionarioCriacaoDTO, Funcionario>();
         CreateMap<Morador, MoradorDTO>();
         CreateMap<Transportadora, TransportadoraDTO>();
         CreateMap<Unidade, UnidadeDTO>();

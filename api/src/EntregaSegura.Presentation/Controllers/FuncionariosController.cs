@@ -1,4 +1,5 @@
 using EntregaSegura.Service.Contracts;
+using EntregaSegura.Shared.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EntregaSegura.Presentation.Controllers;
@@ -18,13 +19,13 @@ public class FuncionariosController : ControllerBase
     }
 
     /// <summary>
-    /// Retorna uma lista de todos os funcionários.
+    /// Retorna uma lista de funcionários para o condomínio com o ID fornecido.
     /// </summary>
     /// <returns>Uma lista de objetos FuncionarioDTO.</returns>
     [HttpGet]
-    public IActionResult ObterFuncionarios()
+    public IActionResult ObterFuncionariosDoCondominio(Guid condominioId)
     {
-        var funcionarios = _service.FuncionarioService.ObterFuncionarios(false);
+        var funcionarios = _service.FuncionarioService.ObterFuncionarios(condominioId, false);
         return Ok(funcionarios);
     }
 
@@ -34,10 +35,27 @@ public class FuncionariosController : ControllerBase
     /// <param name="condominioId">O ID do condomínio ao qual o funcionário pertence.</param>
     /// <param name="funcionarioId">O ID do funcionário a ser retornado.</param>
     /// <returns>Um objeto FuncionarioDTO correspondente aos IDs fornecidos.</returns>
-    [HttpGet("{id:guid}")]
+    [HttpGet("{id:guid}", Name = "ObterFuncionarioDoCondominio")]
     public IActionResult ObterFuncionarioDoCondominio(Guid condominioId, Guid funcionarioId)
     {
         var funcionario = _service.FuncionarioService.ObterFuncionario(condominioId, funcionarioId, false);
         return Ok(funcionario);
+    }
+
+    /// <summary>
+    /// Cria um novo funcionário para o condomínio com o ID fornecido.
+    /// </summary>
+    /// <param name="condominioId">O ID do condomínio ao qual o funcionário pertencerá.</param>
+    /// <param name="funcionario">Um objeto FuncionarioCriacaoDTO contendo os dados do novo funcionário.</param>
+    /// <returns>O objeto FuncionarioDTO criado com seu ID gerado.</returns>
+    [HttpPost]
+    public IActionResult CriarFuncionarioParaCondominio(Guid condominioId, [FromBody] FuncionarioCriacaoDTO funcionario)
+    {
+        if (funcionario == null)
+            return BadRequest("Funcionário não pode ser nulo.");
+
+        var funcionarioCriado = _service.FuncionarioService.CriarFuncionarioParaCondominio(condominioId, funcionario, false);
+
+        return CreatedAtRoute("ObterFuncionarioDoCondominio", new { condominioId, id = funcionarioCriado.Id }, funcionarioCriado);
     }
 }

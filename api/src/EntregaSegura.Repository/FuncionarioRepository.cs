@@ -8,13 +8,21 @@ public sealed class FuncionarioRepository : RepositoryBase<Funcionario>, IFuncio
 {
     public FuncionarioRepository(EntregaSeguraContext context) : base(context) { }
 
-    public IEnumerable<Funcionario> ObterFuncionarios(bool rastrearAlteracoes)
+    public IEnumerable<Funcionario> ObterFuncionarios(Guid condominioId, bool rastrearAlteracoes)
     {
-        return BuscarTodos(rastrearAlteracoes).OrderBy(c => c.Nome).ToList();
+        var funcionarios = BuscarPorCondicao(f => f.CondominioId.Equals(condominioId), rastrearAlteracoes).OrderBy(f => f.Nome);
+
+        return funcionarios;
     }
 
     public Funcionario ObterFuncionario(Guid condominioId, Guid funcionarioId, bool rastrearAlteracoes)
     {
         return BuscarPorCondicao(f => f.CondominioId.Equals(condominioId) && f.Id.Equals(funcionarioId), rastrearAlteracoes).SingleOrDefault();
+    }
+
+    public void CriarFuncionarioParaCondominio(Guid condominioId, Funcionario funcionario)
+    {
+        funcionario.CondominioId = condominioId;
+        Criar(funcionario);
     }
 }

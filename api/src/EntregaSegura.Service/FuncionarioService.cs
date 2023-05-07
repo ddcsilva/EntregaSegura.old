@@ -1,6 +1,7 @@
 using AutoMapper;
 using EntregaSegura.Contracts;
 using EntregaSegura.Entities.Exceptions;
+using EntregaSegura.Entities.Models;
 using EntregaSegura.Service.Contracts;
 using EntregaSegura.Shared.DTOs;
 
@@ -19,9 +20,14 @@ public sealed class FuncionarioService : IFuncionarioService
         _mapper = mapper;
     }
 
-    public IEnumerable<FuncionarioDTO> ObterFuncionarios(bool rastrearAlteracoes)
+    public IEnumerable<FuncionarioDTO> ObterFuncionarios(Guid condominioId, bool rastrearAlteracoes)
     {
-        var funcionarios = _repository.Funcionario.ObterFuncionarios(rastrearAlteracoes);
+        var condominio = _repository.Condominio.ObterCondominio(condominioId, rastrearAlteracoes);
+
+        if (condominio == null)
+            throw new EntregaSeguraNotFoundException(condominioId);
+
+        var funcionarios = _repository.Funcionario.ObterFuncionarios(condominioId, rastrearAlteracoes);
         var funcionariosDTO = _mapper.Map<IEnumerable<FuncionarioDTO>>(funcionarios);
 
         return funcionariosDTO;
@@ -40,6 +46,23 @@ public sealed class FuncionarioService : IFuncionarioService
             throw new EntregaSeguraNotFoundException(funcionarioId);
 
         var funcionarioDTO = _mapper.Map<FuncionarioDTO>(funcionario);
+
+        return funcionarioDTO;
+    }
+
+    public FuncionarioDTO CriarFuncionarioParaCondominio(Guid condominioId, FuncionarioCriacaoDTO funcionarioCriacaoDTO, bool rastrearAlteracoes)
+    {
+        var condominio = _repository.Condominio.ObterCondominio(condominioId, rastrearAlteracoes);
+
+        if (condominio == null)
+            throw new EntregaSeguraNotFoundException(condominioId);
+
+        var funcionarioEntity = _mapper.Map<Funcionario>(funcionarioCriacaoDTO);
+
+        _repository.Funcionario.CriarFuncionarioParaCondominio(condominioId, funcionarioEntity);
+        _repository.Salvar();
+
+        var funcionarioDTO = _mapper.Map<FuncionarioDTO>(funcionarioEntity);
 
         return funcionarioDTO;
     }
