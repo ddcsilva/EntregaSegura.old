@@ -1,4 +1,5 @@
 using EntregaSegura.Service.Contracts;
+using EntregaSegura.Shared.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EntregaSegura.Presentation.Controllers;
@@ -21,11 +22,22 @@ public class UnidadesController : ControllerBase
         return Ok(unidades);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id:guid}", Name = "ObterUnidadeDoCondominio")]
     public IActionResult ObterUnidadePorId(Guid id)
     {
         var unidade = _service.UnidadeService.ObterUnidade(id, false);
 
         return Ok(unidade);
+    }
+
+    [HttpPost]
+    public IActionResult CriarUnidadeParaCondominio(Guid condominioId, [FromBody] UnidadeCriacaoDTO unidade)
+    {
+        if (unidade == null)
+            return BadRequest("Unidade não pode ser nulo.");
+
+        var unidadeCriada = _service.UnidadeService.CriarUnidadeParaCondominio(condominioId, unidade, false);
+
+        return CreatedAtRoute("ObterUnidadeDoCondominio", new { condominioId, id = unidadeCriada.Id }, unidadeCriada);
     }
 }

@@ -17,4 +17,10 @@ public class UnidadeRepository : RepositoryBase<Unidade>, IUnidadeRepository
     {
         return BuscarPorCondicao(c => c.Id == unidadeId, rastrearAlteracoes).FirstOrDefault();
     }
+
+    public void CriarUnidadeParaCondominio(Guid condominioId, Unidade unidade)
+    {
+        unidade.CondominioId = condominioId;
+        Criar(unidade);
+    }
 }

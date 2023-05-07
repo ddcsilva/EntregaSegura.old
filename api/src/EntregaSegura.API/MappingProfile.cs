@@ -17,5 +17,6 @@ public class MappingProfile : Profile
         CreateMap<Morador, MoradorDTO>();
         CreateMap<Transportadora, TransportadoraDTO>();
         CreateMap<Unidade, UnidadeDTO>();
+        CreateMap<UnidadeCriacaoDTO, Unidade>();
     }
 }

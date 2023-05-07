@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.HttpOverrides;
 using NLog;
 using EntregaSegura.API.Extensions;
 using EntregaSegura.Contracts;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,10 @@ builder.Services.ConfigurarRepositoryManager();
 builder.Services.ConfigurarServiceManager();
 builder.Services.ConfigurarSqlContext(builder.Configuration);
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
 
 builder.Services.AddControllers(config =>
 {
