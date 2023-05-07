@@ -17,4 +17,9 @@ public sealed class TransportadoraRepository : RepositoryBase<Transportadora>, I
     {
         return BuscarPorCondicao(c => c.Id == transportadoraId, rastrearAlteracoes).FirstOrDefault();
     }
+
+    public void CriarTransportadora(Transportadora transportadora)
+    {
+        Criar(transportadora);
+    }
 }

@@ -20,20 +20,30 @@ public sealed class UnidadeService : IUnidadeService
         _mapper = mapper;
     }
 
-    public IEnumerable<UnidadeDTO> ObterUnidades(bool rastrearAlteracoes)
+    public IEnumerable<UnidadeDTO> ObterUnidades(Guid condominioId, bool rastrearAlteracoes)
     {
-        var unidades = _repository.Unidade.ObterUnidades(rastrearAlteracoes);
+        var condominio = _repository.Condominio.ObterCondominio(condominioId, rastrearAlteracoes);
+
+        if (condominio == null)
+            throw new EntregaSeguraNotFoundException(condominioId);
+
+        var unidades = _repository.Unidade.ObterUnidades(condominioId, rastrearAlteracoes);
         var unidadesDTO = _mapper.Map<IEnumerable<UnidadeDTO>>(unidades);
 
         return unidadesDTO;
     }
 
-    public UnidadeDTO ObterUnidade(Guid id, bool rastrearAlteracoes)
+    public UnidadeDTO ObterUnidade(Guid condominioId, Guid unidadeId, bool rastrearAlteracoes)
     {
-        var unidade = _repository.Unidade.ObterUnidade(id, rastrearAlteracoes);
+        var condominio = _repository.Condominio.ObterCondominio(condominioId, rastrearAlteracoes);
+
+        if (condominio == null)
+            throw new EntregaSeguraNotFoundException(condominioId);
+
+        var unidade = _repository.Unidade.ObterUnidade(condominioId, unidadeId, rastrearAlteracoes);
 
         if (unidade == null)
-            throw new EntregaSeguraNotFoundException(id);
+            throw new EntregaSeguraNotFoundException(unidadeId);
 
         var unidadeDTO = _mapper.Map<UnidadeDTO>(unidade);
 

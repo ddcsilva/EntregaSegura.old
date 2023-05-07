@@ -35,7 +35,7 @@ public class FuncionariosController : ControllerBase
     /// <param name="condominioId">O ID do condomínio ao qual o funcionário pertence.</param>
     /// <param name="funcionarioId">O ID do funcionário a ser retornado.</param>
     /// <returns>Um objeto FuncionarioDTO correspondente aos IDs fornecidos.</returns>
-    [HttpGet("{id:guid}", Name = "ObterFuncionarioDoCondominio")]
+    [HttpGet("{funcionarioId:guid}", Name = "ObterFuncionarioDoCondominio")]
     public IActionResult ObterFuncionarioDoCondominio(Guid condominioId, Guid funcionarioId)
     {
         var funcionario = _service.FuncionarioService.ObterFuncionario(condominioId, funcionarioId, false);

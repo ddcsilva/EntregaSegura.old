@@ -9,4 +9,5 @@ public interface ITransportadoraRepository
 {
     IEnumerable<Transportadora> ObterTransportadoras(bool rastrearAlteracoes);
     Transportadora? ObterTransportadora(Guid transportadoraId, bool rastrearAlteracoes);
+    void CriarTransportadora(Transportadora transportadora);
 }

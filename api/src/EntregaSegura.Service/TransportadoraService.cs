@@ -1,6 +1,7 @@
 using AutoMapper;
 using EntregaSegura.Contracts;
 using EntregaSegura.Entities.Exceptions;
+using EntregaSegura.Entities.Models;
 using EntregaSegura.Service.Contracts;
 using EntregaSegura.Shared.DTOs;
 
@@ -35,6 +36,18 @@ public sealed class TransportadoraService : ITransportadoraService
             throw new EntregaSeguraNotFoundException(id);
 
         var transportadoraDTO = _mapper.Map<TransportadoraDTO>(transportadora);
+
+        return transportadoraDTO;
+    }
+
+    public TransportadoraDTO CriarTransportadora(TransportadoraCriacaoDTO transportadora)
+    {
+        var transportadoraEntity = _mapper.Map<Transportadora>(transportadora);
+        
+        _repository.Transportadora.CriarTransportadora(transportadoraEntity);
+        _repository.Salvar();
+
+        var transportadoraDTO = _mapper.Map<TransportadoraDTO>(transportadoraEntity);
 
         return transportadoraDTO;
     }

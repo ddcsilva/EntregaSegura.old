@@ -19,11 +19,17 @@ public class MappingProfile : Profile
             .ForCtorParam("Endereco", 
                 option => option.MapFrom(src => $"{src.Logradouro}, {src.Numero}, {src.Complemento}{(src.Complemento == null ? "" : $", ")}{src.Bairro}"));
         CreateMap<CondominioCriacaoDTO, Condominio>();
+
         CreateMap<Entrega, EntregaDTO>();
+        
         CreateMap<Funcionario, FuncionarioDTO>();
         CreateMap<FuncionarioCriacaoDTO, Funcionario>();
+
         CreateMap<Morador, MoradorDTO>();
+
         CreateMap<Transportadora, TransportadoraDTO>();
+        CreateMap<TransportadoraCriacaoDTO, Transportadora>();
+        
         CreateMap<Unidade, UnidadeDTO>();
         CreateMap<UnidadeCriacaoDTO, Unidade>();
     }

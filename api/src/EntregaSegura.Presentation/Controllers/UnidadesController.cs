@@ -19,24 +19,25 @@ public class UnidadesController : ControllerBase
     }
 
     /// <summary>
-    /// Retorna uma lista de todas as unidades residenciais.
+    /// Retorna uma lista de unidades residenciais para o condomínio com o ID fornecido.
     /// </summary>
     /// <returns>Uma lista de objetos UnidadeDTO.</returns>
     [HttpGet]
-    public IActionResult ObterUnidades()
+    public IActionResult ObterUnidades(Guid condominioId)
     {
-        var unidades = _service.UnidadeService.ObterUnidades(false);
+        var unidades = _service.UnidadeService.ObterUnidades(condominioId, false);
         return Ok(unidades);
     }
 
     /// Retorna uma unidade residencial com base no ID fornecido.
     /// </summary>
-    /// <param name="id">O ID da unidade residencial a ser retornado.</param>
+    /// <param name="condominioId">O ID do condomínio ao qual o funcionário pertence.</param>
+    /// <param name="unidadeId">O ID da unidade residencial a ser retornada.</param>
     /// <returns>Um objeto UnidadeDTO correspondente ao ID fornecido.</returns>
-    [HttpGet("{id:guid}", Name = "ObterUnidadeDoCondominio")]
-    public IActionResult ObterUnidadePorId(Guid id)
+    [HttpGet("{unidadeId:guid}", Name = "ObterUnidadeDoCondominio")]
+    public IActionResult ObterUnidadePorId(Guid condominioId, Guid unidadeId)
     {
-        var unidade = _service.UnidadeService.ObterUnidade(id, false);
+        var unidade = _service.UnidadeService.ObterUnidade(condominioId, unidadeId, false);
 
         return Ok(unidade);
     }

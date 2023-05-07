@@ -28,21 +28,18 @@ public class TransportadoraConfiguration : IEntityTypeConfiguration<Transportado
         builder.Property(e => e.CNPJ)
             .HasColumnName("TRA_CNPJ")
             .HasColumnOrder(3)
-            .IsRequired()
             .HasColumnType("varchar(14)")
             .HasComment("CNPJ da transportadora");
 
         builder.Property(e => e.Telefone)
             .HasColumnName("TRA_TELEFONE")
             .HasColumnOrder(4)
-            .IsRequired()
             .HasColumnType("varchar(11)")
             .HasComment("Telefone da transportadora");
 
         builder.Property(e => e.Email)
             .HasColumnName("TRA_EMAIL")
             .HasColumnOrder(5)
-            .IsRequired()
             .HasColumnType("varchar(100)")
             .HasComment("E-mail da transportadora");
 
