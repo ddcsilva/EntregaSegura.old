@@ -31,4 +31,10 @@ public sealed class EntregaRepository : RepositoryBase<Entrega>, IEntregaReposit
 
         return entrega;
     }
+
+    public void RegistrarEntrega(Guid condominioId, Guid funcionarioId, Entrega entrega)
+    {
+        entrega.FuncionarioId = funcionarioId;
+        Criar(entrega);
+    }
 }

@@ -7,6 +7,5 @@ public record EntregaCriacaoDTO(
     string? Descricao,
     string? Observacao,
     Guid TransportadoraId,
-    Guid MoradorId,
-    Guid FuncionarioId
+    Guid MoradorId
 );
