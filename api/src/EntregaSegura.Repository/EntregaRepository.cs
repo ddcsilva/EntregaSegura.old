@@ -8,13 +8,27 @@ public sealed class EntregaRepository : RepositoryBase<Entrega>, IEntregaReposit
 {
     public EntregaRepository(EntregaSeguraContext context) : base(context) { }
 
-    public IEnumerable<Entrega> ObterEntregas(bool rastrearAlteracoes)
+    public IEnumerable<Entrega> ObterEntregas(Guid? condominioId, Guid? unidadeId, Guid? moradorId, Guid? funcionarioId, Guid? transportadoraId, bool rastrearAlteracoes)
     {
-        return BuscarTodos(rastrearAlteracoes).OrderByDescending(c => c.DataRecebimento).ToList();
+        var entregas = BuscarPorCondicao(e => (condominioId == null || e.Morador.Unidade.CondominioId == condominioId) &&
+                                              (unidadeId == null || e.Morador.UnidadeId == unidadeId) &&
+                                              (moradorId == null || e.MoradorId == moradorId) &&
+                                              (funcionarioId == null || e.FuncionarioId == funcionarioId) &&
+                                              (transportadoraId == null || e.TransportadoraId == transportadoraId), rastrearAlteracoes);
+
+        return entregas;
     }
 
-    public Entrega ObterEntrega(Guid entregaId, bool rastrearAlteracoes)
+    public Entrega ObterEntrega(Guid? condominioId, Guid? unidadeId, Guid? moradorId, Guid? funcionarioId, Guid? transportadoraId, Guid entregaId, bool rastrearAlteracoes)
     {
-        return BuscarPorCondicao(c => c.Id == entregaId, rastrearAlteracoes).FirstOrDefault();
+        var entrega = BuscarPorCondicao(e => e.Id == entregaId &&
+                                              (condominioId == null || e.Morador.Unidade.CondominioId == condominioId) &&
+                                              (unidadeId == null || e.Morador.UnidadeId == unidadeId) &&
+                                              (moradorId == null || e.MoradorId == moradorId) &&
+                                              (funcionarioId == null || e.FuncionarioId == funcionarioId) &&
+                                              (transportadoraId == null || e.TransportadoraId == transportadoraId), rastrearAlteracoes)
+                                              .SingleOrDefault();
+
+        return entrega;
     }
 }

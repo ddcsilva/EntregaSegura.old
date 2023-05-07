@@ -19,20 +19,44 @@ public sealed class EntregaService : IEntregaService
         _mapper = mapper;
     }
 
-    public IEnumerable<EntregaDTO> ObterEntregas(bool rastrearAlteracoes)
+    public IEnumerable<EntregaDTO> ObterEntregas(Guid? condominioId, Guid? unidadeId, Guid? moradorId, Guid? funcionarioId, Guid? transportadoraId, bool rastrearAlteracoes)
     {
-        var entregas = _repository.Entrega.ObterEntregas(rastrearAlteracoes);
+        var entregas = _repository.Entrega.ObterEntregas(condominioId, unidadeId, moradorId, funcionarioId, transportadoraId, rastrearAlteracoes);
         var entregasDTO = _mapper.Map<IEnumerable<EntregaDTO>>(entregas);
 
         return entregasDTO;
     }
 
-    public EntregaDTO ObterEntrega(Guid id, bool rastrearAlteracoes)
+    public EntregaDTO ObterEntregaPorFuncionario(Guid condominioId, Guid funcionarioId, Guid entregaId, bool rastrearAlteracoes)
     {
-        var entrega = _repository.Entrega.ObterEntrega(id, rastrearAlteracoes);
+        var entrega = _repository.Entrega.ObterEntrega(condominioId, null, null, funcionarioId, null, entregaId, rastrearAlteracoes);
 
         if (entrega == null)
-            throw new EntregaSeguraNotFoundException(id);
+            throw new EntregaSeguraNotFoundException(entregaId);
+
+        var entregaDTO = _mapper.Map<EntregaDTO>(entrega);
+
+        return entregaDTO;
+    }
+
+    public EntregaDTO ObterEntregaPorMorador(Guid condominioId, Guid unidadeId, Guid moradorId, Guid entregaId, bool rastrearAlteracoes)
+    {
+        var entrega = _repository.Entrega.ObterEntrega(condominioId, unidadeId, moradorId, null, null, entregaId, rastrearAlteracoes);
+
+        if (entrega == null)
+            throw new EntregaSeguraNotFoundException(entregaId);
+
+        var entregaDTO = _mapper.Map<EntregaDTO>(entrega);
+
+        return entregaDTO;
+    }
+
+    public EntregaDTO ObterEntregaPorTransportadora(Guid transportadoraId, Guid entregaId, bool rastrearAlteracoes)
+    {
+        var entrega = _repository.Entrega.ObterEntrega(null, null, null, null, transportadoraId, entregaId, rastrearAlteracoes);
+
+        if (entrega == null)
+            throw new EntregaSeguraNotFoundException(entregaId);
 
         var entregaDTO = _mapper.Map<EntregaDTO>(entrega);
 

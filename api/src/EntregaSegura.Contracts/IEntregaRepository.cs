@@ -7,6 +7,6 @@ namespace EntregaSegura.Contracts;
 /// </summary>
 public interface IEntregaRepository
 {
-    IEnumerable<Entrega> ObterEntregas(bool rastrearAlteracoes);
-    Entrega? ObterEntrega(Guid entregaId, bool rastrearAlteracoes);
+    IEnumerable<Entrega> ObterEntregas(Guid? condominioId, Guid? unidadeId, Guid? moradorId, Guid? funcionarioId, Guid? transportadoraId, bool rastrearAlteracoes);
+    Entrega? ObterEntrega(Guid? condominioId, Guid? unidadeId, Guid? moradorId, Guid? funcionarioId, Guid? transportadoraId, Guid entregaId, bool rastrearAlteracoes);
 }
