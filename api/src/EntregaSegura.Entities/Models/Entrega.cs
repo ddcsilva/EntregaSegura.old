@@ -13,8 +13,6 @@ public sealed class Entrega : BaseEntity
         Status = StatusEntrega.Recebida;        
     }
 
-    public string? Remetente { get; set; }
-    public string? Destinatario { get; set; }
     public DateTime DataRecebimento { get; set; }
     public DateTime? DataRetirada { get; set; }
     public string? Descricao { get; set; }

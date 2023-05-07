@@ -75,8 +75,6 @@ public static class ModelBuilderExtensions
         modelBuilder.Entity<Entrega>().HasData(new Entrega
         {
             Id = entregaId,
-            Remetente = "Remetente Exemplo",
-            Destinatario = "Destinatario Exemplo",
             DataRecebimento = DateTime.Now,
             Descricao = "Descrição da entrega",
             Observacao = "Observação da entrega",

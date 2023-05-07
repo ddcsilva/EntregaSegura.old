@@ -21,6 +21,7 @@ public class UnidadesController : ControllerBase
     /// <summary>
     /// Retorna uma lista de unidades residenciais para o condomínio com o ID fornecido.
     /// </summary>
+    /// <param name="condominioId">O ID do condomínio ao qual as unidades residenciais pertencem.</param>
     /// <returns>Uma lista de objetos UnidadeDTO.</returns>
     [HttpGet]
     public IActionResult ObterUnidades(Guid condominioId)
@@ -31,7 +32,7 @@ public class UnidadesController : ControllerBase
 
     /// Retorna uma unidade residencial com base no ID fornecido.
     /// </summary>
-    /// <param name="condominioId">O ID do condomínio ao qual o funcionário pertence.</param>
+    /// <param name="condominioId">O ID do condomínio ao qual a unidade residencial pertence.</param>
     /// <param name="unidadeId">O ID da unidade residencial a ser retornada.</param>
     /// <returns>Um objeto UnidadeDTO correspondente ao ID fornecido.</returns>
     [HttpGet("{unidadeId:guid}", Name = "ObterUnidadeDoCondominio")]
